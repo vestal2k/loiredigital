@@ -67,7 +67,7 @@ const formatDate = (date: Date) => {
                 <div class="flex-1">
                   <div class="flex flex-wrap gap-2 mb-3">
                     {post.data.tags.map((tag: string) => (
-                      <span class="text-xs bg-loire-blue-100 text-loire-blue-700 px-3 py-1 rounded-full font-medium">
+                      <span class="text-xs bg-loire-blue-100 text-loire-blue-700 px-3 py-1 rounded-full font-medium capitalize">
                         {tag}
                       </span>
                     ))}
@@ -146,19 +146,19 @@ const formatDate = (date: Date) => {
       <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Sujets populaires</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <a href="/blog" class="card text-center hover:border-loire-blue-600 border-2 border-transparent">
+          <a href="/blog/pourquoi-site-web-commerce" class="card text-center hover:border-loire-blue-600 border-2 border-transparent transition-all">
             <div class="text-3xl mb-2">🏪</div>
             <div class="font-semibold">Commerce local</div>
           </a>
-          <a href="/blog" class="card text-center hover:border-loire-blue-600 border-2 border-transparent">
+          <a href="/blog/seo-local-saint-etienne" class="card text-center hover:border-loire-blue-600 border-2 border-transparent transition-all">
             <div class="text-3xl mb-2">🔍</div>
             <div class="font-semibold">SEO Local</div>
           </a>
-          <a href="/blog" class="card text-center hover:border-loire-blue-600 border-2 border-transparent">
+          <a href="/blog/combien-coute-site-web" class="card text-center hover:border-loire-blue-600 border-2 border-transparent transition-all">
             <div class="text-3xl mb-2">💰</div>
             <div class="font-semibold">Tarifs & Budget</div>
           </a>
-          <a href="/blog" class="card text-center hover:border-loire-blue-600 border-2 border-transparent">
+          <a href="/blog" class="card text-center hover:border-loire-blue-600 border-2 border-transparent transition-all">
             <div class="text-3xl mb-2">🎨</div>
             <div class="font-semibold">Design Web</div>
           </a>

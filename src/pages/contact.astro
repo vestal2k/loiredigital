@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <BaseLayout title="Contact - Loire Digital" description="Contactez Loire Digital pour votre projet de site web à Saint-Étienne. Devis gratuit et réponse sous 24h.">
@@ -278,7 +279,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="text-center">
             <div class="w-16 h-16 bg-loire-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-3xl">💬</span>
+              <Icon name="chat" class="text-loire-blue-600" size={32} />
             </div>
             <h3 class="text-xl font-bold mb-2">Conseil gratuit</h3>
             <p class="text-gray-600">
@@ -288,7 +289,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="text-center">
             <div class="w-16 h-16 bg-loire-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-3xl">⚡</span>
+              <Icon name="zap" class="text-loire-blue-600" size={32} />
             </div>
             <h3 class="text-xl font-bold mb-2">Réponse rapide</h3>
             <p class="text-gray-600">
@@ -298,7 +299,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="text-center">
             <div class="w-16 h-16 bg-loire-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span class="text-3xl">🤝</span>
+              <Icon name="handshake" class="text-loire-blue-600" size={32} />
             </div>
             <h3 class="text-xl font-bold mb-2">Sans engagement</h3>
             <p class="text-gray-600">
