@@ -18,18 +18,13 @@ const formatDate = (date: Date) => {
 
 <BaseLayout title="Blog - Loire Digital" description="Conseils et guides pour les commerces locaux : SEO, création de sites web, marketing digital et transformation numérique à Saint-Étienne.">
   <!-- Hero -->
-  <section class="relative py-32 overflow-hidden">
-    <div class="absolute inset-0">
-      <div class="absolute top-20 right-1/4 w-96 h-96 bg-indigo-electric-600/10 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-indigo-electric-500/10 rounded-full blur-3xl"></div>
-    </div>
-
-    <div class="container mx-auto px-4 relative z-10">
+  <section class="relative py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl md:text-7xl font-display font-bold text-white mb-6">
+        <h1 class="text-5xl md:text-7xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
           Blog
         </h1>
-        <p class="text-xl text-gray-400">
+        <p class="text-xl text-gray-text">
           Conseils, guides et actualités pour développer votre présence en ligne
           et faire grandir votre commerce à Saint-Étienne.
         </p>
@@ -38,36 +33,36 @@ const formatDate = (date: Date) => {
   </section>
 
   <!-- Blog Posts -->
-  <section class="py-20">
+  <section class="py-20 section-pale">
     <div class="container mx-auto px-4">
       <div class="max-w-5xl mx-auto">
         {allPosts.length === 0 ? (
           <div class="text-center py-20">
-            <p class="text-gray-400 text-lg">Aucun article pour le moment. Revenez bientôt !</p>
+            <p class="text-gray-text text-lg">Aucun article pour le moment. Revenez bientôt !</p>
           </div>
         ) : (
           <div class="grid grid-cols-1 gap-12">
             {allPosts.map((post) => (
-              <article class="flex flex-col md:flex-row gap-8 pb-12 border-b border-dark-800 last:border-0">
+              <article class="flex flex-col md:flex-row gap-8 pb-12 border-b border-gray-100 last:border-0">
                 {/* Post Image/Icon */}
                 <div class="md:w-72 flex-shrink-0">
-                  <div class="aspect-video bg-dark-900 border border-dark-800 rounded-xl flex items-center justify-center overflow-hidden">
+                  <div class="aspect-video bg-white border border-gray-100 rounded-xl flex items-center justify-center overflow-hidden shadow-sm">
                     {post.data.image ? (
                       <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover" />
                     ) : (
                       <div class="text-center p-6">
-                        <div class="w-16 h-16 bg-indigo-electric-950 border border-indigo-electric-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">
                           {post.data.tags.includes('SEO') ? (
-                            <Icon name="search" class="text-indigo-electric-400" size={32} />
+                            <Icon name="search" class="text-blue-600" size={32} />
                           ) : post.data.tags.includes('tarifs') ? (
-                            <Icon name="price-tag" class="text-indigo-electric-400" size={32} />
+                            <Icon name="price-tag" class="text-blue-600" size={32} />
                           ) : post.data.tags.includes('commerce local') ? (
-                            <Icon name="storefront" class="text-indigo-electric-400" size={32} />
+                            <Icon name="storefront" class="text-blue-600" size={32} />
                           ) : (
-                            <Icon name="document-text" class="text-indigo-electric-400" size={32} />
+                            <Icon name="document-text" class="text-blue-600" size={32} />
                           )}
                         </div>
-                        <p class="text-indigo-electric-400 font-semibold text-sm">
+                        <p class="text-blue-600 font-semibold text-sm">
                           {post.data.title.split(' ').slice(0, 3).join(' ')}
                         </p>
                       </div>
@@ -79,19 +74,19 @@ const formatDate = (date: Date) => {
                 <div class="flex-1">
                   <div class="flex flex-wrap gap-2 mb-3">
                     {post.data.tags.map((tag: string) => (
-                      <span class="text-xs bg-indigo-electric-950 text-indigo-electric-400 border border-indigo-electric-900 px-3 py-1 rounded-full font-medium capitalize">
+                      <span class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-semibold capitalize">
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-3 hover:text-indigo-electric-400 transition-colors">
+                  <h2 class="text-2xl md:text-3xl font-bold text-black mb-3 hover:text-blue-600 transition-colors">
                     <a href={`/blog/${post.slug}`}>
                       {post.data.title}
                     </a>
                   </h2>
 
-                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                  <div class="flex items-center text-sm text-gray-text mb-4">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                     </svg>
@@ -102,13 +97,13 @@ const formatDate = (date: Date) => {
                     <span>{post.data.author}</span>
                   </div>
 
-                  <p class="text-gray-400 mb-6 leading-relaxed">
+                  <p class="text-gray-text mb-6 leading-relaxed">
                     {post.data.description}
                   </p>
 
                   <a
                     href={`/blog/${post.slug}`}
-                    class="inline-flex items-center text-indigo-electric-400 font-semibold hover:text-indigo-electric-300 group"
+                    class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 group"
                   >
                     Lire l'article complet
                     <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -125,29 +120,27 @@ const formatDate = (date: Date) => {
   </section>
 
   <!-- Newsletter -->
-  <section class="py-32 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-electric-950/10 to-transparent"></div>
-
-    <div class="container mx-auto px-4 relative z-10">
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
       <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+        <h2 class="text-4xl md:text-5xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
           Restez informé
         </h2>
-        <p class="text-gray-400 mb-8 text-lg">
+        <p class="text-gray-text mb-8 text-lg">
           Recevez nos meilleurs conseils pour développer votre commerce en ligne directement dans votre boîte mail.
         </p>
         <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
           <input
             type="email"
             placeholder="votre@email.fr"
-            class="flex-1 px-6 py-3 bg-dark-900 border border-dark-800 rounded-lg text-white placeholder-gray-500 focus:ring-2 focus:ring-indigo-electric-600 focus:border-transparent outline-none"
+            class="flex-1 px-6 py-3 bg-white border border-gray-200 rounded-lg text-black placeholder-gray-400 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
             required
           />
-          <button type="submit" class="btn-primary whitespace-nowrap">
+          <button type="submit" class="btn-blue whitespace-nowrap">
             S'inscrire
           </button>
         </form>
-        <p class="text-xs text-gray-500 mt-4">
+        <p class="text-xs text-gray-text mt-4">
           Pas de spam. Vous pouvez vous désinscrire à tout moment.
         </p>
       </div>
@@ -155,34 +148,34 @@ const formatDate = (date: Date) => {
   </section>
 
   <!-- Topics Section -->
-  <section class="py-20">
+  <section class="py-20 section-pale">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-4xl font-display font-bold text-white mb-12 text-center">Sujets populaires</h2>
+        <h2 class="text-4xl font-black text-black mb-12 text-center" style="letter-spacing: -0.02em;">Sujets populaires</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <a href="/blog/pourquoi-site-web-commerce" class="card hover:scale-[1.02] transition-transform text-center group">
-            <div class="w-12 h-12 bg-indigo-electric-950 border border-indigo-electric-900 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:border-indigo-electric-700 transition-colors">
-              <Icon name="storefront" class="text-indigo-electric-400" size={24} />
+          <a href="/blog/pourquoi-site-web-commerce" class="card-minimal hover:scale-[1.02] transition-transform text-center group">
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-100 transition-colors">
+              <Icon name="storefront" class="text-blue-600" size={24} />
             </div>
-            <div class="font-semibold text-white text-sm">Commerce local</div>
+            <div class="font-semibold text-black text-sm">Commerce local</div>
           </a>
-          <a href="/blog/seo-local-saint-etienne" class="card hover:scale-[1.02] transition-transform text-center group">
-            <div class="w-12 h-12 bg-indigo-electric-950 border border-indigo-electric-900 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:border-indigo-electric-700 transition-colors">
-              <Icon name="search" class="text-indigo-electric-400" size={24} />
+          <a href="/blog/seo-local-saint-etienne" class="card-minimal hover:scale-[1.02] transition-transform text-center group">
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-100 transition-colors">
+              <Icon name="search" class="text-blue-600" size={24} />
             </div>
-            <div class="font-semibold text-white text-sm">SEO Local</div>
+            <div class="font-semibold text-black text-sm">SEO Local</div>
           </a>
-          <a href="/blog/combien-coute-site-web" class="card hover:scale-[1.02] transition-transform text-center group">
-            <div class="w-12 h-12 bg-indigo-electric-950 border border-indigo-electric-900 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:border-indigo-electric-700 transition-colors">
-              <Icon name="price-tag" class="text-indigo-electric-400" size={24} />
+          <a href="/blog/combien-coute-site-web" class="card-minimal hover:scale-[1.02] transition-transform text-center group">
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-100 transition-colors">
+              <Icon name="price-tag" class="text-blue-600" size={24} />
             </div>
-            <div class="font-semibold text-white text-sm">Tarifs & Budget</div>
+            <div class="font-semibold text-black text-sm">Tarifs & Budget</div>
           </a>
-          <a href="/blog" class="card hover:scale-[1.02] transition-transform text-center group">
-            <div class="w-12 h-12 bg-indigo-electric-950 border border-indigo-electric-900 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:border-indigo-electric-700 transition-colors">
-              <Icon name="palette" class="text-indigo-electric-400" size={24} />
+          <a href="/blog" class="card-minimal hover:scale-[1.02] transition-transform text-center group">
+            <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-100 transition-colors">
+              <Icon name="palette" class="text-blue-600" size={24} />
             </div>
-            <div class="font-semibold text-white text-sm">Design Web</div>
+            <div class="font-semibold text-black text-sm">Design Web</div>
           </a>
         </div>
       </div>
@@ -190,21 +183,21 @@ const formatDate = (date: Date) => {
   </section>
 
   <!-- CTA -->
-  <section class="py-32">
+  <section class="py-24 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-5xl md:text-6xl font-display font-bold text-white mb-8">
+        <h2 class="text-4xl md:text-5xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
           Prêt à passer à l'action ?
         </h2>
-        <p class="text-xl text-gray-400 mb-12">
+        <p class="text-xl text-gray-text mb-12">
           Ces conseils vous ont convaincu ? Créons ensemble le site web qui fera
           décoller votre commerce à Saint-Étienne.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/devis" class="btn-primary text-lg px-8 py-4">
+          <a href="/devis" class="btn-blue">
             Obtenir un devis gratuit
           </a>
-          <a href="/contact" class="btn-secondary text-lg px-8 py-4">
+          <a href="/contact" class="btn-secondary">
             Discuter de mon projet
           </a>
         </div>
