@@ -4,26 +4,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout>
   <!-- Hero Section -->
-  <section class="relative py-24 md:py-32 bg-white">
+  <section class="relative py-24 md:py-32 bg-white overflow-hidden">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <div class="mb-6">
+      <div class="max-w-5xl mx-auto text-center">
+        <div class="mb-8 animate-fadeIn">
           <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-pale text-sm font-semibold text-gray-700">
             <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
             Studio Digital · Saint-Étienne
           </span>
         </div>
 
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-black mb-6 leading-tight" style="letter-spacing: -0.03em;">
+        <h1 class="text-6xl md:text-8xl lg:text-9xl font-black text-black mb-8 leading-[0.95] animate-fadeIn" style="letter-spacing: -0.04em; animation-delay: 0.1s;">
           Votre site web professionnel à Saint-Étienne,<br/>
           <span class="text-blue-600">sans blabla.</span>
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-text mb-10 max-w-3xl mx-auto leading-relaxed">
+        <p class="text-2xl md:text-3xl text-gray-700 font-medium mb-4 max-w-3xl mx-auto animate-fadeIn" style="animation-delay: 0.2s;">
+          Studio digital spécialisé pour les artisans et commerçants de la Loire.
+        </p>
+
+        <p class="text-lg md:text-xl text-gray-text mb-12 max-w-2xl mx-auto leading-relaxed animate-fadeIn" style="animation-delay: 0.3s;">
           Design premium. Code propre. Résultats mesurables.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fadeIn" style="animation-delay: 0.4s;">
           <a href="/devis" class="btn-primary text-lg">
             Obtenir un devis
           </a>
@@ -32,7 +36,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </a>
         </div>
 
-        <div class="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
+        <div class="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500 animate-fadeIn" style="animation-delay: 0.5s;">
           <div class="flex items-center gap-2">
             <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
@@ -56,6 +60,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
+    }
+  </style>
+
   <!-- Bento Grid - Pourquoi nous choisir -->
   <section class="py-24 section-pale">
     <div class="container mx-auto px-4">
@@ -72,7 +94,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Bento Grid -->
         <div class="grid grid-cols-1 md:grid-cols-6 gap-4 auto-rows-fr">
           <!-- Grande boîte - Délai -->
-          <div class="card-minimal md:col-span-2 md:row-span-2 flex flex-col items-center justify-center text-center p-12">
+          <div class="card-minimal bg-gray-50 md:col-span-2 md:row-span-2 flex flex-col items-center justify-center text-center p-12">
             <div class="text-8xl md:text-9xl font-black text-blue-600 mb-4" style="letter-spacing: -0.05em;">
               48h
             </div>
@@ -81,7 +103,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <!-- Sécurité -->
-          <div class="card-minimal md:col-span-2 flex flex-col items-center justify-center text-center p-8">
+          <div class="card-minimal bg-gray-50 md:col-span-2 flex flex-col items-center justify-center text-center p-8">
             <div class="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
               <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
@@ -92,7 +114,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <!-- Tarifs transparents -->
-          <div class="card-minimal md:col-span-2 p-8">
+          <div class="card-minimal bg-gray-50 md:col-span-2 p-8">
             <h3 class="text-lg font-bold text-black mb-6">Tarifs transparents</h3>
             <ul class="space-y-3">
               <li class="flex items-center justify-between">
@@ -111,7 +133,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <!-- Support -->
-          <div class="card-minimal md:col-span-2 flex items-center gap-6 p-8">
+          <div class="card-minimal bg-gray-50 md:col-span-2 flex items-center gap-6 p-8">
             <div class="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
               <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
@@ -130,7 +152,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <!-- Performances -->
-          <div class="card-minimal md:col-span-2 flex items-center gap-6 p-8">
+          <div class="card-minimal bg-gray-50 md:col-span-2 flex items-center gap-6 p-8">
             <div class="w-14 h-14 rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0">
               <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -396,10 +418,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </div>
             </div>
             <div class="bg-white border-2 border-gray-200 border-t-0 rounded-b-lg overflow-hidden aspect-[4/3] flex items-center justify-center">
-              <div class="w-full h-full bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center">
-                <svg class="w-20 h-20 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                </svg>
+              <div class="w-full h-full bg-gray-200 flex items-center justify-center p-6">
+                <p class="text-gray-500 text-sm text-center">Aperçu en cours de chargement...</p>
               </div>
             </div>
 
@@ -428,10 +448,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </div>
             </div>
             <div class="bg-white border-2 border-gray-200 border-t-0 rounded-b-lg overflow-hidden aspect-[4/3] flex items-center justify-center">
-              <div class="w-full h-full bg-gradient-to-br from-slate-50 to-gray-50 flex items-center justify-center">
-                <svg class="w-20 h-20 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                </svg>
+              <div class="w-full h-full bg-gray-200 flex items-center justify-center p-6">
+                <p class="text-gray-500 text-sm text-center">Aperçu en cours de chargement...</p>
               </div>
             </div>
 
@@ -460,10 +478,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               </div>
             </div>
             <div class="bg-white border-2 border-gray-200 border-t-0 rounded-b-lg overflow-hidden aspect-[4/3] flex items-center justify-center">
-              <div class="w-full h-full bg-gradient-to-br from-pink-50 to-rose-50 flex items-center justify-center">
-                <svg class="w-20 h-20 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+              <div class="w-full h-full bg-gray-200 flex items-center justify-center p-6">
+                <p class="text-gray-500 text-sm text-center">Aperçu en cours de chargement...</p>
               </div>
             </div>
 
@@ -584,4 +600,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
   </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-gray-pale border-t border-gray-100">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-gray-500">
+          © 2025 Loire Digital. Tous droits réservés.
+        </p>
+        <div class="flex items-center gap-6">
+          <a href="/mentions-legales" class="text-sm text-gray-500 hover:text-black transition-colors">
+            Mentions Légales
+          </a>
+          <span class="text-gray-300">-</span>
+          <a href="/cgv" class="text-sm text-gray-500 hover:text-black transition-colors">
+            CGV
+          </a>
+          <span class="text-gray-300">-</span>
+          <a href="/confidentialite" class="text-sm text-gray-500 hover:text-black transition-colors">
+            Confidentialité
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </BaseLayout>
