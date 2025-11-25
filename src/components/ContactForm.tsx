@@ -187,7 +187,7 @@ export default function ContactForm() {
           )}
         </button>
 
-        <p className="text-xs text-gray-500 text-center">* Champs obligatoires</p>
+        <p className="text-xs text-gray-600 text-center">* Champs obligatoires</p>
       </form>
 
       {/* Success Message */}

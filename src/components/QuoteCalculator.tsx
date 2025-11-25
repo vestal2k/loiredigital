@@ -375,7 +375,7 @@ const QuoteCalculator = () => {
                 )}
               </div>
               <span
-                className={`text-xs text-center hidden md:block ${stepNumber === step ? 'text-blue-600 font-semibold' : 'text-gray-500'}`}
+                className={`text-xs text-center hidden md:block ${stepNumber === step ? 'text-blue-600 font-semibold' : 'text-gray-600'}`}
               >
                 {stepTitles[stepNumber - 1]}
               </span>
@@ -496,7 +496,7 @@ const QuoteCalculator = () => {
               }}
             />
 
-            <div className="flex justify-between text-xs text-gray-500 mt-2">
+            <div className="flex justify-between text-xs text-gray-600 mt-2">
               <span>1 page</span>
               <span>20 pages</span>
             </div>
@@ -698,7 +698,7 @@ const QuoteCalculator = () => {
             <h3 className="text-xl font-display font-bold text-black mb-4">Récapitulatif</h3>
 
             {!options.packId ? (
-              <p className="text-gray-500 text-sm italic">Sélectionnez un pack pour commencer</p>
+              <p className="text-gray-600 text-sm italic">Sélectionnez un pack pour commencer</p>
             ) : (
               <div className="space-y-4">
                 {/* Pack */}
@@ -708,7 +708,7 @@ const QuoteCalculator = () => {
                       <span className="text-sm font-semibold text-gray-700">Pack {currentPack.name}</span>
                       <span className="text-sm font-bold text-blue-600">{currentPack.basePrice}€</span>
                     </div>
-                    <p className="text-xs text-gray-500">{currentPack.pagesIncluded} pages incluses</p>
+                    <p className="text-xs text-gray-600">{currentPack.pagesIncluded} pages incluses</p>
                   </div>
                 )}
 
@@ -723,7 +723,7 @@ const QuoteCalculator = () => {
                         {(options.pages - currentPack.pagesIncluded) * PRICE_PER_EXTRA_PAGE}€
                       </span>
                     </div>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-gray-600">
                       {options.pages - currentPack.pagesIncluded} × {PRICE_PER_EXTRA_PAGE}€
                     </p>
                   </div>

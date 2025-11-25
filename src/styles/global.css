@@ -28,9 +28,17 @@ body {
   @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-black rounded-lg hover:bg-gray-900 transition-all duration-200;
 }
 
+.btn-primary:focus-visible {
+  @apply outline-none ring-2 ring-black ring-offset-2;
+}
+
 /* Bouton outline */
 .btn-secondary {
   @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-black bg-white rounded-lg border-2 border-gray-200 hover:border-black transition-all duration-200;
+}
+
+.btn-secondary:focus-visible {
+  @apply outline-none ring-2 ring-gray-400 ring-offset-2;
 }
 
 /* Bouton bleu roi */
@@ -41,6 +49,10 @@ body {
 
 .btn-blue:hover {
   background-color: #1d4ed8;
+}
+
+.btn-blue:focus-visible {
+  @apply outline-none ring-2 ring-blue-600 ring-offset-2;
 }
 
 /* Navigation link */
@@ -70,6 +82,12 @@ body {
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+}
+
+/* Global focus styles for accessibility */
+button:focus-visible,
+a:focus-visible {
+  @apply outline-none ring-2 ring-blue-600 ring-offset-2 rounded;
 }
 
 /* Ensure content is clean */
