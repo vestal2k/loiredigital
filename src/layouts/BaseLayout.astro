@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import { inject } from '@vercel/analytics'
 
 interface Props {
   title?: string
@@ -12,6 +13,9 @@ const {
   description = 'Création de sites web professionnels pour les commerces locaux de Saint-Étienne et sa région. Design moderne, SEO optimisé et prix transparents.',
   ogImage = '/og-image.jpg',
 } = Astro.props
+
+// Inject Vercel Analytics
+inject()
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const currentYear = new Date().getFullYear()
