@@ -1,23 +1,27 @@
 import { useState } from 'react'
 import jsPDF from 'jspdf'
+import {
+  PRICING_PACKS,
+  PRICING_OPTIONS,
+  PRICE_PER_EXTRA_PAGE,
+  MAINTENANCE_PLANS,
+  calculateQuoteTotal,
+  type PricingPack,
+} from '../config/pricing'
 
 interface QuoteOptions {
-  projectType: string
+  packId: string
   pages: number
-  features: string[]
-  design: string
-  seo: boolean
+  optionIds: string[]
   maintenance: string
 }
 
 const QuoteCalculator = () => {
   const [step, setStep] = useState(1)
   const [options, setOptions] = useState<QuoteOptions>({
-    projectType: '',
-    pages: 1,
-    features: [],
-    design: 'template',
-    seo: false,
+    packId: '',
+    pages: 3,
+    optionIds: [],
     maintenance: 'none',
   })
 
@@ -25,68 +29,33 @@ const QuoteCalculator = () => {
 
   // Pricing logic
   const calculatePrice = () => {
-    let basePrice = 0
+    const pack = PRICING_PACKS.find((p) => p.id === options.packId)
+    if (!pack) return 0
 
-    // Base price by project type
-    switch (options.projectType) {
-      case 'vitrine':
-        basePrice = 800
-        break
-      case 'ecommerce':
-        basePrice = 2500
-        break
-      case 'custom':
-        basePrice = 1500
-        break
-      default:
-        basePrice = 800
-    }
+    let total = pack.basePrice
 
-    // Price per page (beyond first 3)
-    if (options.pages > 3) {
-      basePrice += (options.pages - 3) * 150
-    }
+    // Calculate extra pages beyond what's included in the pack
+    const extraPages = Math.max(0, options.pages - pack.pagesIncluded)
+    total += extraPages * PRICE_PER_EXTRA_PAGE
 
-    // Features
-    const featurePrices: Record<string, number> = {
-      contact: 0, // included
-      booking: 300,
-      blog: 200,
-      gallery: 150,
-      maps: 0, // included
-      multilang: 400,
-    }
-
-    options.features.forEach((feature) => {
-      basePrice += featurePrices[feature] || 0
+    // Add selected options
+    options.optionIds.forEach((optionId) => {
+      const option = PRICING_OPTIONS.find((o) => o.id === optionId)
+      if (option) {
+        total += option.price
+      }
     })
 
-    // Design
-    if (options.design === 'custom') {
-      basePrice += 500
-    }
-
-    // SEO
-    if (options.seo) {
-      basePrice += 300
-    }
-
-    return basePrice
+    return total
   }
 
   const getMaintenancePrice = () => {
-    switch (options.maintenance) {
-      case 'essential':
-        return 29
-      case 'premium':
-        return 99
-      default:
-        return 0
-    }
+    const plan = MAINTENANCE_PLANS.find((p) => p.id === options.maintenance)
+    return plan ? plan.pricePerMonth : 0
   }
 
   const handleNext = () => {
-    if (step < 5) {
+    if (step < 4) {
       setStep(step + 1)
     } else {
       setShowResult(true)
@@ -99,16 +68,16 @@ const QuoteCalculator = () => {
     }
   }
 
-  const toggleFeature = (feature: string) => {
-    if (options.features.includes(feature)) {
+  const toggleOption = (optionId: string) => {
+    if (options.optionIds.includes(optionId)) {
       setOptions({
         ...options,
-        features: options.features.filter((f) => f !== feature),
+        optionIds: options.optionIds.filter((id) => id !== optionId),
       })
     } else {
       setOptions({
         ...options,
-        features: [...options.features, feature],
+        optionIds: [...options.optionIds, optionId],
       })
     }
   }
@@ -117,11 +86,9 @@ const QuoteCalculator = () => {
     setStep(1)
     setShowResult(false)
     setOptions({
-      projectType: '',
-      pages: 1,
-      features: [],
-      design: 'template',
-      seo: false,
+      packId: '',
+      pages: 3,
+      optionIds: [],
       maintenance: 'none',
     })
   }
@@ -130,6 +97,8 @@ const QuoteCalculator = () => {
     const doc = new jsPDF()
     const totalPrice = calculatePrice()
     const maintenancePrice = getMaintenancePrice()
+    const pack = PRICING_PACKS.find((p) => p.id === options.packId)
+    const maintenancePlan = MAINTENANCE_PLANS.find((p) => p.id === options.maintenance)
 
     // Header
     doc.setFontSize(24)
@@ -160,12 +129,7 @@ const QuoteCalculator = () => {
       doc.text(`+ ${maintenancePrice} €/mois`, 105, 85, { align: 'center' })
       doc.setFontSize(10)
       doc.setTextColor(100, 100, 100)
-      doc.text(
-        `Maintenance ${options.maintenance === 'essential' ? 'Essentielle' : 'Premium'}`,
-        105,
-        92,
-        { align: 'center' }
-      )
+      doc.text(`Maintenance ${maintenancePlan?.name || ''}`, 105, 92, { align: 'center' })
     }
 
     // Project details
@@ -177,29 +141,20 @@ const QuoteCalculator = () => {
     doc.setFontSize(11)
     doc.setTextColor(60, 60, 60)
 
-    const projectTypeLabel =
-      options.projectType === 'vitrine'
-        ? 'Site vitrine'
-        : options.projectType === 'ecommerce'
-          ? 'Site e-commerce'
-          : 'Site sur-mesure'
-    doc.text(`• Type : ${projectTypeLabel}`, 25, yPos)
-    yPos += 8
+    if (pack) {
+      doc.text(`• Pack : ${pack.name}`, 25, yPos)
+      yPos += 8
+    }
 
     doc.text(`• Nombre de pages : ${options.pages}`, 25, yPos)
     yPos += 8
 
-    const designLabel = options.design === 'custom' ? 'Sur-mesure' : "À partir d'un template"
-    doc.text(`• Design : ${designLabel}`, 25, yPos)
-    yPos += 8
-
-    if (options.features.length > 0) {
-      doc.text(`• Fonctionnalités : ${options.features.join(', ')}`, 25, yPos)
-      yPos += 8
-    }
-
-    if (options.seo) {
-      doc.text('• Pack SEO local inclus', 25, yPos)
+    if (options.optionIds.length > 0) {
+      const selectedOptions = options.optionIds
+        .map((id) => PRICING_OPTIONS.find((o) => o.id === id)?.name)
+        .filter(Boolean)
+        .join(', ')
+      doc.text(`• Options : ${selectedOptions}`, 25, yPos)
       yPos += 8
     }
 
@@ -229,6 +184,8 @@ const QuoteCalculator = () => {
   if (showResult) {
     const totalPrice = calculatePrice()
     const maintenancePrice = getMaintenancePrice()
+    const pack = PRICING_PACKS.find((p) => p.id === options.packId)
+    const maintenancePlan = MAINTENANCE_PLANS.find((p) => p.id === options.maintenance)
 
     return (
       <div className="bg-white border border-gray-200 rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
@@ -265,9 +222,7 @@ const QuoteCalculator = () => {
               <div className="text-3xl font-display font-bold text-blue-600 mb-2">
                 + {maintenancePrice} €/mois
               </div>
-              <p className="text-gray-600">
-                Maintenance {options.maintenance === 'essential' ? 'Essentielle' : 'Premium'}
-              </p>
+              <p className="text-gray-600">Maintenance {maintenancePlan?.name || ''}</p>
             </div>
           )}
         </div>
@@ -277,27 +232,24 @@ const QuoteCalculator = () => {
             Récapitulatif de votre projet :
           </h3>
           <ul className="space-y-2 text-gray-700">
-            <li className="flex items-center">
-              <svg
-                className="w-5 h-5 text-blue-600 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              Type :{' '}
-              {options.projectType === 'vitrine'
-                ? 'Site vitrine'
-                : options.projectType === 'ecommerce'
-                  ? 'Site e-commerce'
-                  : 'Site sur-mesure'}
-            </li>
+            {pack && (
+              <li className="flex items-center">
+                <svg
+                  className="w-5 h-5 text-blue-600 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                Pack : {pack.name}
+              </li>
+            )}
             <li className="flex items-center">
               <svg
                 className="w-5 h-5 text-blue-600 mr-2"
@@ -314,23 +266,7 @@ const QuoteCalculator = () => {
               </svg>
               Nombre de pages : {options.pages}
             </li>
-            <li className="flex items-center">
-              <svg
-                className="w-5 h-5 text-blue-600 mr-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
-              Design : {options.design === 'custom' ? 'Sur-mesure' : "À partir d'un template"}
-            </li>
-            {options.features.length > 0 && (
+            {options.optionIds.length > 0 && (
               <li className="flex items-start">
                 <svg
                   className="w-5 h-5 text-blue-600 mr-2 mt-0.5"
@@ -345,25 +281,13 @@ const QuoteCalculator = () => {
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <div>Fonctionnalités : {options.features.join(', ')}</div>
-              </li>
-            )}
-            {options.seo && (
-              <li className="flex items-center">
-                <svg
-                  className="w-5 h-5 text-blue-600 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                Pack SEO local inclus
+                <div>
+                  Options :{' '}
+                  {options.optionIds
+                    .map((id) => PRICING_OPTIONS.find((o) => o.id === id)?.name)
+                    .filter(Boolean)
+                    .join(', ')}
+                </div>
               </li>
             )}
           </ul>
@@ -410,20 +334,23 @@ const QuoteCalculator = () => {
     )
   }
 
-  const stepTitles = [
-    'Type de projet',
-    'Nombre de pages',
-    'Fonctionnalités',
-    'Design & SEO',
-    'Maintenance',
-  ]
+  const stepTitles = ['Pack', 'Nombre de pages', 'Options', 'Maintenance']
+
+  // Get current selections for summary
+  const currentPack = PRICING_PACKS.find((p) => p.id === options.packId)
+  const currentPrice = calculatePrice()
+  const currentMaintenance = getMaintenancePrice()
 
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
+    <div className="max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Main Calculator */}
+        <div className="lg:col-span-2">
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-xl p-8">
       {/* Progress Steps */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-6">
-          {[1, 2, 3, 4, 5].map((stepNumber) => (
+          {[1, 2, 3, 4].map((stepNumber) => (
             <div key={stepNumber} className="flex flex-col items-center flex-1">
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm mb-2 transition-all ${
@@ -452,177 +379,88 @@ const QuoteCalculator = () => {
               >
                 {stepTitles[stepNumber - 1]}
               </span>
-              {stepNumber < 5 && (
+              {stepNumber < 4 && (
                 <div
                   className={`hidden md:block absolute h-0.5 w-full translate-x-1/2 top-5 ${stepNumber < step ? 'bg-blue-600' : 'bg-gray-200'}`}
-                  style={{ left: `${(stepNumber - 1) * 20}%`, width: '20%' }}
+                  style={{ left: `${(stepNumber - 1) * 25}%`, width: '25%' }}
                 />
               )}
             </div>
           ))}
         </div>
         <div className="flex items-center justify-between mb-2 md:hidden">
-          <span className="text-sm font-semibold text-gray-600">Étape {step} sur 5</span>
+          <span className="text-sm font-semibold text-gray-600">Étape {step} sur 4</span>
           <span className="text-sm font-semibold text-blue-600">{stepTitles[step - 1]}</span>
         </div>
       </div>
 
-      {/* Step 1: Project Type */}
+      {/* Step 1: Pack Selection */}
       {step === 1 && (
         <div>
-          <h2 className="text-3xl font-display font-bold text-black mb-2">Type de projet</h2>
-          <p className="text-gray-600 mb-6">Quel type de site souhaitez-vous créer ?</p>
-          <p className="text-sm text-gray-500 mb-6 italic">
-            Vous ne savez pas ? Choisissez "Site vitrine", on ajustera ensuite.
-          </p>
+          <h2 className="text-3xl font-display font-bold text-black mb-2">Choisissez votre pack</h2>
+          <p className="text-gray-600 mb-6">Sélectionnez le pack qui correspond le mieux à vos besoins</p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <button
-              onClick={() => setOptions({ ...options, projectType: 'vitrine' })}
-              className={`p-6 rounded-xl border-2 transition-all text-left relative ${
-                options.projectType === 'vitrine'
-                  ? 'border-blue-600 bg-blue-50 shadow-md'
-                  : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
-              }`}
-            >
-              {options.projectType === 'vitrine' && (
-                <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-4 h-4 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={3}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
+            {PRICING_PACKS.map((pack) => (
+              <button
+                key={pack.id}
+                onClick={() =>
+                  setOptions({ ...options, packId: pack.id, pages: pack.pagesIncluded })
+                }
+                className={`p-6 rounded-xl border-2 transition-all text-left relative ${
+                  options.packId === pack.id
+                    ? 'border-blue-600 bg-blue-50 shadow-md'
+                    : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                } ${pack.popular ? 'ring-2 ring-blue-200' : ''}`}
+              >
+                {pack.popular && (
+                  <div className="absolute -top-3 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                    Populaire
+                  </div>
+                )}
+                {options.packId === pack.id && (
+                  <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                )}
+                <h3 className="font-display font-bold text-2xl text-black mb-2">{pack.name}</h3>
+                <div className="text-3xl font-display font-bold text-blue-600 mb-4">
+                  {pack.basePrice}€
                 </div>
-              )}
-              <div className="w-12 h-12 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center mb-3">
-                <svg
-                  className="w-6 h-6 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-display font-bold text-lg text-black mb-2">Site Vitrine</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Présenter votre activité, vos services et être trouvé en ligne
-              </p>
-              <div className="text-xs text-blue-600 font-semibold">À partir de 800€</div>
-            </button>
-
-            <button
-              onClick={() => setOptions({ ...options, projectType: 'ecommerce' })}
-              className={`p-6 rounded-xl border-2 transition-all text-left relative ${
-                options.projectType === 'ecommerce'
-                  ? 'border-blue-600 bg-blue-50 shadow-md'
-                  : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
-              }`}
-            >
-              {options.projectType === 'ecommerce' && (
-                <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-4 h-4 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={3}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
-              )}
-              <div className="w-12 h-12 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center mb-3">
-                <svg
-                  className="w-6 h-6 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-display font-bold text-lg text-black mb-2">E-commerce</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Vendre vos produits en ligne avec panier et paiement sécurisé
-              </p>
-              <div className="text-xs text-blue-600 font-semibold">À partir de 2500€</div>
-            </button>
-
-            <button
-              onClick={() => setOptions({ ...options, projectType: 'custom' })}
-              className={`p-6 rounded-xl border-2 transition-all text-left relative ${
-                options.projectType === 'custom'
-                  ? 'border-blue-600 bg-blue-50 shadow-md'
-                  : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
-              }`}
-            >
-              {options.projectType === 'custom' && (
-                <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-4 h-4 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={3}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
-              )}
-              <div className="w-12 h-12 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center mb-3">
-                <svg
-                  className="w-6 h-6 text-blue-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-display font-bold text-lg text-black mb-2">Sur-mesure</h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Site avec fonctionnalités spécifiques adaptées à vos besoins
-              </p>
-              <div className="text-xs text-blue-600 font-semibold">À partir de 1500€</div>
-            </button>
+                <ul className="space-y-2 mb-4">
+                  {pack.features.map((feature, index) => (
+                    <li key={index} className="text-sm text-gray-700 flex items-start">
+                      <svg
+                        className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </button>
+            ))}
           </div>
         </div>
       )}
@@ -644,9 +482,14 @@ const QuoteCalculator = () => {
             <input
               type="range"
               min="1"
-              max="15"
+              max="20"
               value={options.pages}
-              onChange={(e) => setOptions({ ...options, pages: parseInt(e.target.value) })}
+              onChange={(e) => {
+                const value = parseInt(e.target.value)
+                if (value >= 1 && value <= 20) {
+                  setOptions({ ...options, pages: value })
+                }
+              }}
               className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               style={{
                 accentColor: '#2563eb',
@@ -655,10 +498,33 @@ const QuoteCalculator = () => {
 
             <div className="flex justify-between text-xs text-gray-500 mt-2">
               <span>1 page</span>
-              <span>15 pages</span>
+              <span>20 pages</span>
             </div>
 
-            <div className="mt-6 bg-blue-50 border border-blue-100 rounded-lg p-4">
+            {PRICING_PACKS.find((p) => p.id === options.packId) && (
+              <div className="mt-6 bg-blue-50 border border-blue-100 rounded-lg p-4">
+                <p className="text-sm text-gray-700">
+                  <strong className="text-black">Votre pack inclut :</strong>{' '}
+                  {PRICING_PACKS.find((p) => p.id === options.packId)?.pagesIncluded} pages
+                  {options.pages >
+                    (PRICING_PACKS.find((p) => p.id === options.packId)?.pagesIncluded || 0) && (
+                    <>
+                      <br />
+                      <strong className="text-blue-600">Pages supplémentaires :</strong>{' '}
+                      {options.pages -
+                        (PRICING_PACKS.find((p) => p.id === options.packId)?.pagesIncluded || 0)}{' '}
+                      × {PRICE_PER_EXTRA_PAGE}€ ={' '}
+                      {(options.pages -
+                        (PRICING_PACKS.find((p) => p.id === options.packId)?.pagesIncluded || 0)) *
+                        PRICE_PER_EXTRA_PAGE}
+                      €
+                    </>
+                  )}
+                </p>
+              </div>
+            )}
+
+            <div className="mt-4 bg-gray-50 border border-gray-200 rounded-lg p-4">
               <p className="text-sm text-gray-700">
                 <strong className="text-black">Exemples :</strong> Accueil, Services, À propos,
                 Portfolio, Contact, Blog, etc.
@@ -668,127 +534,24 @@ const QuoteCalculator = () => {
         </div>
       )}
 
-      {/* Step 3: Features */}
+      {/* Step 3: Options */}
       {step === 3 && (
         <div>
-          <h2 className="text-3xl font-display font-bold text-black mb-2">Fonctionnalités</h2>
-          <p className="text-gray-600 mb-6">Quelles fonctionnalités souhaitez-vous ? (optionnel)</p>
+          <h2 className="text-3xl font-display font-bold text-black mb-2">Options supplémentaires</h2>
+          <p className="text-gray-600 mb-6">Ajoutez des fonctionnalités à votre site (optionnel)</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              {
-                key: 'contact',
-                title: 'Formulaire de contact',
-                desc: 'Permettez aux visiteurs de vous contacter',
-                price: 'Inclus',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                ),
-              },
-              {
-                key: 'booking',
-                title: 'Système de réservation',
-                desc: 'Prise de RDV en ligne',
-                price: '+300€',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                ),
-              },
-              {
-                key: 'blog',
-                title: 'Blog / Actualités',
-                desc: 'Partagez du contenu régulièrement',
-                price: '+200€',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                    />
-                  </svg>
-                ),
-              },
-              {
-                key: 'gallery',
-                title: 'Galerie photos',
-                desc: 'Présentez vos réalisations',
-                price: '+150€',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                ),
-              },
-              {
-                key: 'maps',
-                title: 'Google Maps',
-                desc: 'Carte interactive avec votre adresse',
-                price: 'Inclus',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                ),
-              },
-              {
-                key: 'multilang',
-                title: 'Multilingue',
-                desc: 'Site en plusieurs langues',
-                price: '+400€',
-                icon: (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-                    />
-                  </svg>
-                ),
-              },
-            ].map((feature) => (
+            {PRICING_OPTIONS.map((option) => (
               <button
-                key={feature.key}
-                onClick={() => toggleFeature(feature.key)}
+                key={option.id}
+                onClick={() => toggleOption(option.id)}
                 className={`p-4 rounded-xl border-2 transition-all text-left relative ${
-                  options.features.includes(feature.key)
+                  options.optionIds.includes(option.id)
                     ? 'border-blue-600 bg-blue-50 shadow-md'
                     : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
                 }`}
               >
-                {options.features.includes(feature.key) && (
+                {options.optionIds.includes(option.id) && (
                   <div className="absolute top-3 right-3 w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center">
                     <svg
                       className="w-3 h-3 text-white"
@@ -806,18 +569,11 @@ const QuoteCalculator = () => {
                   </div>
                 )}
                 <div className="flex items-start justify-between">
-                  <div>
-                    <div className="w-10 h-10 bg-blue-50 border border-blue-100 rounded-lg flex items-center justify-center mb-2 text-blue-600">
-                      {feature.icon}
-                    </div>
-                    <h3 className="font-display font-bold text-black mb-1">{feature.title}</h3>
-                    <p className="text-sm text-gray-600">{feature.desc}</p>
+                  <div className="flex-1">
+                    <h3 className="font-display font-bold text-black mb-1">{option.name}</h3>
+                    <p className="text-sm text-gray-600">{option.description}</p>
                   </div>
-                  <span
-                    className={`font-semibold text-sm ml-2 ${feature.price === 'Inclus' ? 'text-green-600' : 'text-blue-600'}`}
-                  >
-                    {feature.price}
-                  </span>
+                  <span className="font-semibold text-blue-600 ml-2">+{option.price}€</span>
                 </div>
               </button>
             ))}
@@ -825,189 +581,8 @@ const QuoteCalculator = () => {
         </div>
       )}
 
-      {/* Step 4: Design & SEO */}
+      {/* Step 4: Maintenance */}
       {step === 4 && (
-        <div>
-          <h2 className="text-3xl font-display font-bold text-black mb-2">
-            Design et référencement
-          </h2>
-          <p className="text-gray-600 mb-6">Personnalisez votre projet</p>
-
-          <div className="space-y-6">
-            <div>
-              <h3 className="font-display font-semibold text-lg text-black mb-4">Type de design</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <button
-                  onClick={() => setOptions({ ...options, design: 'template' })}
-                  className={`p-6 rounded-xl border-2 transition-all text-left relative ${
-                    options.design === 'template'
-                      ? 'border-blue-600 bg-blue-50 shadow-md'
-                      : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
-                  }`}
-                >
-                  {options.design === 'template' && (
-                    <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={3}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </div>
-                  )}
-                  <div className="w-12 h-12 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center mb-3">
-                    <svg
-                      className="w-6 h-6 text-blue-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-black mb-2">
-                    À partir d'un template
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    Design professionnel personnalisable selon votre image
-                  </p>
-                  <div className="mt-3 text-xs text-green-600 font-semibold">
-                    Inclus dans le prix de base
-                  </div>
-                </button>
-
-                <button
-                  onClick={() => setOptions({ ...options, design: 'custom' })}
-                  className={`p-6 rounded-xl border-2 transition-all text-left relative ${
-                    options.design === 'custom'
-                      ? 'border-blue-600 bg-blue-50 shadow-md'
-                      : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
-                  }`}
-                >
-                  {options.design === 'custom' && (
-                    <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={3}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </div>
-                  )}
-                  <div className="w-12 h-12 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center mb-3">
-                    <svg
-                      className="w-6 h-6 text-blue-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
-                      />
-                    </svg>
-                  </div>
-                  <h3 className="font-display font-bold text-lg text-black mb-2">
-                    Design sur-mesure
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    Design 100% unique créé spécifiquement pour vous
-                  </p>
-                  <div className="mt-3 text-xs text-blue-600 font-semibold">+500€</div>
-                </button>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-display font-semibold text-lg text-black mb-4">
-                Référencement SEO
-              </h3>
-              <button
-                onClick={() => setOptions({ ...options, seo: !options.seo })}
-                className={`w-full p-6 rounded-xl border-2 transition-all text-left relative ${
-                  options.seo
-                    ? 'border-blue-600 bg-blue-50 shadow-md'
-                    : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
-                }`}
-              >
-                {options.seo && (
-                  <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                    <svg
-                      className="w-4 h-4 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={3}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                  </div>
-                )}
-                <div className="flex items-start justify-between">
-                  <div>
-                    <div className="w-12 h-12 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-center mb-3">
-                      <svg
-                        className="w-6 h-6 text-blue-600"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                        />
-                      </svg>
-                    </div>
-                    <h3 className="font-display font-bold text-lg text-black mb-2">
-                      Pack SEO Local
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-2">
-                      Optimisation complète pour être trouvé sur Google à Saint-Étienne
-                    </p>
-                    <ul className="text-sm text-gray-600 space-y-1">
-                      <li>✓ Optimisation Google My Business</li>
-                      <li>✓ Recherche de mots-clés locaux</li>
-                      <li>✓ Optimisation technique complète</li>
-                      <li>✓ Soumission aux annuaires locaux</li>
-                    </ul>
-                  </div>
-                  <span className="text-blue-600 font-semibold ml-4">+300€</span>
-                </div>
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Step 5: Maintenance */}
-      {step === 5 && (
         <div>
           <h2 className="text-3xl font-display font-bold text-black mb-2">Maintenance</h2>
           <p className="text-gray-600 mb-6">Souhaitez-vous un forfait de maintenance ?</p>
@@ -1043,79 +618,51 @@ const QuoteCalculator = () => {
               <div className="text-2xl font-display font-bold text-gray-700">0€/mois</div>
             </button>
 
-            <button
-              onClick={() => setOptions({ ...options, maintenance: 'essential' })}
-              className={`p-6 rounded-xl border-2 transition-all text-left relative ${
-                options.maintenance === 'essential'
-                  ? 'border-blue-600 bg-blue-50 shadow-md'
-                  : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
-              }`}
-            >
-              {options.maintenance === 'essential' && (
-                <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-4 h-4 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={3}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
+            {MAINTENANCE_PLANS.map((plan) => (
+              <button
+                key={plan.id}
+                onClick={() => setOptions({ ...options, maintenance: plan.id })}
+                className={`p-6 rounded-xl border-2 transition-all text-left relative ${
+                  options.maintenance === plan.id
+                    ? 'border-blue-600 bg-blue-50 shadow-md'
+                    : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                }`}
+              >
+                {options.maintenance === plan.id && (
+                  <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                    <svg
+                      className="w-4 h-4 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={3}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                )}
+                {plan.id === 'premium' && (
+                  <div className="absolute -top-3 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                    Populaire
+                  </div>
+                )}
+                <h3 className="font-display font-bold text-lg text-black mb-2 capitalize">
+                  {plan.name}
+                </h3>
+                <ul className="text-sm text-gray-600 space-y-1 mb-3">
+                  {plan.features.map((feature, index) => (
+                    <li key={index}>✓ {feature}</li>
+                  ))}
+                </ul>
+                <div className="text-2xl font-display font-bold text-blue-600">
+                  {plan.pricePerMonth}€/mois
                 </div>
-              )}
-              <h3 className="font-display font-bold text-lg text-black mb-2">Essentiel</h3>
-              <ul className="text-sm text-gray-600 space-y-1 mb-3">
-                <li>✓ Mises à jour de sécurité</li>
-                <li>✓ Sauvegardes hebdomadaires</li>
-                <li>✓ Support par email</li>
-                <li>✓ Monitoring 24/7</li>
-              </ul>
-              <div className="text-2xl font-display font-bold text-blue-600">29€/mois</div>
-            </button>
-
-            <button
-              onClick={() => setOptions({ ...options, maintenance: 'premium' })}
-              className={`p-6 rounded-xl border-2 transition-all text-left relative ${
-                options.maintenance === 'premium'
-                  ? 'border-blue-600 bg-blue-50 shadow-md'
-                  : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
-              }`}
-            >
-              {options.maintenance === 'premium' && (
-                <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-4 h-4 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={3}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
-              )}
-              <div className="absolute -top-3 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                Populaire
-              </div>
-              <h3 className="font-display font-bold text-lg text-black mb-2">Premium</h3>
-              <ul className="text-sm text-gray-600 space-y-1 mb-3">
-                <li>✓ Tout Essentiel +</li>
-                <li>✓ Modifications (2h/mois)</li>
-                <li>✓ Support prioritaire</li>
-                <li>✓ Optimisations SEO</li>
-                <li>✓ Rapport analytics</li>
-              </ul>
-              <div className="text-2xl font-display font-bold text-blue-600">99€/mois</div>
-            </button>
+              </button>
+            ))}
           </div>
         </div>
       )}
@@ -1132,15 +679,102 @@ const QuoteCalculator = () => {
         )}
         <button
           onClick={handleNext}
-          disabled={step === 1 && !options.projectType}
+          disabled={step === 1 && !options.packId}
           className={`flex-1 px-6 py-3 rounded-lg font-semibold transition-all ${
-            step === 1 && !options.projectType
+            step === 1 && !options.packId
               ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
               : 'bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg'
           }`}
         >
-          {step === 5 ? 'Voir le devis 📊' : 'Suivant →'}
+          {step === 4 ? 'Voir le devis 📊' : 'Suivant →'}
         </button>
+      </div>
+          </div>
+        </div>
+
+        {/* Summary Sidebar */}
+        <div className="lg:col-span-1">
+          <div className="bg-white border border-gray-200 rounded-2xl shadow-xl p-6 sticky top-4">
+            <h3 className="text-xl font-display font-bold text-black mb-4">Récapitulatif</h3>
+
+            {!options.packId ? (
+              <p className="text-gray-500 text-sm italic">Sélectionnez un pack pour commencer</p>
+            ) : (
+              <div className="space-y-4">
+                {/* Pack */}
+                {currentPack && (
+                  <div className="pb-4 border-b border-gray-200">
+                    <div className="flex justify-between items-start mb-1">
+                      <span className="text-sm font-semibold text-gray-700">Pack {currentPack.name}</span>
+                      <span className="text-sm font-bold text-blue-600">{currentPack.basePrice}€</span>
+                    </div>
+                    <p className="text-xs text-gray-500">{currentPack.pagesIncluded} pages incluses</p>
+                  </div>
+                )}
+
+                {/* Pages */}
+                {currentPack && options.pages > currentPack.pagesIncluded && (
+                  <div className="pb-4 border-b border-gray-200">
+                    <div className="flex justify-between items-start mb-1">
+                      <span className="text-sm text-gray-700">
+                        Pages supplémentaires ({options.pages - currentPack.pagesIncluded})
+                      </span>
+                      <span className="text-sm text-gray-700">
+                        {(options.pages - currentPack.pagesIncluded) * PRICE_PER_EXTRA_PAGE}€
+                      </span>
+                    </div>
+                    <p className="text-xs text-gray-500">
+                      {options.pages - currentPack.pagesIncluded} × {PRICE_PER_EXTRA_PAGE}€
+                    </p>
+                  </div>
+                )}
+
+                {/* Options */}
+                {options.optionIds.length > 0 && (
+                  <div className="pb-4 border-b border-gray-200">
+                    <span className="text-sm font-semibold text-gray-700 block mb-2">Options</span>
+                    {options.optionIds.map((optionId) => {
+                      const option = PRICING_OPTIONS.find((o) => o.id === optionId)
+                      return (
+                        option && (
+                          <div key={optionId} className="flex justify-between items-center mb-1">
+                            <span className="text-xs text-gray-600">{option.name}</span>
+                            <span className="text-xs text-gray-700">+{option.price}€</span>
+                          </div>
+                        )
+                      )
+                    })}
+                  </div>
+                )}
+
+                {/* Maintenance */}
+                {currentMaintenance > 0 && (
+                  <div className="pb-4 border-b border-gray-200">
+                    <div className="flex justify-between items-start">
+                      <span className="text-sm text-gray-700">Maintenance</span>
+                      <span className="text-sm text-gray-700">{currentMaintenance}€/mois</span>
+                    </div>
+                  </div>
+                )}
+
+                {/* Total */}
+                <div className="pt-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-lg font-display font-bold text-black">Total</span>
+                    <span className="text-2xl font-display font-bold text-blue-600">
+                      {currentPrice.toLocaleString('fr-FR')}€
+                    </span>
+                  </div>
+                  {currentMaintenance > 0 && (
+                    <p className="text-xs text-gray-500 mt-1 text-right">
+                      + {currentMaintenance}€/mois
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )
