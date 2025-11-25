@@ -1017,17 +1017,23 @@ import BaseLayout from '../layouts/BaseLayout.astro'
           </h2>
         </div>
 
-        <div class="space-y-4">
-          <details class="card-minimal group cursor-pointer">
-            <summary
-              class="font-bold text-lg list-none flex items-center justify-between text-black"
+        <div class="space-y-4" id="faq-accordion">
+          <!-- FAQ Item 1 -->
+          <div class="card-minimal">
+            <button
+              type="button"
+              class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
+              aria-expanded="false"
+              aria-controls="faq-content-1"
+              data-faq-trigger
             >
               Pourquoi vos prix sont bas ?
               <svg
-                class="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform"
+                class="w-5 h-5 text-blue-600 transition-transform faq-icon"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -1035,23 +1041,38 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                   stroke-width="2"
                   d="M19 9l-7 7-7-7"></path>
               </svg>
-            </summary>
-            <p class="text-gray-text mt-4 leading-relaxed">
-              Process rodé = moins de temps perdu = prix juste. Pas de bureaux luxueux, pas de
-              commerciaux, pas de réunions à rallonge. On fait du code, pas du PowerPoint.
-            </p>
-          </details>
+            </button>
+            <div
+              id="faq-content-1"
+              role="region"
+              aria-labelledby="faq-trigger-1"
+              class="overflow-hidden transition-all duration-300 ease-in-out"
+              style="max-height: 0;"
+              hidden
+            >
+              <p class="text-gray-text mt-4 leading-relaxed">
+                Process rodé = moins de temps perdu = prix juste. Pas de bureaux luxueux, pas de
+                commerciaux, pas de réunions à rallonge. On fait du code, pas du PowerPoint.
+              </p>
+            </div>
+          </div>
 
-          <details class="card-minimal group cursor-pointer">
-            <summary
-              class="font-bold text-lg list-none flex items-center justify-between text-black"
+          <!-- FAQ Item 2 -->
+          <div class="card-minimal">
+            <button
+              type="button"
+              class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
+              aria-expanded="false"
+              aria-controls="faq-content-2"
+              data-faq-trigger
             >
               C'est vraiment sans appel ?
               <svg
-                class="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform"
+                class="w-5 h-5 text-blue-600 transition-transform faq-icon"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -1059,23 +1080,38 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                   stroke-width="2"
                   d="M19 9l-7 7-7-7"></path>
               </svg>
-            </summary>
-            <p class="text-gray-text mt-4 leading-relaxed">
-              Oui. Tout se fait par email. Maquettes, validations, questions. C'est plus clair, plus
-              rapide, et vous gardez une trace de tout.
-            </p>
-          </details>
+            </button>
+            <div
+              id="faq-content-2"
+              role="region"
+              aria-labelledby="faq-trigger-2"
+              class="overflow-hidden transition-all duration-300 ease-in-out"
+              style="max-height: 0;"
+              hidden
+            >
+              <p class="text-gray-text mt-4 leading-relaxed">
+                Oui. Tout se fait par email. Maquettes, validations, questions. C'est plus clair, plus
+                rapide, et vous gardez une trace de tout.
+              </p>
+            </div>
+          </div>
 
-          <details class="card-minimal group cursor-pointer">
-            <summary
-              class="font-bold text-lg list-none flex items-center justify-between text-black"
+          <!-- FAQ Item 3 -->
+          <div class="card-minimal">
+            <button
+              type="button"
+              class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
+              aria-expanded="false"
+              aria-controls="faq-content-3"
+              data-faq-trigger
             >
               Combien de temps ça prend ?
               <svg
-                class="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform"
+                class="w-5 h-5 text-blue-600 transition-transform faq-icon"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -1083,23 +1119,38 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                   stroke-width="2"
                   d="M19 9l-7 7-7-7"></path>
               </svg>
-            </summary>
-            <p class="text-gray-text mt-4 leading-relaxed">
-              Site vitrine classique : 2-3 semaines. Site plus complexe (e-commerce, fonctionnalités
-              custom) : 4-6 semaines. Délais fixes, pas de "ça dépend".
-            </p>
-          </details>
+            </button>
+            <div
+              id="faq-content-3"
+              role="region"
+              aria-labelledby="faq-trigger-3"
+              class="overflow-hidden transition-all duration-300 ease-in-out"
+              style="max-height: 0;"
+              hidden
+            >
+              <p class="text-gray-text mt-4 leading-relaxed">
+                Site vitrine classique : 2-3 semaines. Site plus complexe (e-commerce, fonctionnalités
+                custom) : 4-6 semaines. Délais fixes, pas de "ça dépend".
+              </p>
+            </div>
+          </div>
 
-          <details class="card-minimal group cursor-pointer">
-            <summary
-              class="font-bold text-lg list-none flex items-center justify-between text-black"
+          <!-- FAQ Item 4 -->
+          <div class="card-minimal">
+            <button
+              type="button"
+              class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
+              aria-expanded="false"
+              aria-controls="faq-content-4"
+              data-faq-trigger
             >
               Je peux modifier mon site après ?
               <svg
-                class="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform"
+                class="w-5 h-5 text-blue-600 transition-transform faq-icon"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -1107,23 +1158,38 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                   stroke-width="2"
                   d="M19 9l-7 7-7-7"></path>
               </svg>
-            </summary>
-            <p class="text-gray-text mt-4 leading-relaxed">
-              Oui. On vous forme sur les modifs basiques (textes, images). Pour les gros
-              changements, maintenance à 29€/mois ou intervention ponctuelle.
-            </p>
-          </details>
+            </button>
+            <div
+              id="faq-content-4"
+              role="region"
+              aria-labelledby="faq-trigger-4"
+              class="overflow-hidden transition-all duration-300 ease-in-out"
+              style="max-height: 0;"
+              hidden
+            >
+              <p class="text-gray-text mt-4 leading-relaxed">
+                Oui. On vous forme sur les modifs basiques (textes, images). Pour les gros
+                changements, maintenance à 29€/mois ou intervention ponctuelle.
+              </p>
+            </div>
+          </div>
 
-          <details class="card-minimal group cursor-pointer">
-            <summary
-              class="font-bold text-lg list-none flex items-center justify-between text-black"
+          <!-- FAQ Item 5 -->
+          <div class="card-minimal">
+            <button
+              type="button"
+              class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
+              aria-expanded="false"
+              aria-controls="faq-content-5"
+              data-faq-trigger
             >
               Vous faites du e-commerce ?
               <svg
-                class="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform"
+                class="w-5 h-5 text-blue-600 transition-transform faq-icon"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -1131,23 +1197,38 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                   stroke-width="2"
                   d="M19 9l-7 7-7-7"></path>
               </svg>
-            </summary>
-            <p class="text-gray-text mt-4 leading-relaxed">
-              Oui, mais uniquement pour des catalogues simples (- de 50 produits). Au-delà, on vous
-              oriente vers une solution adaptée.
-            </p>
-          </details>
+            </button>
+            <div
+              id="faq-content-5"
+              role="region"
+              aria-labelledby="faq-trigger-5"
+              class="overflow-hidden transition-all duration-300 ease-in-out"
+              style="max-height: 0;"
+              hidden
+            >
+              <p class="text-gray-text mt-4 leading-relaxed">
+                Oui, mais uniquement pour des catalogues simples (- de 50 produits). Au-delà, on vous
+                oriente vers une solution adaptée.
+              </p>
+            </div>
+          </div>
 
-          <details class="card-minimal group cursor-pointer">
-            <summary
-              class="font-bold text-lg list-none flex items-center justify-between text-black"
+          <!-- FAQ Item 6 -->
+          <div class="card-minimal">
+            <button
+              type="button"
+              class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
+              aria-expanded="false"
+              aria-controls="faq-content-6"
+              data-faq-trigger
             >
               Comment ça marche pour le paiement ?
               <svg
-                class="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform"
+                class="w-5 h-5 text-blue-600 transition-transform faq-icon"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   stroke-linecap="round"
@@ -1155,16 +1236,64 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                   stroke-width="2"
                   d="M19 9l-7 7-7-7"></path>
               </svg>
-            </summary>
-            <p class="text-gray-text mt-4 leading-relaxed">
-              50% au démarrage (validation devis + maquette), 50% à la livraison. Virement ou
-              chèque. Simple et carré.
-            </p>
-          </details>
+            </button>
+            <div
+              id="faq-content-6"
+              role="region"
+              aria-labelledby="faq-trigger-6"
+              class="overflow-hidden transition-all duration-300 ease-in-out"
+              style="max-height: 0;"
+              hidden
+            >
+              <p class="text-gray-text mt-4 leading-relaxed">
+                50% au démarrage (validation devis + maquette), 50% à la livraison. Virement ou
+                chèque. Simple et carré.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    // FAQ Accordion functionality with accessibility
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqTriggers = document.querySelectorAll('[data-faq-trigger]')
+
+      faqTriggers.forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const content = document.getElementById(trigger.getAttribute('aria-controls') || '')
+          const icon = trigger.querySelector('.faq-icon')
+          const isExpanded = trigger.getAttribute('aria-expanded') === 'true'
+
+          if (content) {
+            if (isExpanded) {
+              // Close
+              trigger.setAttribute('aria-expanded', 'false')
+              content.style.maxHeight = '0'
+              content.hidden = true
+              icon?.classList.remove('rotate-180')
+            } else {
+              // Open
+              trigger.setAttribute('aria-expanded', 'true')
+              content.hidden = false
+              content.style.maxHeight = content.scrollHeight + 'px'
+              icon?.classList.add('rotate-180')
+            }
+          }
+        })
+
+        // Keyboard navigation
+        trigger.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            trigger.click()
+          }
+        })
+      })
+    })
+  </script>
 
   <!-- Footer -->
   <footer class="py-8 bg-gray-pale border-t border-gray-100">

@@ -75,15 +75,36 @@ const {
           <!-- Mobile menu button -->
           <button
             id="mobile-menu-button"
-            class="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+            class="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600"
             aria-label="Toggle menu"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
           >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              id="menu-icon-open"
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
                 d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg
+              id="menu-icon-close"
+              class="w-6 h-6 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
         </div>
@@ -94,42 +115,42 @@ const {
             <li>
               <a
                 href="/"
-                class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                class="mobile-menu-link block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
                 >Accueil</a
               >
             </li>
             <li>
               <a
                 href="/services"
-                class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                class="mobile-menu-link block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
                 >Services</a
               >
             </li>
             <li>
               <a
                 href="/portfolio"
-                class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                class="mobile-menu-link block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
                 >Portfolio</a
               >
             </li>
             <li>
               <a
                 href="/devis"
-                class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                class="mobile-menu-link block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
                 >Devis</a
               >
             </li>
             <li>
               <a
                 href="/blog"
-                class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                class="mobile-menu-link block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
                 >Blog</a
               >
             </li>
             <li>
               <a
                 href="/contact"
-                class="block px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg font-semibold transition-colors"
+                class="mobile-menu-link block px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg font-semibold transition-colors"
                 >Contact</a
               >
             </li>
@@ -247,12 +268,67 @@ const {
     </footer>
 
     <script>
-      // Mobile menu toggle
+      // Mobile menu toggle with body scroll lock
+      // Note: This implementation is compatible with Crisp widget
+      // - Header uses z-50, Crisp uses much higher z-index
+      // - Body scroll lock doesn't affect fixed positioned elements like Crisp
+      // - Menu opens in header (top), Crisp is positioned bottom-right
       const mobileMenuButton = document.getElementById('mobile-menu-button')
       const mobileMenu = document.getElementById('mobile-menu')
+      const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link')
+      const menuIconOpen = document.getElementById('menu-icon-open')
+      const menuIconClose = document.getElementById('menu-icon-close')
 
-      mobileMenuButton?.addEventListener('click', () => {
-        mobileMenu?.classList.toggle('hidden')
+      function toggleMobileMenu() {
+        const isHidden = mobileMenu?.classList.contains('hidden')
+
+        if (isHidden) {
+          // Open menu
+          mobileMenu?.classList.remove('hidden')
+          mobileMenuButton?.setAttribute('aria-expanded', 'true')
+          document.body.style.overflow = 'hidden'
+          menuIconOpen?.classList.add('hidden')
+          menuIconClose?.classList.remove('hidden')
+        } else {
+          // Close menu
+          mobileMenu?.classList.add('hidden')
+          mobileMenuButton?.setAttribute('aria-expanded', 'false')
+          document.body.style.overflow = ''
+          menuIconOpen?.classList.remove('hidden')
+          menuIconClose?.classList.add('hidden')
+        }
+      }
+
+      function closeMobileMenu() {
+        mobileMenu?.classList.add('hidden')
+        mobileMenuButton?.setAttribute('aria-expanded', 'false')
+        document.body.style.overflow = ''
+        menuIconOpen?.classList.remove('hidden')
+        menuIconClose?.classList.add('hidden')
+      }
+
+      // Toggle menu on button click
+      mobileMenuButton?.addEventListener('click', toggleMobileMenu)
+
+      // Close menu when clicking on a link
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          closeMobileMenu()
+        })
+      })
+
+      // Close menu on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !mobileMenu?.classList.contains('hidden')) {
+          closeMobileMenu()
+        }
+      })
+
+      // Close menu on window resize to desktop size
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768 && !mobileMenu?.classList.contains('hidden')) {
+          closeMobileMenu()
+        }
       })
 
       // Set active navigation link
