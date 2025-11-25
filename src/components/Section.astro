@@ -1,0 +1,49 @@
+---
+interface Props {
+  title?: string
+  subtitle?: string
+  bgColor?: 'white' | 'pale'
+  maxWidth?: 'default' | 'wide' | 'narrow'
+  centered?: boolean
+  class?: string
+}
+
+const {
+  title,
+  subtitle,
+  bgColor = 'white',
+  maxWidth = 'default',
+  centered = true,
+  class: className = '',
+} = Astro.props
+
+const bgClass = bgColor === 'pale' ? 'section-pale' : 'bg-white'
+
+const maxWidthClass =
+  maxWidth === 'wide' ? 'max-w-7xl' : maxWidth === 'narrow' ? 'max-w-4xl' : 'max-w-6xl'
+
+const centerClass = centered ? 'text-center' : ''
+---
+
+<section class={`py-16 md:py-24 ${bgClass} ${className}`}>
+  <div class="container mx-auto px-4">
+    <div class={maxWidthClass + ' mx-auto'}>
+      {
+        (title || subtitle) && (
+          <div class={`mb-16 ${centerClass}`}>
+            {title && (
+              <h2
+                class="text-4xl md:text-5xl font-black text-black mb-4"
+                style="letter-spacing: -0.02em;"
+              >
+                {title}
+              </h2>
+            )}
+            {subtitle && <p class="text-lg text-gray-text max-w-2xl mx-auto">{subtitle}</p>}
+          </div>
+        )
+      }
+      <slot />
+    </div>
+  </div>
+</section>

@@ -1,15 +1,15 @@
 ---
-import '../styles/global.css';
+import '../styles/global.css'
 
 interface Props {
-  title?: string;
-  description?: string;
+  title?: string
+  description?: string
 }
 
 const {
   title = 'Loire Digital - Création de sites web à Saint-Étienne',
-  description = 'Création de sites web professionnels pour les commerces locaux de Saint-Étienne et sa région. Design moderne, SEO optimisé et prix transparents.'
-} = Astro.props;
+  description = 'Création de sites web professionnels pour les commerces locaux de Saint-Étienne et sa région. Design moderne, SEO optimisé et prix transparents.',
+} = Astro.props
 ---
 
 <!doctype html>
@@ -24,10 +24,16 @@ const {
     <!-- Preconnect to Google Fonts for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- SEO Meta Tags -->
-    <meta name="keywords" content="création site web, Saint-Étienne, Loire, site internet, web design, commerce local, freelance" />
+    <meta
+      name="keywords"
+      content="création site web, Saint-Étienne, Loire, site internet, web design, commerce local, freelance"
+    />
     <meta name="author" content="Loire Digital" />
 
     <!-- Open Graph / Facebook -->
@@ -43,11 +49,17 @@ const {
     <title>{title}</title>
   </head>
   <body class="min-h-screen flex flex-col">
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+    <header
+      class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm"
+    >
       <nav class="container mx-auto px-4 py-4">
         <div class="flex items-center justify-between">
           <a href="/" class="flex items-center space-x-3 group">
-            <img src="/logo.svg" alt="Loire Digital" class="w-9 h-9 group-hover:scale-110 transition-transform" />
+            <img
+              src="/logo.svg"
+              alt="Loire Digital"
+              class="w-9 h-9 group-hover:scale-110 transition-transform"
+            />
             <span class="text-xl font-display font-bold text-black">Loire Digital</span>
           </a>
 
@@ -61,9 +73,17 @@ const {
           </ul>
 
           <!-- Mobile menu button -->
-          <button id="mobile-menu-button" class="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors" aria-label="Toggle menu">
+          <button
+            id="mobile-menu-button"
+            class="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+            aria-label="Toggle menu"
+          >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
           </button>
         </div>
@@ -71,12 +91,48 @@ const {
         <!-- Mobile menu -->
         <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2 border-t border-gray-200 mt-4">
           <ul class="flex flex-col space-y-2">
-            <li><a href="/" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Accueil</a></li>
-            <li><a href="/services" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Services</a></li>
-            <li><a href="/portfolio" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Portfolio</a></li>
-            <li><a href="/devis" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Devis</a></li>
-            <li><a href="/blog" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium">Blog</a></li>
-            <li><a href="/contact" class="block px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg font-semibold transition-colors">Contact</a></li>
+            <li>
+              <a
+                href="/"
+                class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                >Accueil</a
+              >
+            </li>
+            <li>
+              <a
+                href="/services"
+                class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                >Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="/portfolio"
+                class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                >Portfolio</a
+              >
+            </li>
+            <li>
+              <a
+                href="/devis"
+                class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                >Devis</a
+              >
+            </li>
+            <li>
+              <a
+                href="/blog"
+                class="block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                >Blog</a
+              >
+            </li>
+            <li>
+              <a
+                href="/contact"
+                class="block px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg font-semibold transition-colors"
+                >Contact</a
+              >
+            </li>
           </ul>
         </div>
       </nav>
@@ -94,17 +150,21 @@ const {
               <img src="/logo.svg" alt="Loire Digital" class="w-10 h-10" />
               <span class="text-xl font-display font-bold text-black">Loire Digital</span>
             </div>
-            <p class="text-sm text-gray-600">
-              Studio digital premium basé à Saint-Étienne.
-            </p>
+            <p class="text-sm text-gray-600">Studio digital premium basé à Saint-Étienne.</p>
           </div>
 
           <div>
             <h3 class="text-black font-display font-semibold mb-4">Navigation</h3>
             <ul class="space-y-3 text-sm">
-              <li><a href="/services" class="hover:text-blue-600 transition-colors">Services</a></li>
-              <li><a href="/portfolio" class="hover:text-blue-600 transition-colors">Portfolio</a></li>
-              <li><a href="/devis" class="hover:text-blue-600 transition-colors">Devis gratuit</a></li>
+              <li>
+                <a href="/services" class="hover:text-blue-600 transition-colors">Services</a>
+              </li>
+              <li>
+                <a href="/portfolio" class="hover:text-blue-600 transition-colors">Portfolio</a>
+              </li>
+              <li>
+                <a href="/devis" class="hover:text-blue-600 transition-colors">Devis gratuit</a>
+              </li>
               <li><a href="/blog" class="hover:text-blue-600 transition-colors">Blog</a></li>
             </ul>
           </div>
@@ -112,10 +172,24 @@ const {
           <div>
             <h3 class="text-black font-display font-semibold mb-4">Services</h3>
             <ul class="space-y-3 text-sm">
-              <li><a href="/services#creation" class="hover:text-blue-600 transition-colors">Création de sites</a></li>
-              <li><a href="/services#refonte" class="hover:text-blue-600 transition-colors">Refonte de sites</a></li>
-              <li><a href="/services#seo" class="hover:text-blue-600 transition-colors">SEO local</a></li>
-              <li><a href="/services#maintenance" class="hover:text-blue-600 transition-colors">Maintenance</a></li>
+              <li>
+                <a href="/services#creation" class="hover:text-blue-600 transition-colors"
+                  >Création de sites</a
+                >
+              </li>
+              <li>
+                <a href="/services#refonte" class="hover:text-blue-600 transition-colors"
+                  >Refonte de sites</a
+                >
+              </li>
+              <li>
+                <a href="/services#seo" class="hover:text-blue-600 transition-colors">SEO local</a>
+              </li>
+              <li>
+                <a href="/services#maintenance" class="hover:text-blue-600 transition-colors"
+                  >Maintenance</a
+                >
+              </li>
             </ul>
           </div>
 
@@ -123,17 +197,44 @@ const {
             <h3 class="text-black font-display font-semibold mb-4">Contact</h3>
             <ul class="space-y-3 text-sm">
               <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <svg
+                  class="w-5 h-5 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
                 <span>Saint-Étienne, Loire</span>
               </li>
               <li class="flex items-center space-x-2">
-                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                <svg
+                  class="w-5 h-5 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
                 </svg>
-                <a href="mailto:contact@loiredigital.fr" class="hover:text-blue-600 transition-colors">contact@loiredigital.fr</a>
+                <a
+                  href="mailto:contact@loiredigital.fr"
+                  class="hover:text-blue-600 transition-colors">contact@loiredigital.fr</a
+                >
               </li>
             </ul>
           </div>
@@ -147,35 +248,39 @@ const {
 
     <script>
       // Mobile menu toggle
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuButton = document.getElementById('mobile-menu-button')
+      const mobileMenu = document.getElementById('mobile-menu')
 
       mobileMenuButton?.addEventListener('click', () => {
-        mobileMenu?.classList.toggle('hidden');
-      });
+        mobileMenu?.classList.toggle('hidden')
+      })
 
       // Set active navigation link
-      const currentPath = window.location.pathname;
-      const navLinks = document.querySelectorAll('.nav-link');
+      const currentPath = window.location.pathname
+      const navLinks = document.querySelectorAll('.nav-link')
 
-      navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPath || (currentPath === '/' && href === '/') || (currentPath.startsWith(href) && href !== '/')) {
-          link.classList.add('active');
+      navLinks.forEach((link) => {
+        const href = link.getAttribute('href')
+        if (
+          href === currentPath ||
+          (currentPath === '/' && href === '/') ||
+          (currentPath.startsWith(href) && href !== '/')
+        ) {
+          link.classList.add('active')
         }
-      });
+      })
     </script>
 
     <script type="text/javascript">
-      window.$crisp=[];
-      window.CRISP_WEBSITE_ID="3a1e95c6-4706-45d0-b186-b6e1fbc0c6aa";
-      (function(){
-        var d=document;
-        var s=d.createElement("script");
-        s.src="https://client.crisp.chat/l.js";
-        s.async=1;
-        d.getElementsByTagName("head")[0].appendChild(s);
-      })();
+      window.$crisp = []
+      window.CRISP_WEBSITE_ID = '3a1e95c6-4706-45d0-b186-b6e1fbc0c6aa'
+      ;(function () {
+        var d = document
+        var s = d.createElement('script')
+        s.src = 'https://client.crisp.chat/l.js'
+        s.async = 1
+        d.getElementsByTagName('head')[0].appendChild(s)
+      })()
     </script>
   </body>
 </html>

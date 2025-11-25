@@ -1,0 +1,59 @@
+---
+interface Props {
+  title: string
+  description: string
+  icon?: string
+  iconColor?: 'blue' | 'green' | 'purple' | 'white'
+  bgColor?: 'gray' | 'blue' | 'white'
+  class?: string
+}
+
+const {
+  title,
+  description,
+  icon,
+  iconColor = 'blue',
+  bgColor = 'gray',
+  class: className = '',
+} = Astro.props
+
+const cardBgClass =
+  bgColor === 'blue' ? 'bg-blue-600 text-white' : bgColor === 'white' ? 'bg-white' : 'bg-gray-50'
+
+const iconBgClass =
+  bgColor === 'blue' ? 'bg-white/10' : iconColor === 'blue' ? 'bg-blue-50' : `bg-${iconColor}-50`
+
+const iconTextClass =
+  bgColor === 'blue'
+    ? 'text-white'
+    : iconColor === 'blue'
+      ? 'text-blue-600'
+      : `text-${iconColor}-600`
+
+const textColor = bgColor === 'blue' ? 'text-white' : 'text-black'
+const descColor = bgColor === 'blue' ? 'text-blue-100' : 'text-gray-text'
+---
+
+<div
+  class={`card-minimal ${cardBgClass} p-8 flex flex-col items-center justify-center text-center ${className}`}
+>
+  {
+    icon && (
+      <div class={`w-16 h-16 rounded-xl ${iconBgClass} flex items-center justify-center mb-4`}>
+        <slot name="icon">
+          <svg
+            class={`w-8 h-8 ${iconTextClass}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={icon} />
+          </svg>
+        </slot>
+      </div>
+    )
+  }
+  <h3 class={`text-lg font-bold ${textColor} mb-2`}>{title}</h3>
+  <p class={`text-sm ${descColor}`}>{description}</p>
+  <slot />
+</div>

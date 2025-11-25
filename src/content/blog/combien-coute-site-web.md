@@ -1,8 +1,8 @@
 ---
-title: "Combien coûte un site web professionnel en 2025 ?"
+title: 'Combien coûte un site web professionnel en 2025 ?'
 description: "Découvrez les vrais prix d'un site web professionnel, ce qui influence le coût et comment obtenir le meilleur rapport qualité-prix pour votre commerce."
 pubDate: 2025-01-05
-tags: ["tarifs", "site web", "devis", "budget"]
+tags: ['tarifs', 'site web', 'devis', 'budget']
 ---
 
 # Combien coûte un site web professionnel en 2025 ?
@@ -16,11 +16,13 @@ C'est LA question que tout commerçant se pose avant de se lancer. Les prix vari
 **Outils :** Wix, Squarespace, Shopify
 
 **Avantages :**
+
 - Prix attractif
 - Mise en place rapide
 - Pas besoin de compétences techniques
 
 **Inconvénients :**
+
 - Design générique
 - SEO limité
 - Personnalisation restreinte
@@ -32,6 +34,7 @@ C'est LA question que tout commerçant se pose avant de se lancer. Les prix vari
 ### Site freelance/agence locale : 800€ à 5000€
 
 **Ce que vous obtenez :**
+
 - Design sur-mesure ou personnalisé
 - Optimisation SEO
 - Site responsive (mobile, tablette, desktop)
@@ -43,6 +46,7 @@ C'est LA question que tout commerçant se pose avant de se lancer. Les prix vari
 ### Agence web premium : 5000€ à 20000€+
 
 **Pour des projets complexes :**
+
 - E-commerce avec des centaines de produits
 - Fonctionnalités avancées sur-mesure
 - Applications web complexes
@@ -57,6 +61,7 @@ Prenons l'exemple d'un site vitrine pour un commerce local à Saint-Étienne :
 ### Création initiale : 800€ à 2000€
 
 **Ce qui est inclus :**
+
 - **Design et maquettes** (200-500€)
   - Conception visuelle
   - Choix des couleurs et typographies
@@ -77,11 +82,13 @@ Prenons l'exemple d'un site vitrine pour un commerce local à Saint-Étienne :
 ### Coûts annuels : 100€ à 300€
 
 **Hébergement :** 60-150€/an
+
 - Serveur performant
 - Certificat SSL (sécurité)
 - Nom de domaine
 
 **Maintenance (optionnelle) :** 49-99€/mois
+
 - Mises à jour de sécurité
 - Sauvegardes
 - Support technique
@@ -92,6 +99,7 @@ Prenons l'exemple d'un site vitrine pour un commerce local à Saint-Étienne :
 ### 1. Le nombre de pages
 
 Plus votre site a de pages, plus le coût augmente :
+
 - 1-5 pages : 800-1200€
 - 6-10 pages : 1200-1800€
 - 11-15 pages : 1800-2500€
@@ -99,6 +107,7 @@ Plus votre site a de pages, plus le coût augmente :
 ### 2. Les fonctionnalités
 
 Chaque fonctionnalité ajoute du temps de développement :
+
 - Formulaire de contact : inclus
 - Système de réservation : +300-500€
 - Blog : +200-400€
@@ -122,6 +131,7 @@ Chaque fonctionnalité ajoute du temps de développement :
 ⚠️ **Attention aux offres trop belles pour être vraies !**
 
 Certains prestataires proposent des sites à 200-300€ mais :
+
 - Design générique peu personnalisable
 - Pas d'optimisation SEO
 - Support inexistant après livraison
@@ -133,6 +143,7 @@ Certains prestataires proposent des sites à 200-300€ mais :
 ### Site Vitrine Essentiel : **800€**
 
 Parfait pour commerces qui démarrent :
+
 - 3-5 pages
 - Design professionnel personnalisé
 - Responsive
@@ -144,6 +155,7 @@ Parfait pour commerces qui démarrent :
 ### Site Vitrine Premium : **1500€**
 
 Pour commerces établis :
+
 - 6-10 pages
 - Design sur-mesure
 - Blog/Actualités
@@ -155,6 +167,7 @@ Pour commerces établis :
 ### Site E-commerce : **à partir de 2500€**
 
 Pour vendre en ligne :
+
 - Catalogue produits
 - Panier et paiement sécurisé
 - Gestion des stocks
@@ -167,6 +180,7 @@ Pour vendre en ligne :
 ## Le vrai coût : le coût d'opportunité
 
 Le véritable coût à considérer, c'est ce que vous **perdez en n'ayant pas de site** :
+
 - Clients qui vont chez la concurrence
 - Opportunités commerciales manquées
 - Image moins professionnelle
@@ -184,6 +198,7 @@ Un site à 1000€ qui vous apporte 5 nouveaux clients par mois est **largement 
 ## Comment payer moins cher ?
 
 ✅ **Fournissez vos contenus**
+
 - Photos de qualité
 - Textes rédigés
 - Logo existant

@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection, z } from 'astro:content'
 
 const blogCollection = defineCollection({
   type: 'content',
@@ -11,8 +11,8 @@ const blogCollection = defineCollection({
     tags: z.array(z.string()),
     draft: z.boolean().default(false),
   }),
-});
+})
 
 export const collections = {
   blog: blogCollection,
-};
+}

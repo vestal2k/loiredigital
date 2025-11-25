@@ -1,59 +1,65 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Icon from '../components/Icon.astro';
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Icon from '../components/Icon.astro'
 
 const projects = [
   {
-    title: "Boulangerie Artisanale",
-    category: "Restauration",
-    description: "Site vitrine avec présentation produits et système de pré-commande.",
-    features: ["Design moderne", "Galerie produits", "Commande en ligne", "SEO local"],
-    icon: "bakery"
+    title: 'Boulangerie Artisanale',
+    category: 'Restauration',
+    description: 'Site vitrine avec présentation produits et système de pré-commande.',
+    features: ['Design moderne', 'Galerie produits', 'Commande en ligne', 'SEO local'],
+    icon: 'bakery',
   },
   {
-    title: "Pizzeria Bella Napoli",
-    category: "Restauration",
-    description: "Menu interactif, commande en ligne et intégration livraison.",
-    features: ["Menu digital", "Commande en ligne", "Responsive", "Google Maps"],
-    icon: "pizza"
+    title: 'Pizzeria Bella Napoli',
+    category: 'Restauration',
+    description: 'Menu interactif, commande en ligne et intégration livraison.',
+    features: ['Menu digital', 'Commande en ligne', 'Responsive', 'Google Maps'],
+    icon: 'pizza',
   },
   {
-    title: "Salon de Coiffure Élégance",
-    category: "Beauté & Bien-être",
-    description: "Site élégant avec galerie et prise de rendez-vous en ligne.",
-    features: ["Réservation en ligne", "Galerie photos", "Blog beauté", "SEO optimisé"],
-    icon: "salon"
+    title: 'Salon de Coiffure Élégance',
+    category: 'Beauté & Bien-être',
+    description: 'Site élégant avec galerie et prise de rendez-vous en ligne.',
+    features: ['Réservation en ligne', 'Galerie photos', 'Blog beauté', 'SEO optimisé'],
+    icon: 'salon',
   },
   {
-    title: "Garage Mécanique Pro",
-    category: "Automobile",
-    description: "Site professionnel avec services, tarifs et rendez-vous.",
-    features: ["Services détaillés", "Devis en ligne", "Témoignages", "Responsive"],
-    icon: "garage"
+    title: 'Garage Mécanique Pro',
+    category: 'Automobile',
+    description: 'Site professionnel avec services, tarifs et rendez-vous.',
+    features: ['Services détaillés', 'Devis en ligne', 'Témoignages', 'Responsive'],
+    icon: 'garage',
   },
   {
-    title: "Boutique Mode & Style",
-    category: "Commerce",
-    description: "E-commerce avec catalogue et paiement sécurisé.",
-    features: ["Catalogue en ligne", "Panier", "Paiement sécurisé", "Mobile-first"],
-    icon: "boutique"
+    title: 'Boutique Mode & Style',
+    category: 'Commerce',
+    description: 'E-commerce avec catalogue et paiement sécurisé.',
+    features: ['Catalogue en ligne', 'Panier', 'Paiement sécurisé', 'Mobile-first'],
+    icon: 'boutique',
   },
   {
-    title: "Cabinet Dentaire",
-    category: "Santé",
-    description: "Site médical avec informations soins et rendez-vous.",
-    features: ["Présentation soins", "RDV en ligne", "Infos pratiques", "Urgences"],
-    icon: "dental"
-  }
-];
+    title: 'Cabinet Dentaire',
+    category: 'Santé',
+    description: 'Site médical avec informations soins et rendez-vous.',
+    features: ['Présentation soins', 'RDV en ligne', 'Infos pratiques', 'Urgences'],
+    icon: 'dental',
+  },
+]
 ---
 
-<BaseLayout title="Portfolio - Loire Digital" description="Découvrez nos réalisations de sites web pour commerces locaux à Saint-Étienne.">
+<BaseLayout
+  title="Portfolio - Loire Digital"
+  description="Découvrez nos réalisations de sites web pour commerces locaux à Saint-Étienne."
+>
   <!-- Hero -->
   <section class="relative py-24 md:py-32 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl md:text-7xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
+        <h1
+          class="text-5xl md:text-7xl font-black text-black mb-6"
+          style="letter-spacing: -0.02em;"
+        >
           Portfolio
         </h1>
         <p class="text-xl text-gray-text max-w-2xl mx-auto">
@@ -68,26 +74,28 @@ const projects = [
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <div class="card-minimal group">
-              <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors">
-                <Icon name={project.icon} class="text-blue-600" size={32} />
-              </div>
+          {
+            projects.map((project) => (
+              <div class="card-minimal group">
+                <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors">
+                  <Icon name={project.icon} class="text-blue-600" size={32} />
+                </div>
 
-              <div class="text-sm text-blue-600 font-semibold mb-2">{project.category}</div>
-              <h3 class="text-xl font-bold text-black mb-3">{project.title}</h3>
-              <p class="text-gray-text mb-6 text-sm leading-relaxed">{project.description}</p>
+                <div class="text-sm text-blue-600 font-semibold mb-2">{project.category}</div>
+                <h3 class="text-xl font-bold text-black mb-3">{project.title}</h3>
+                <p class="text-gray-text mb-6 text-sm leading-relaxed">{project.description}</p>
 
-              <div class="space-y-2">
-                {project.features.map((feature) => (
-                  <div class="flex items-center gap-2 text-sm text-gray-text">
-                    <div class="w-1 h-1 bg-blue-600 rounded-full"></div>
-                    <span>{feature}</span>
-                  </div>
-                ))}
+                <div class="space-y-2">
+                  {project.features.map((feature) => (
+                    <div class="flex items-center gap-2 text-sm text-gray-text">
+                      <div class="w-1 h-1 bg-blue-600 rounded-full" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </div>
@@ -98,19 +106,31 @@ const projects = [
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
+          <h2
+            class="text-4xl md:text-5xl font-black text-black mb-6"
+            style="letter-spacing: -0.02em;"
+          >
             Technologies utilisées
           </h2>
-          <p class="text-xl text-gray-text">
-            Stack moderne pour des performances optimales
-          </p>
+          <p class="text-xl text-gray-text">Stack moderne pour des performances optimales</p>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div class="card-minimal text-center">
-            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            <div
+              class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
             </div>
             <h3 class="font-bold text-black mb-2">Astro</h3>
@@ -118,9 +138,20 @@ const projects = [
           </div>
 
           <div class="card-minimal text-center">
-            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            <div
+              class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
               </svg>
             </div>
             <h3 class="font-bold text-black mb-2">React</h3>
@@ -128,9 +159,21 @@ const projects = [
           </div>
 
           <div class="card-minimal text-center">
-            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+            <div
+              class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                ></path>
               </svg>
             </div>
             <h3 class="font-bold text-black mb-2">Tailwind CSS</h3>
@@ -138,9 +181,21 @@ const projects = [
           </div>
 
           <div class="card-minimal text-center">
-            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            <div
+              class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4"
+            >
+              <svg
+                class="w-6 h-6 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                ></path>
               </svg>
             </div>
             <h3 class="font-bold text-black mb-2">Mobile-First</h3>
@@ -155,19 +210,16 @@ const projects = [
   <section class="py-16 md:py-24 section-pale">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-4xl md:text-5xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
+        <h2
+          class="text-4xl md:text-5xl font-black text-black mb-6"
+          style="letter-spacing: -0.02em;"
+        >
           Prêt à démarrer votre projet ?
         </h2>
-        <p class="text-xl text-gray-text mb-12">
-          Créons ensemble un site qui vous ressemble
-        </p>
+        <p class="text-xl text-gray-text mb-12">Créons ensemble un site qui vous ressemble</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/devis" class="btn-blue">
-            Obtenir un devis
-          </a>
-          <a href="/contact" class="btn-secondary">
-            Nous contacter
-          </a>
+          <a href="/devis" class="btn-blue"> Obtenir un devis </a>
+          <a href="/contact" class="btn-secondary"> Nous contacter </a>
         </div>
       </div>
     </div>

@@ -1,32 +1,32 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Icon from '../../components/Icon.astro';
+import { getCollection } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Icon from '../../components/Icon.astro'
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
-  return blogEntries.map(entry => ({
+  const blogEntries = await getCollection('blog')
+  return blogEntries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
-  }));
+  }))
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { entry } = Astro.props
+const { Content } = await entry.render()
 
 const formatDate = (date: Date) => {
   return new Intl.DateTimeFormat('fr-FR', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  }).format(date);
-};
+  }).format(date)
+}
 
 // Get other posts for recommendations
 const allPosts = (await getCollection('blog'))
   .filter((post) => post.slug !== entry.slug && !post.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 2);
+  .slice(0, 2)
 ---
 
 <BaseLayout title={`${entry.data.title} - Loire Digital`} description={entry.data.description}>
@@ -47,15 +47,20 @@ const allPosts = (await getCollection('blog'))
 
         <!-- Tags -->
         <div class="flex flex-wrap gap-2 mb-6">
-          {entry.data.tags.map((tag: string) => (
-            <span class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-semibold capitalize">
-              {tag}
-            </span>
-          ))}
+          {
+            entry.data.tags.map((tag: string) => (
+              <span class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-semibold capitalize">
+                {tag}
+              </span>
+            ))
+          }
         </div>
 
         <!-- Title -->
-        <h1 class="text-4xl md:text-6xl font-black text-black mb-6 leading-tight" style="letter-spacing: -0.02em;">
+        <h1
+          class="text-4xl md:text-6xl font-black text-black mb-6 leading-tight"
+          style="letter-spacing: -0.02em;"
+        >
           {entry.data.title}
         </h1>
 
@@ -69,7 +74,12 @@ const allPosts = (await getCollection('blog'))
               <div class="font-semibold text-black">{entry.data.author}</div>
               <div class="text-sm flex items-center text-gray-text">
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  ></path>
                 </svg>
                 <time datetime={entry.data.pubDate.toISOString()}>
                   {formatDate(entry.data.pubDate)}
@@ -80,7 +90,8 @@ const allPosts = (await getCollection('blog'))
         </div>
 
         <!-- Article Content -->
-        <div class="prose prose-lg max-w-none
+        <div
+          class="prose prose-lg max-w-none
           prose-headings:font-black prose-headings:text-black
           prose-p:text-gray-text prose-p:leading-relaxed
           prose-a:text-blue-600 prose-a:no-underline hover:prose-a:text-blue-700
@@ -89,7 +100,8 @@ const allPosts = (await getCollection('blog'))
           prose-li:text-gray-text
           prose-code:text-blue-600 prose-code:bg-gray-50 prose-code:px-2 prose-code:py-1 prose-code:rounded
           prose-pre:bg-gray-50 prose-pre:border prose-pre:border-gray-100
-          prose-blockquote:border-l-blue-600 prose-blockquote:text-gray-text">
+          prose-blockquote:border-l-blue-600 prose-blockquote:text-gray-text"
+        >
           <Content />
         </div>
 
@@ -128,82 +140,96 @@ const allPosts = (await getCollection('blog'))
   </article>
 
   <!-- Related Articles -->
-  {allPosts.length > 0 && (
-    <section class="py-20 section-pale">
-      <div class="container mx-auto px-4">
-        <div class="max-w-5xl mx-auto">
-          <h2 class="text-4xl font-black text-black mb-12 text-center" style="letter-spacing: -0.02em;">
-            Articles recommandés
-          </h2>
+  {
+    allPosts.length > 0 && (
+      <section class="py-20 section-pale">
+        <div class="container mx-auto px-4">
+          <div class="max-w-5xl mx-auto">
+            <h2
+              class="text-4xl font-black text-black mb-12 text-center"
+              style="letter-spacing: -0.02em;"
+            >
+              Articles recommandés
+            </h2>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {allPosts.map((post) => (
-              <article class="card-minimal hover:scale-[1.02] transition-transform">
-                <div class="aspect-video bg-white border border-gray-100 rounded-xl flex items-center justify-center mb-6 overflow-hidden">
-                  <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">
-                      {post.data.tags.includes('SEO') ? (
-                        <Icon name="search" class="text-blue-600" size={32} />
-                      ) : post.data.tags.includes('tarifs') ? (
-                        <Icon name="price-tag" class="text-blue-600" size={32} />
-                      ) : post.data.tags.includes('commerce local') ? (
-                        <Icon name="storefront" class="text-blue-600" size={32} />
-                      ) : (
-                        <Icon name="document-text" class="text-blue-600" size={32} />
-                      )}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {allPosts.map((post) => (
+                <article class="card-minimal hover:scale-[1.02] transition-transform">
+                  <div class="aspect-video bg-white border border-gray-100 rounded-xl flex items-center justify-center mb-6 overflow-hidden">
+                    <div class="text-center p-6">
+                      <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        {post.data.tags.includes('SEO') ? (
+                          <Icon name="search" class="text-blue-600" size={32} />
+                        ) : post.data.tags.includes('tarifs') ? (
+                          <Icon name="price-tag" class="text-blue-600" size={32} />
+                        ) : post.data.tags.includes('commerce local') ? (
+                          <Icon name="storefront" class="text-blue-600" size={32} />
+                        ) : (
+                          <Icon name="document-text" class="text-blue-600" size={32} />
+                        )}
+                      </div>
+                      <p class="text-blue-600 font-semibold text-sm">
+                        {post.data.title.split(' ').slice(0, 3).join(' ')}
+                      </p>
                     </div>
-                    <p class="text-blue-600 font-semibold text-sm">
-                      {post.data.title.split(' ').slice(0, 3).join(' ')}
-                    </p>
                   </div>
-                </div>
 
-                <div class="flex flex-wrap gap-2 mb-3">
-                  {post.data.tags.slice(0, 2).map((tag: string) => (
-                    <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full capitalize font-semibold">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                  <div class="flex flex-wrap gap-2 mb-3">
+                    {post.data.tags.slice(0, 2).map((tag: string) => (
+                      <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full capitalize font-semibold">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-                <h3 class="text-xl font-bold text-black mb-3 hover:text-blue-600 transition-colors">
-                  <a href={`/blog/${post.slug}`}>
-                    {post.data.title}
+                  <h3 class="text-xl font-bold text-black mb-3 hover:text-blue-600 transition-colors">
+                    <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                  </h3>
+
+                  <p class="text-gray-text mb-4 text-sm line-clamp-2">{post.data.description}</p>
+
+                  <a
+                    href={`/blog/${post.slug}`}
+                    class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 text-sm group"
+                  >
+                    Lire l'article
+                    <svg
+                      class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
                   </a>
-                </h3>
+                </article>
+              ))}
+            </div>
 
-                <p class="text-gray-text mb-4 text-sm line-clamp-2">
-                  {post.data.description}
-                </p>
-
-                <a
-                  href={`/blog/${post.slug}`}
-                  class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 text-sm group"
-                >
-                  Lire l'article
-                  <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </article>
-            ))}
-          </div>
-
-          <div class="text-center mt-12">
-            <a href="/blog" class="btn-primary">
-              Voir tous les articles
-            </a>
+            <div class="text-center mt-12">
+              <a href="/blog" class="btn-primary">
+                Voir tous les articles
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  )}
+      </section>
+    )
+  }
 
   <!-- CTA -->
   <section class="py-24 bg-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-5xl md:text-6xl font-black text-black mb-8" style="letter-spacing: -0.02em;">
+        <h2
+          class="text-5xl md:text-6xl font-black text-black mb-8"
+          style="letter-spacing: -0.02em;"
+        >
           Besoin d'aide pour votre projet web ?
         </h2>
         <p class="text-xl text-gray-text mb-12">
@@ -211,12 +237,8 @@ const allPosts = (await getCollection('blog'))
           Discutons de votre projet !
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/devis" class="btn-primary text-lg px-8 py-4">
-            Calculer mon devis
-          </a>
-          <a href="/contact" class="btn-secondary text-lg px-8 py-4">
-            Nous contacter
-          </a>
+          <a href="/devis" class="btn-primary text-lg px-8 py-4"> Calculer mon devis </a>
+          <a href="/contact" class="btn-secondary text-lg px-8 py-4"> Nous contacter </a>
         </div>
       </div>
     </div>

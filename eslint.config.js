@@ -10,14 +10,7 @@ export default [
 
   // Ignore patterns (replaces .eslintignore)
   {
-    ignores: [
-      'node_modules/',
-      'dist/',
-      '.astro/',
-      '.claude/',
-      '*.config.js',
-      '*.config.ts',
-    ],
+    ignores: ['node_modules/', 'dist/', '.astro/', '.claude/', '*.config.js', '*.config.ts'],
   },
 
   // TypeScript files
@@ -38,10 +31,7 @@ export default [
       ...tseslint.configs.recommended.rules,
       ...jsxA11y.configs.recommended.rules,
       '@typescript-eslint/no-explicit-any': 'error',
-      '@typescript-eslint/no-unused-vars': [
-        'warn',
-        { argsIgnorePattern: '^_' },
-      ],
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },

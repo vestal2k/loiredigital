@@ -1,0 +1,77 @@
+---
+interface Props {
+  packId: string
+  name: string
+  price: number
+  pages: number
+  features: string[]
+  popular?: boolean
+  cta?: string
+  ctaLink?: string
+  class?: string
+}
+
+const {
+  packId,
+  name,
+  price,
+  pages,
+  features,
+  popular = false,
+  cta = 'Choisir ce pack',
+  ctaLink = '/devis',
+  class: className = '',
+} = Astro.props
+---
+
+<div
+  class={`card-minimal bg-white border-2 ${popular ? 'border-blue-600 relative' : 'border-gray-200'} p-8 flex flex-col ${className}`}
+>
+  {
+    popular && (
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+        Le plus populaire
+      </div>
+    )
+  }
+
+  <div class="text-center mb-6">
+    <h3 class="text-2xl font-black text-black mb-2">{name}</h3>
+    <div class="flex items-end justify-center gap-1 mb-2">
+      <span class="text-5xl font-black text-blue-600">{price}€</span>
+    </div>
+    <p class="text-sm text-gray-text">{pages} pages incluses</p>
+  </div>
+
+  <div class="flex-grow mb-6">
+    <ul class="space-y-3">
+      {
+        features.map((feature) => (
+          <li class="flex items-start gap-3">
+            <svg
+              class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+            <span class="text-sm text-gray-700">{feature}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <a
+    href={ctaLink}
+    class={popular ? 'btn-primary w-full text-center' : 'btn-secondary w-full text-center'}
+  >
+    {cta}
+  </a>
+</div>

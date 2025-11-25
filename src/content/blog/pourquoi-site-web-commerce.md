@@ -1,8 +1,8 @@
 ---
 title: "Pourquoi votre commerce local a besoin d'un site web en 2025"
-description: "Découvrez pourquoi avoir un site web est devenu indispensable pour les commerces locaux de Saint-Étienne et comment cela peut booster votre activité."
+description: 'Découvrez pourquoi avoir un site web est devenu indispensable pour les commerces locaux de Saint-Étienne et comment cela peut booster votre activité.'
 pubDate: 2025-01-15
-tags: ["commerce local", "site web", "saint-etienne", "marketing digital"]
+tags: ['commerce local', 'site web', 'saint-etienne', 'marketing digital']
 ---
 
 # Pourquoi votre commerce local a besoin d'un site web en 2025
@@ -24,6 +24,7 @@ Avant de se déplacer dans un commerce, **87% des consommateurs** recherchent d'
 ### 1. Être visible 24h/24, 7j/7
 
 Votre site web travaille pour vous même quand votre boutique est fermée. Les clients peuvent :
+
 - Consulter vos horaires
 - Découvrir vos produits ou services
 - Vous contacter
@@ -44,6 +45,7 @@ Grâce au **SEO local**, votre site peut apparaître dans les recherches Google 
 ### 5. Communiquer facilement
 
 Avec un site web, vous pouvez :
+
 - Annoncer vos promotions
 - Partager vos actualités
 - Présenter vos nouveaux produits

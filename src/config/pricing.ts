@@ -117,11 +117,7 @@ export const MAINTENANCE_PLANS = [
     id: 'basic',
     name: 'Maintenance basique',
     pricePerMonth: 29,
-    features: [
-      'Mises à jour de sécurité',
-      'Sauvegardes hebdomadaires',
-      'Support par email',
-    ],
+    features: ['Mises à jour de sécurité', 'Sauvegardes hebdomadaires', 'Support par email'],
   },
   {
     id: 'premium',
@@ -144,7 +140,7 @@ export function calculateQuoteTotal(
   packId: string,
   extraPages: number,
   optionIds: string[],
-  maintenanceMonths = 12
+  _maintenanceMonths = 12
 ): number {
   const pack = PRICING_PACKS.find((p) => p.id === packId)
   if (!pack) return 0

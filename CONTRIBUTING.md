@@ -152,16 +152,9 @@ interface ButtonProps {
   onClick?: () => void
 }
 
-export default function Button({
-  children,
-  variant = 'primary',
-  onClick
-}: ButtonProps) {
+export default function Button({ children, variant = 'primary', onClick }: ButtonProps) {
   return (
-    <button
-      className={`btn btn-${variant}`}
-      onClick={onClick}
-    >
+    <button className={`btn btn-${variant}`} onClick={onClick}>
       {children}
     </button>
   )
@@ -232,7 +225,7 @@ Ne jamais coder les prix en dur dans les composants. Toujours importer depuis la
 import { PRICING_PACKS, PRICING_OPTIONS } from '@config/pricing'
 
 // Utiliser les données
-const pack = PRICING_PACKS.find(p => p.id === 'essentiel')
+const pack = PRICING_PACKS.find((p) => p.id === 'essentiel')
 ```
 
 ## Accessibilité
