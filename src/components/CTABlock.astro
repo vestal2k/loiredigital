@@ -1,0 +1,64 @@
+---
+interface Props {
+  title?: string
+  description?: string
+  primaryText?: string
+  primaryLink?: string
+  secondaryText?: string
+  secondaryLink?: string
+  variant?: 'default' | 'blog' | 'minimal'
+}
+
+const {
+  title = 'Prêt à démarrer votre projet ?',
+  description = 'Parlons de votre projet. Devis détaillé sous 24h, zéro engagement.',
+  primaryText = 'Obtenir un devis',
+  primaryLink = '/devis',
+  secondaryText = 'Nous contacter',
+  secondaryLink = '/contact',
+  variant = 'default',
+} = Astro.props
+---
+
+<section class={variant === 'blog' ? 'py-20 bg-white' : 'py-16 md:py-24 bg-white'}>
+  <div class="container mx-auto px-4">
+    <div class={variant === 'minimal' ? 'max-w-3xl mx-auto' : 'max-w-4xl mx-auto'}>
+      <div
+        class={variant === 'minimal'
+          ? 'text-center'
+          : variant === 'blog'
+            ? 'card-minimal bg-blue-600 text-white text-center py-12'
+            : 'text-center'}
+      >
+        <h2
+          class={variant === 'blog'
+            ? 'text-4xl md:text-5xl font-black mb-6'
+            : 'text-4xl md:text-5xl font-black text-black mb-6'}
+          style="letter-spacing: -0.02em;"
+        >
+          {title}
+        </h2>
+        <p
+          class={variant === 'blog'
+            ? 'text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed'
+            : 'text-xl text-gray-text mb-10 max-w-2xl mx-auto leading-relaxed'}
+        >
+          {description}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href={primaryLink}
+            class={variant === 'blog'
+              ? 'btn-secondary text-lg px-8 py-4'
+              : 'btn-primary text-lg px-8 py-4'}
+          >
+            {primaryText}
+          </a>
+          <a href={secondaryLink} class="btn-secondary text-lg px-8 py-4">
+            {secondaryText}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import Icon from '../../components/Icon.astro'
+import CTABlock from '../../components/CTABlock.astro'
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog')
@@ -223,24 +224,11 @@ const allPosts = (await getCollection('blog'))
   }
 
   <!-- CTA -->
-  <section class="py-24 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2
-          class="text-5xl md:text-6xl font-black text-black mb-8"
-          style="letter-spacing: -0.02em;"
-        >
-          Besoin d'aide pour votre projet web ?
-        </h2>
-        <p class="text-xl text-gray-text mb-12">
-          Loire Digital accompagne les commerces de Saint-Étienne dans leur transformation digitale.
-          Discutons de votre projet !
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/devis" class="btn-primary text-lg px-8 py-4"> Calculer mon devis </a>
-          <a href="/contact" class="btn-secondary text-lg px-8 py-4"> Nous contacter </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CTABlock
+    variant="blog"
+    title="Besoin d'aide pour votre projet web ?"
+    description="Loire Digital accompagne les commerces de Saint-Étienne dans leur transformation digitale. Discutons de votre projet !"
+    primaryText="Calculer mon devis"
+    secondaryText="Nous contacter"
+  />
 </BaseLayout>
