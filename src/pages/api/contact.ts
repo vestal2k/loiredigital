@@ -23,7 +23,7 @@ export const POST: APIRoute = async ({ request }) => {
       )
     }
 
-    const { name, email, project, message } = validationResult.data
+    const { name, email, phone, project, message } = validationResult.data
 
     // Map project types to French labels
     const projectLabels: Record<string, string> = {
@@ -37,7 +37,7 @@ export const POST: APIRoute = async ({ request }) => {
     // Check if Resend API key is configured
     if (!import.meta.env.RESEND_API_KEY) {
       console.warn('RESEND_API_KEY not configured. Email not sent.')
-      console.log('Contact form submission:', { name, email, project, message })
+      console.log('Contact form submission:', { name, email, phone, project, message })
 
       return new Response(
         JSON.stringify({
@@ -62,6 +62,7 @@ export const POST: APIRoute = async ({ request }) => {
       html: generateContactEmailHTML({
         name,
         email,
+        phone,
         project: projectLabels[project],
         message,
       }),
@@ -101,6 +102,7 @@ export const POST: APIRoute = async ({ request }) => {
 function generateContactEmailHTML(data: {
   name: string
   email: string
+  phone?: string
   project: string
   message: string
 }): string {
@@ -185,6 +187,17 @@ function generateContactEmailHTML(data: {
             <div class="field-label">Email :</div>
             <div class="field-value"><a href="mailto:${data.email}">${data.email}</a></div>
           </div>
+
+          ${
+            data.phone
+              ? `
+          <div class="field">
+            <div class="field-label">Téléphone :</div>
+            <div class="field-value"><a href="tel:${data.phone}">${data.phone}</a></div>
+          </div>
+          `
+              : ''
+          }
 
           <div class="field">
             <div class="field-label">Type de projet :</div>

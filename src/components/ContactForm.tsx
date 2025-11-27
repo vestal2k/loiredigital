@@ -107,6 +107,26 @@ export default function ContactForm() {
           )}
         </div>
 
+        {/* Phone Field (Optional) */}
+        <div>
+          <label htmlFor="phone" className="block text-sm font-semibold text-black mb-2">
+            Téléphone <span className="text-gray-500 font-normal">(facultatif)</span>
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            {...register('phone')}
+            className={`w-full px-4 py-3 bg-white border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-black ${
+              errors.phone ? 'border-red-500' : 'border-gray-200'
+            }`}
+            placeholder="0612345678"
+            disabled={isSubmitting}
+          />
+          {errors.phone && (
+            <p className="mt-1 text-sm text-red-600">{errors.phone.message}</p>
+          )}
+        </div>
+
         {/* Project Type Field */}
         <div>
           <label htmlFor="project" className="block text-sm font-semibold text-black mb-2">
@@ -149,6 +169,35 @@ export default function ContactForm() {
           />
           {errors.message && (
             <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
+          )}
+        </div>
+
+        {/* GDPR Consent */}
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <div className="flex items-start space-x-3">
+            <input
+              type="checkbox"
+              id="gdprConsent"
+              {...register('gdprConsent')}
+              className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-600 cursor-pointer"
+              disabled={isSubmitting}
+            />
+            <label htmlFor="gdprConsent" className="text-sm text-black cursor-pointer flex-1">
+              J'accepte que mes données personnelles soient collectées et traitées pour répondre à
+              ma demande, conformément à notre{' '}
+              <a
+                href="/politique-confidentialite"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-700 underline font-medium"
+              >
+                politique de confidentialité
+              </a>
+              . *
+            </label>
+          </div>
+          {errors.gdprConsent && (
+            <p className="mt-2 text-sm text-red-600 ml-8">{errors.gdprConsent.message}</p>
           )}
         </div>
 
@@ -211,9 +260,12 @@ export default function ContactForm() {
               ></path>
             </svg>
             <div>
-              <h4 className="font-bold text-black mb-1">Message envoyé avec succès !</h4>
-              <p className="text-sm text-gray-text">
-                Merci pour votre message. Nous vous répondrons dans les plus brefs délais.
+              <h4 className="font-bold text-black mb-2">Message envoyé avec succès !</h4>
+              <p className="text-sm text-gray-text mb-2">
+                Merci pour votre confiance. Nous avons bien reçu votre demande.
+              </p>
+              <p className="text-sm font-semibold text-green-700">
+                Vous recevrez une réponse détaillée sous 24h par email.
               </p>
             </div>
           </div>

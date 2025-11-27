@@ -434,6 +434,11 @@ const jsonLdSchema = {
     <script type="text/javascript">
       window.$crisp = []
       window.CRISP_WEBSITE_ID = '3a1e95c6-4706-45d0-b186-b6e1fbc0c6aa'
+
+      // Configure Crisp before loading
+      window.$crisp.push(['safe', true]) // Enable safe mode for GDPR compliance
+
+      // Load Crisp widget
       ;(function () {
         var d = document
         var s = d.createElement('script')
@@ -441,6 +446,26 @@ const jsonLdSchema = {
         s.async = 1
         d.getElementsByTagName('head')[0].appendChild(s)
       })()
+
+      // Configure Crisp after it loads
+      window.$crisp.push(['on', 'chat:opened', function() {
+        // Send welcome message when chat is opened
+        window.$crisp.push(['do', 'message:show', ['text', '👋 Bonjour ! Comment puis-je vous aider avec votre projet web ?']])
+      }])
+
+      // Auto-show message after user has been on site for 15 seconds
+      setTimeout(function() {
+        if (!sessionStorage.getItem('crisp_welcome_shown')) {
+          window.$crisp.push(['do', 'message:show', ['text', '💬 Une question sur nos services ? Je suis là pour vous aider !']])
+          sessionStorage.setItem('crisp_welcome_shown', 'true')
+        }
+      }, 15000)
+
+      // Set company info
+      window.$crisp.push(['set', 'session:data', [[
+        ['site_url', window.location.href],
+        ['langue', 'fr']
+      ]]])
     </script>
 
     <!-- Vercel Analytics and Speed Insights -->
