@@ -6,28 +6,28 @@ export const STRIPE_PRODUCTS = {
   packs: {
     starter: {
       productId: 'prod_TV0CSgYLRE6jjg',
-      priceId: '', // À REMPLIR : voir guide dans .claude/guide-setup-manuel.md
+      priceId: 'price_1SY0By3d6o7Oyd5uy64PJAK6', // À REMPLIR : voir guide dans .claude/guide-setup-manuel.md
       name: 'Pack Starter - One Page',
       amount: 499,
       description: 'Site vitrine d\'une page unique',
     },
     essentiel: {
       productId: 'prod_TV0KeCDFVuKaLO',
-      priceId: '', // À REMPLIR
+      priceId: 'price_1SY0KI3d6o7Oyd5uEuRH4jj9', // À REMPLIR
       name: 'Pack Essentiel',
       amount: 800,
       description: 'Site vitrine professionnel jusqu\'à 4 pages',
     },
     premium: {
       productId: 'prod_TV0LoqyWVeaM9D',
-      priceId: '', // À REMPLIR
+      priceId: 'price_1SY0Kh3d6o7Oyd5u6HRmMXOe', // À REMPLIR
       name: 'Pack Premium',
       amount: 1500,
       description: 'Site professionnel complet jusqu\'à 8 pages avec blog',
     },
     ecommerce: {
       productId: 'prod_TV0L3vdAqVp1MF',
-      priceId: '', // À REMPLIR
+      priceId: 'price_1SY0L63d6o7Oyd5ukgECP7iX', // À REMPLIR
       name: 'Pack E-Commerce',
       amount: 2500,
       description: 'Boutique en ligne complète',
