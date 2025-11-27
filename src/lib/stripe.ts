@@ -1,8 +1,27 @@
 import Stripe from 'stripe'
 
-// Initialiser le client Stripe côté serveur
-export const stripe = new Stripe(import.meta.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2025-11-17.clover',
+// Initialisation lazy de Stripe pour éviter les erreurs au build
+let stripeInstance: Stripe | null = null
+
+function getStripe(): Stripe {
+  if (!stripeInstance) {
+    const apiKey = import.meta.env.STRIPE_SECRET_KEY
+    if (!apiKey) {
+      throw new Error('STRIPE_SECRET_KEY is not defined in environment variables')
+    }
+    stripeInstance = new Stripe(apiKey, {
+      apiVersion: '2025-11-17.clover',
+    })
+  }
+  return stripeInstance
+}
+
+// Export pour la compatibilité avec le code existant
+export const stripe = new Proxy({} as Stripe, {
+  get: (_target, prop) => {
+    const stripeClient = getStripe()
+    return stripeClient[prop as keyof Stripe]
+  }
 })
 
 // Types pour les produits et paiements

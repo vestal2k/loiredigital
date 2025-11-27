@@ -1,4 +1,7 @@
 ---
+// Rendre cette page côté serveur pour accéder aux données Stripe
+export const prerender = false
+
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import { getCheckoutSession } from '../../lib/stripe'
 
@@ -14,7 +17,8 @@ let paymentDetails = {
   fullAmount: 0,
 }
 
-if (sessionId) {
+// Ne charger les données que côté serveur lors d'une requête réelle, pas au build
+if (sessionId && import.meta.env.STRIPE_SECRET_KEY) {
   try {
     session = await getCheckoutSession(sessionId)
     paymentDetails = {
