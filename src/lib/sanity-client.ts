@@ -183,6 +183,7 @@ export async function updateProjectStatus(
  */
 export async function addProjectUpdate(projectId: string, message: string): Promise<void> {
   const update = {
+    _key: `update-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
     message,
     createdAt: new Date().toISOString(),
   }
@@ -226,10 +227,15 @@ export async function addInvoice(
     issuedAt: string
   },
 ): Promise<void> {
+  const invoiceWithKey = {
+    _key: `invoice-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+    ...invoice,
+  }
+
   await sanityClient
     .patch(projectId)
     .setIfMissing({ invoices: [] })
-    .append('invoices', [invoice])
+    .append('invoices', [invoiceWithKey])
     .commit()
 }
 
