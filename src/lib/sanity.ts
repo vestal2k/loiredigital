@@ -8,6 +8,7 @@ export const sanityClient = createClient({
   dataset: import.meta.env.PUBLIC_SANITY_DATASET || 'production',
   useCdn: true, // `false` si vous voulez garantir des données fraîches
   apiVersion: '2025-01-01', // Utiliser la date du jour pour la dernière API
+  token: import.meta.env.SANITY_API_TOKEN, // Token pour les opérations d'écriture
 })
 
 // Helper pour générer les URLs d'images optimisées
