@@ -24,13 +24,13 @@ export interface PricingOption {
  */
 export const PRICING_PACKS: PricingPack[] = [
   {
-    id: 'decouverte',
-    name: 'Découverte',
-    basePrice: 599,
-    pagesIncluded: 3,
+    id: 'starter',
+    name: 'Starter',
+    basePrice: 400,
+    pagesIncluded: 1,
     features: [
-      'Design moderne et responsive',
-      '3 pages incluses',
+      'Landing page (1 page)',
+      'Design sobre et professionnel',
       'Formulaire de contact',
       'Optimisation mobile',
       'Hébergement 1ère année offerte',
@@ -39,12 +39,12 @@ export const PRICING_PACKS: PricingPack[] = [
   {
     id: 'essentiel',
     name: 'Essentiel',
-    basePrice: 999,
-    pagesIncluded: 5,
+    basePrice: 800,
+    pagesIncluded: 4,
     popular: true,
     features: [
-      'Tout du pack Découverte',
-      '5 pages incluses',
+      'Tout du pack Starter',
+      'Jusqu\'à 4 pages',
       'SEO de base',
       'Intégration Google Maps',
       'Galerie photos (20 images)',
@@ -52,17 +52,32 @@ export const PRICING_PACKS: PricingPack[] = [
     ],
   },
   {
-    id: 'complet',
-    name: 'Complet',
-    basePrice: 1499,
+    id: 'premium',
+    name: 'Premium',
+    basePrice: 1500,
     pagesIncluded: 8,
     features: [
       'Tout du pack Essentiel',
-      '8 pages incluses',
+      'Jusqu\'à 8 pages',
       'Blog intégré',
       'SEO avancé',
       'Galerie photos illimitée',
       'Formulaires avancés',
+      'Hébergement 1ère année offerte',
+    ],
+  },
+  {
+    id: 'ecommerce',
+    name: 'E-commerce',
+    basePrice: 2500,
+    pagesIncluded: 10,
+    features: [
+      'Tout du pack Premium',
+      'Boutique en ligne complète',
+      'Gestion des produits',
+      'Paiement en ligne sécurisé',
+      'Gestion des commandes',
+      'Système de panier',
       'Hébergement 1ère année offerte',
     ],
   },
@@ -74,38 +89,38 @@ export const PRICING_PACKS: PricingPack[] = [
 export const PRICE_PER_EXTRA_PAGE = 100
 
 /**
- * Optional features/addons
+ * Optional features/addons with fixed prices
  */
 export const PRICING_OPTIONS: PricingOption[] = [
   {
     id: 'blog',
     name: 'Blog',
-    price: 200,
-    description: 'Blog avec système de gestion de contenus',
+    price: 300,
+    description: 'Blog avec système de gestion de contenus et pagination',
   },
   {
     id: 'gallery',
     name: 'Galerie photo avancée',
-    price: 150,
-    description: 'Galerie photos avec lightbox et catégories',
+    price: 200,
+    description: 'Galerie photos illimitée avec lightbox et catégories',
   },
   {
     id: 'seo',
-    name: 'SEO local avancé',
-    price: 250,
-    description: 'Optimisation SEO complète + Google Business',
+    name: 'SEO avancé',
+    price: 300,
+    description: 'Optimisation SEO complète + Google Business + balises avancées',
   },
   {
     id: 'booking',
     name: 'Système de réservation',
-    price: 400,
-    description: 'Calendrier de réservation en ligne',
+    price: 500,
+    description: 'Calendrier de réservation en ligne avec gestion des créneaux',
   },
   {
-    id: 'ecommerce-basic',
-    name: 'E-commerce basique',
-    price: 600,
-    description: 'Boutique en ligne (max 20 produits)',
+    id: 'ecommerce-addon',
+    name: 'Module E-commerce',
+    price: 800,
+    description: 'Ajout boutique en ligne à un pack existant (max 30 produits)',
   },
 ]
 
