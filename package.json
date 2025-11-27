@@ -12,6 +12,7 @@
     "sanity": "sanity dev",
     "sanity:deploy": "sanity deploy",
     "create-client": "node create-client.js",
+    "reset-password": "node reset-client-password.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.astro --fix",
     "format": "prettier --write .",
