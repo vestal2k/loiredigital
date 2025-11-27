@@ -1,6 +1,6 @@
 ---
-title: 'Site web pour salon de coiffure : Boostez vos réservations en ligne'
-description: 'Découvrez comment un site web professionnel peut transformer votre salon de coiffure et attirer une clientèle fidèle grâce à la réservation en ligne et au SEO local.'
+title: "Site web pour salon de coiffure : Boostez vos réservations en ligne"
+description: "Découvrez comment un site web professionnel peut transformer votre salon de coiffure et attirer une clientèle fidèle grâce à la réservation en ligne et au SEO local."
 pubDate: 2025-01-18
 tags: ['coiffure', 'salon', 'réservation en ligne', 'beauté', 'SEO local']
 ---

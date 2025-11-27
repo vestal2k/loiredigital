@@ -1,6 +1,6 @@
 ---
-title: 'SEO Local à Saint-Étienne : Le guide complet pour les commerces'
-description: 'Découvrez comment optimiser votre référencement local à Saint-Étienne pour attirer plus de clients et dominer les recherches Google dans votre secteur.'
+title: "SEO Local à Saint-Étienne : Le guide complet pour les commerces"
+description: "Découvrez comment optimiser votre référencement local à Saint-Étienne pour attirer plus de clients et dominer les recherches Google dans votre secteur."
 pubDate: 2025-01-10
 tags: ['SEO', 'référencement local', 'saint-etienne', 'Google My Business']
 ---

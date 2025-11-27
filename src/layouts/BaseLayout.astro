@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css'
-import { Analytics } from '@vercel/analytics/astro'
-import { SpeedInsights } from '@vercel/speed-insights/astro'
+import Analytics from '@vercel/analytics/astro'
+import SpeedInsights from '@vercel/speed-insights/astro'
 
 interface Props {
   title?: string
@@ -422,9 +422,11 @@ const jsonLdSchema = {
       navLinks.forEach((link) => {
         const href = link.getAttribute('href')
         if (
-          href === currentPath ||
-          (currentPath === '/' && href === '/') ||
-          (currentPath.startsWith(href) && href !== '/')
+          href && (
+            href === currentPath ||
+            (currentPath === '/' && href === '/') ||
+            (currentPath.startsWith(href) && href !== '/')
+          )
         ) {
           link.classList.add('active')
         }

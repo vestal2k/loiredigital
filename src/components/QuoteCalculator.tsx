@@ -5,8 +5,6 @@ import {
   PRICING_OPTIONS,
   PRICE_PER_EXTRA_PAGE,
   MAINTENANCE_PLANS,
-  calculateQuoteTotal,
-  type PricingPack,
 } from '../config/pricing'
 
 interface QuoteOptions {

@@ -1376,9 +1376,10 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
         // Keyboard navigation
         trigger.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault()
-            trigger.click()
+          const keyEvent = e as KeyboardEvent
+          if (keyEvent.key === 'Enter' || keyEvent.key === ' ') {
+            keyEvent.preventDefault()
+            ;(trigger as HTMLElement).click()
           }
         })
       })

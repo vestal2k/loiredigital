@@ -1,5 +1,5 @@
 ---
-title: 'Combien coûte un site web professionnel en 2025 ?'
+title: "Combien coûte un site web professionnel en 2025 ?"
 description: "Découvrez les vrais prix d'un site web professionnel, ce qui influence le coût et comment obtenir le meilleur rapport qualité-prix pour votre commerce."
 pubDate: 2025-01-05
 tags: ['tarifs', 'site web', 'devis', 'budget']

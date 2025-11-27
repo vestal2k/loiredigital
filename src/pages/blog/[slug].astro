@@ -1,9 +1,8 @@
 ---
-import { getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import Icon from '../../components/Icon.astro'
 import CTABlock from '../../components/CTABlock.astro'
-import { getAllBlogPosts, getBlogPostBySlug } from '../../lib/blog'
+import { getAllBlogPosts } from '../../lib/blog'
 
 export async function getStaticPaths() {
   const allPosts = await getAllBlogPosts()
