@@ -1,0 +1,49 @@
+---
+interface ProcessStep {
+  number: string
+  title: string
+  description: string
+}
+
+interface Props {
+  title?: string
+  subtitle?: string
+  steps: ProcessStep[]
+  sectionId?: string
+}
+
+const {
+  title = 'Le process en 4 étapes',
+  subtitle = 'Pas de surprise, pas de flou. Voici exactement ce qui se passe.',
+  steps,
+  sectionId = 'process',
+} = Astro.props
+---
+
+<section id={sectionId} class="py-16 md:py-24 section-pale">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-16 text-center">
+        <h2
+          class="text-4xl md:text-5xl font-black text-black mb-4"
+          style="letter-spacing: -0.02em;"
+        >
+          {title}
+        </h2>
+        {subtitle && <p class="text-lg text-gray-text max-w-2xl mx-auto">{subtitle}</p>}
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {
+          steps.map((step) => (
+            <div>
+              <div class="text-5xl font-black text-blue-600 mb-4">{step.number}</div>
+              <h3 class="text-lg font-bold text-black mb-2">{step.title}</h3>
+              <p class="text-gray-text text-sm leading-relaxed">{step.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

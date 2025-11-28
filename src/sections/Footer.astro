@@ -1,0 +1,42 @@
+---
+interface Link {
+  text: string
+  href: string
+}
+
+interface Props {
+  year?: number
+  companyName?: string
+  links?: Link[]
+}
+
+const {
+  year = new Date().getFullYear(),
+  companyName = 'Loire Digital',
+  links = [
+    { text: 'Mentions Légales', href: '/mentions-legales' },
+    { text: 'CGV', href: '/cgv' },
+    { text: 'Confidentialité', href: '/politique-confidentialite' },
+  ],
+} = Astro.props
+---
+
+<footer class="py-8 bg-gray-pale border-t border-gray-100">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-gray-600">© {year} {companyName}. Tous droits réservés.</p>
+      <div class="flex items-center gap-6">
+        {
+          links.map((link, index) => (
+            <>
+              <a href={link.href} class="text-sm text-gray-600 hover:text-black transition-colors">
+                {link.text}
+              </a>
+              {index < links.length - 1 && <span class="text-gray-300">-</span>}
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</footer>

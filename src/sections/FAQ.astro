@@ -1,0 +1,111 @@
+---
+interface FAQItem {
+  question: string
+  answer: string
+}
+
+interface Props {
+  title?: string
+  items: FAQItem[]
+  sectionId?: string
+}
+
+const { title = 'Questions fréquentes', items, sectionId = 'faq' } = Astro.props
+---
+
+<section id={sectionId} class="py-16 md:py-24 section-pale">
+  <div class="container mx-auto px-4">
+    <div class="max-w-3xl mx-auto">
+      <div class="mb-12 text-center">
+        <h2
+          class="text-4xl md:text-5xl font-black text-black mb-4"
+          style="letter-spacing: -0.02em;"
+        >
+          {title}
+        </h2>
+      </div>
+
+      <div class="space-y-4" id="faq-accordion">
+        {
+          items.map((item, index) => (
+            <div class="card-minimal">
+              <button
+                type="button"
+                class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
+                aria-expanded="false"
+                aria-controls={`faq-content-${index + 1}`}
+                data-faq-trigger
+              >
+                {item.question}
+                <svg
+                  class="w-5 h-5 text-blue-600 transition-transform faq-icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div
+                id={`faq-content-${index + 1}`}
+                role="region"
+                aria-labelledby={`faq-trigger-${index + 1}`}
+                class="overflow-hidden transition-all duration-300 ease-in-out"
+                style="max-height: 0;"
+                hidden
+              >
+                <p class="text-gray-text mt-4 leading-relaxed">{item.answer}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // FAQ Accordion functionality with accessibility
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqTriggers = document.querySelectorAll('[data-faq-trigger]')
+
+    faqTriggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const content = document.getElementById(trigger.getAttribute('aria-controls') || '')
+        const icon = trigger.querySelector('.faq-icon')
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true'
+
+        if (content) {
+          if (isExpanded) {
+            // Close
+            trigger.setAttribute('aria-expanded', 'false')
+            content.style.maxHeight = '0'
+            content.hidden = true
+            icon?.classList.remove('rotate-180')
+          } else {
+            // Open
+            trigger.setAttribute('aria-expanded', 'true')
+            content.hidden = false
+            content.style.maxHeight = content.scrollHeight + 'px'
+            icon?.classList.add('rotate-180')
+          }
+        }
+      })
+
+      // Keyboard navigation
+      trigger.addEventListener('keydown', (e) => {
+        const keyEvent = e as KeyboardEvent
+        if (keyEvent.key === 'Enter' || keyEvent.key === ' ') {
+          keyEvent.preventDefault()
+          ;(trigger as HTMLElement).click()
+        }
+      })
+    })
+  })
+</script>

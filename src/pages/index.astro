@@ -1,5 +1,62 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import Hero from '../sections/Hero.astro'
+import Process from '../sections/Process.astro'
+import FAQ from '../sections/FAQ.astro'
+import CTA from '../sections/CTA.astro'
+import Footer from '../sections/Footer.astro'
+
+// Process steps data
+const processSteps = [
+  {
+    number: '01',
+    title: 'Vous nous contactez',
+    description: 'Formulaire ou calculateur. Devis détaillé + plan d\'action sous 24h max.',
+  },
+  {
+    number: '02',
+    title: 'On maquette',
+    description: 'Design sur-mesure pour VOTRE activité. Vous validez avant qu\'on code quoi que ce soit.',
+  },
+  {
+    number: '03',
+    title: 'On développe',
+    description: 'Code propre, rapide, testé. Vous suivez l\'avancement en temps réel par email.',
+  },
+  {
+    number: '04',
+    title: 'On lance',
+    description: 'Mise en ligne + formation express. Vous êtes autonome, on reste dispo si besoin.',
+  },
+]
+
+// FAQ data
+const faqItems = [
+  {
+    question: 'Pourquoi vos prix sont bas ?',
+    answer: 'Process rodé = moins de temps perdu = prix juste. Pas de bureaux luxueux, pas de commerciaux, pas de réunions à rallonge. On fait du code, pas du PowerPoint.',
+  },
+  {
+    question: 'C\'est vraiment sans appel ?',
+    answer: 'Oui. Tout se fait par email. Maquettes, validations, questions. C\'est plus clair, plus rapide, et vous gardez une trace de tout.',
+  },
+  {
+    question: 'Combien de temps ça prend ?',
+    answer: 'Site vitrine classique : 2-3 semaines. Site plus complexe (e-commerce, fonctionnalités custom) : 4-6 semaines. Délais fixes, pas de "ça dépend".',
+  },
+  {
+    question: 'Je peux modifier mon site après ?',
+    answer: 'Oui. On vous forme sur les modifs basiques (textes, images). Pour les gros changements, maintenance à 29€/mois ou intervention ponctuelle.',
+  },
+  {
+    question: 'Vous faites du e-commerce ?',
+    answer: 'Oui, mais uniquement pour des catalogues simples (- de 50 produits). Au-delà, on vous oriente vers une solution adaptée.',
+  },
+  {
+    question: 'Comment ça marche pour le paiement ?',
+    answer: '50% au démarrage (validation devis + maquette), 50% à la livraison. Virement ou chèque. Simple et carré.',
+  },
+]
 ---
 
 <BaseLayout
@@ -7,96 +64,11 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   description="Studio digital spécialisé pour artisans et commerçants de la Loire. Sites web modernes, design premium, prix transparents. Réponse sous 24h garantie."
 >
   <!-- Hero Section -->
-  <section class="relative py-24 md:py-32 bg-white overflow-hidden">
-    <div class="container mx-auto px-4">
-      <div class="max-w-5xl mx-auto text-center">
-        <div class="mb-8 animate-fadeIn">
-          <span
-            class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-pale text-sm font-semibold text-gray-700"
-          >
-            <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
-            Studio Digital · Saint-Étienne
-          </span>
-        </div>
-
-        <h1
-          class="text-6xl md:text-8xl lg:text-9xl font-black text-black mb-8 leading-[0.95] animate-fadeIn"
-          style="letter-spacing: -0.04em; animation-delay: 0.1s;"
-        >
-          Un site web qui fait vendre,<br />
-          <span class="text-blue-600">pas juste beau.</span>
-        </h1>
-
-        <p
-          class="text-2xl md:text-3xl text-gray-700 font-medium mb-12 max-w-3xl mx-auto animate-fadeIn"
-          style="animation-delay: 0.2s;"
-        >
-          Sites rapides, design pro, prix honnêtes. Pour artisans et commerçants de Saint-Étienne qui veulent des résultats.
-        </p>
-
-        <div
-          class="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fadeIn"
-          style="animation-delay: 0.4s;"
-        >
-          <a href="/devis" class="btn-blue text-lg shadow-lg shadow-blue-600/30">
-            Devis gratuit – Réponse sous 24h
-          </a>
-          <a href="/portfolio" class="btn-secondary text-lg"> Voir nos réalisations </a>
-        </div>
-
-        <div
-          class="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-600 animate-fadeIn"
-          style="animation-delay: 0.5s;"
-        >
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path>
-            </svg>
-            <span>Devis sous 24h</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path>
-            </svg>
-            <span>Zéro surprise sur le prix</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fill-rule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                clip-rule="evenodd"></path>
-            </svg>
-            <span>Livré en 2-3 semaines</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <style>
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .animate-fadeIn {
-      animation: fadeIn 0.8s ease-out forwards;
-      opacity: 0;
-    }
-  </style>
+  <Hero
+    title="Un site web qui fait vendre,"
+    subtitle="pas juste beau."
+    description="Sites rapides, design pro, prix honnêtes. Pour artisans et commerçants de Saint-Étienne qui veulent des résultats."
+  />
 
   <!-- Sticky Chapter Navigation -->
   <nav
@@ -1019,372 +991,22 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   </section>
 
   <!-- Process -->
-  <section id="process" class="py-16 md:py-24 section-pale">
-    <div class="container mx-auto px-4">
-      <div class="max-w-6xl mx-auto">
-        <div class="mb-16 text-center">
-          <h2
-            class="text-4xl md:text-5xl font-black text-black mb-4"
-            style="letter-spacing: -0.02em;"
-          >
-            Le process en 4 étapes
-          </h2>
-          <p class="text-lg text-gray-text max-w-2xl mx-auto">
-            Pas de surprise, pas de flou. Voici exactement ce qui se passe.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <div class="text-5xl font-black text-blue-600 mb-4">01</div>
-            <h3 class="text-lg font-bold text-black mb-2">Vous nous contactez</h3>
-            <p class="text-gray-text text-sm leading-relaxed">
-              Formulaire ou calculateur. Devis détaillé + plan d'action sous 24h max.
-            </p>
-          </div>
-
-          <div>
-            <div class="text-5xl font-black text-blue-600 mb-4">02</div>
-            <h3 class="text-lg font-bold text-black mb-2">On maquette</h3>
-            <p class="text-gray-text text-sm leading-relaxed">
-              Design sur-mesure pour VOTRE activité. Vous validez avant qu'on code quoi que ce soit.
-            </p>
-          </div>
-
-          <div>
-            <div class="text-5xl font-black text-blue-600 mb-4">03</div>
-            <h3 class="text-lg font-bold text-black mb-2">On développe</h3>
-            <p class="text-gray-text text-sm leading-relaxed">
-              Code propre, rapide, testé. Vous suivez l'avancement en temps réel par email.
-            </p>
-          </div>
-
-          <div>
-            <div class="text-5xl font-black text-blue-600 mb-4">04</div>
-            <h3 class="text-lg font-bold text-black mb-2">On lance</h3>
-            <p class="text-gray-text text-sm leading-relaxed">
-              Mise en ligne + formation express. Vous êtes autonome, on reste dispo si besoin.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <Process steps={processSteps} />
 
   <!-- CTA Final -->
-  <section class="py-16 md:py-24 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2
-          class="text-5xl md:text-6xl font-black text-black mb-6"
-          style="letter-spacing: -0.02em;"
-        >
-          On se lance ?
-        </h2>
-        <p class="text-xl text-gray-text mb-10 max-w-2xl mx-auto leading-relaxed">
-          Réponse garantie sous 24h. Zéro engagement.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/devis" class="btn-blue text-lg shadow-lg shadow-blue-600/30">
-            Devis gratuit – Réponse sous 24h
-          </a>
-          <a href="/contact" class="btn-secondary text-lg"> Nous contacter </a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <CTA
+    title="On se lance ?"
+    description="Réponse garantie sous 24h. Zéro engagement."
+    primaryButton={{ text: 'Devis gratuit – Réponse sous 24h', href: '/devis' }}
+    secondaryButton={{ text: 'Nous contacter', href: '/contact' }}
+  />
 
   <!-- FAQ -->
-  <section id="faq" class="py-16 md:py-24 section-pale">
-    <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto">
-        <div class="mb-12 text-center">
-          <h2
-            class="text-4xl md:text-5xl font-black text-black mb-4"
-            style="letter-spacing: -0.02em;"
-          >
-            Questions fréquentes
-          </h2>
-        </div>
-
-        <div class="space-y-4" id="faq-accordion">
-          <!-- FAQ Item 1 -->
-          <div class="card-minimal">
-            <button
-              type="button"
-              class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
-              aria-expanded="false"
-              aria-controls="faq-content-1"
-              data-faq-trigger
-            >
-              Pourquoi vos prix sont bas ?
-              <svg
-                class="w-5 h-5 text-blue-600 transition-transform faq-icon"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div
-              id="faq-content-1"
-              role="region"
-              aria-labelledby="faq-trigger-1"
-              class="overflow-hidden transition-all duration-300 ease-in-out"
-              style="max-height: 0;"
-              hidden
-            >
-              <p class="text-gray-text mt-4 leading-relaxed">
-                Process rodé = moins de temps perdu = prix juste. Pas de bureaux luxueux, pas de
-                commerciaux, pas de réunions à rallonge. On fait du code, pas du PowerPoint.
-              </p>
-            </div>
-          </div>
-
-          <!-- FAQ Item 2 -->
-          <div class="card-minimal">
-            <button
-              type="button"
-              class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
-              aria-expanded="false"
-              aria-controls="faq-content-2"
-              data-faq-trigger
-            >
-              C'est vraiment sans appel ?
-              <svg
-                class="w-5 h-5 text-blue-600 transition-transform faq-icon"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div
-              id="faq-content-2"
-              role="region"
-              aria-labelledby="faq-trigger-2"
-              class="overflow-hidden transition-all duration-300 ease-in-out"
-              style="max-height: 0;"
-              hidden
-            >
-              <p class="text-gray-text mt-4 leading-relaxed">
-                Oui. Tout se fait par email. Maquettes, validations, questions. C'est plus clair, plus
-                rapide, et vous gardez une trace de tout.
-              </p>
-            </div>
-          </div>
-
-          <!-- FAQ Item 3 -->
-          <div class="card-minimal">
-            <button
-              type="button"
-              class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
-              aria-expanded="false"
-              aria-controls="faq-content-3"
-              data-faq-trigger
-            >
-              Combien de temps ça prend ?
-              <svg
-                class="w-5 h-5 text-blue-600 transition-transform faq-icon"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div
-              id="faq-content-3"
-              role="region"
-              aria-labelledby="faq-trigger-3"
-              class="overflow-hidden transition-all duration-300 ease-in-out"
-              style="max-height: 0;"
-              hidden
-            >
-              <p class="text-gray-text mt-4 leading-relaxed">
-                Site vitrine classique : 2-3 semaines. Site plus complexe (e-commerce, fonctionnalités
-                custom) : 4-6 semaines. Délais fixes, pas de "ça dépend".
-              </p>
-            </div>
-          </div>
-
-          <!-- FAQ Item 4 -->
-          <div class="card-minimal">
-            <button
-              type="button"
-              class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
-              aria-expanded="false"
-              aria-controls="faq-content-4"
-              data-faq-trigger
-            >
-              Je peux modifier mon site après ?
-              <svg
-                class="w-5 h-5 text-blue-600 transition-transform faq-icon"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div
-              id="faq-content-4"
-              role="region"
-              aria-labelledby="faq-trigger-4"
-              class="overflow-hidden transition-all duration-300 ease-in-out"
-              style="max-height: 0;"
-              hidden
-            >
-              <p class="text-gray-text mt-4 leading-relaxed">
-                Oui. On vous forme sur les modifs basiques (textes, images). Pour les gros
-                changements, maintenance à 29€/mois ou intervention ponctuelle.
-              </p>
-            </div>
-          </div>
-
-          <!-- FAQ Item 5 -->
-          <div class="card-minimal">
-            <button
-              type="button"
-              class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
-              aria-expanded="false"
-              aria-controls="faq-content-5"
-              data-faq-trigger
-            >
-              Vous faites du e-commerce ?
-              <svg
-                class="w-5 h-5 text-blue-600 transition-transform faq-icon"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div
-              id="faq-content-5"
-              role="region"
-              aria-labelledby="faq-trigger-5"
-              class="overflow-hidden transition-all duration-300 ease-in-out"
-              style="max-height: 0;"
-              hidden
-            >
-              <p class="text-gray-text mt-4 leading-relaxed">
-                Oui, mais uniquement pour des catalogues simples (- de 50 produits). Au-delà, on vous
-                oriente vers une solution adaptée.
-              </p>
-            </div>
-          </div>
-
-          <!-- FAQ Item 6 -->
-          <div class="card-minimal">
-            <button
-              type="button"
-              class="w-full font-bold text-lg text-left flex items-center justify-between text-black focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 rounded-lg"
-              aria-expanded="false"
-              aria-controls="faq-content-6"
-              data-faq-trigger
-            >
-              Comment ça marche pour le paiement ?
-              <svg
-                class="w-5 h-5 text-blue-600 transition-transform faq-icon"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-            <div
-              id="faq-content-6"
-              role="region"
-              aria-labelledby="faq-trigger-6"
-              class="overflow-hidden transition-all duration-300 ease-in-out"
-              style="max-height: 0;"
-              hidden
-            >
-              <p class="text-gray-text mt-4 leading-relaxed">
-                50% au démarrage (validation devis + maquette), 50% à la livraison. Virement ou
-                chèque. Simple et carré.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <FAQ items={faqItems} />
 
   <script>
-    // FAQ Accordion functionality with accessibility
+    // Chapter navigation active state
     document.addEventListener('DOMContentLoaded', () => {
-      const faqTriggers = document.querySelectorAll('[data-faq-trigger]')
-
-      faqTriggers.forEach((trigger) => {
-        trigger.addEventListener('click', () => {
-          const content = document.getElementById(trigger.getAttribute('aria-controls') || '')
-          const icon = trigger.querySelector('.faq-icon')
-          const isExpanded = trigger.getAttribute('aria-expanded') === 'true'
-
-          if (content) {
-            if (isExpanded) {
-              // Close
-              trigger.setAttribute('aria-expanded', 'false')
-              content.style.maxHeight = '0'
-              content.hidden = true
-              icon?.classList.remove('rotate-180')
-            } else {
-              // Open
-              trigger.setAttribute('aria-expanded', 'true')
-              content.hidden = false
-              content.style.maxHeight = content.scrollHeight + 'px'
-              icon?.classList.add('rotate-180')
-            }
-          }
-        })
-
-        // Keyboard navigation
-        trigger.addEventListener('keydown', (e) => {
-          const keyEvent = e as KeyboardEvent
-          if (keyEvent.key === 'Enter' || keyEvent.key === ' ') {
-            keyEvent.preventDefault()
-            ;(trigger as HTMLElement).click()
-          }
-        })
-      })
-
-      // Chapter navigation active state
       const sections = document.querySelectorAll('section[id]')
       const chapterLinks = document.querySelectorAll('.chapter-link')
 
@@ -1416,28 +1038,5 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   </script>
 
   <!-- Footer -->
-  <footer class="py-8 bg-gray-pale border-t border-gray-100">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
-        <p class="text-sm text-gray-600">© 2025 Loire Digital. Tous droits réservés.</p>
-        <div class="flex items-center gap-6">
-          <a
-            href="/mentions-legales"
-            class="text-sm text-gray-600 hover:text-black transition-colors"
-          >
-            Mentions Légales
-          </a>
-          <span class="text-gray-300">-</span>
-          <a href="/cgv" class="text-sm text-gray-600 hover:text-black transition-colors"> CGV </a>
-          <span class="text-gray-300">-</span>
-          <a
-            href="/confidentialite"
-            class="text-sm text-gray-600 hover:text-black transition-colors"
-          >
-            Confidentialité
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 </BaseLayout>

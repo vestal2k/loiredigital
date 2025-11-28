@@ -1,0 +1,69 @@
+---
+interface Props {
+  title: string
+  description?: string
+  primaryButton?: {
+    text: string
+    href: string
+  }
+  secondaryButton?: {
+    text: string
+    href: string
+  }
+  centered?: boolean
+  backgroundColor?: 'white' | 'gray-pale' | 'blue-50'
+}
+
+const {
+  title,
+  description,
+  primaryButton,
+  secondaryButton,
+  centered = true,
+  backgroundColor = 'white',
+} = Astro.props
+
+const bgClass = {
+  white: 'bg-white',
+  'gray-pale': 'bg-gray-pale',
+  'blue-50': 'bg-blue-50',
+}[backgroundColor]
+---
+
+<section class={`py-16 md:py-24 ${bgClass}`}>
+  <div class="container mx-auto px-4">
+    <div class={`max-w-4xl mx-auto ${centered ? 'text-center' : ''}`}>
+      <h2
+        class={`text-5xl md:text-6xl font-black text-black mb-6 ${centered ? '' : 'text-left'}`}
+        style="letter-spacing: -0.02em;"
+      >
+        {title}
+      </h2>
+      {
+        description && (
+          <p
+            class={`text-xl text-gray-text mb-10 max-w-2xl ${centered ? 'mx-auto' : ''} leading-relaxed`}
+          >
+            {description}
+          </p>
+        )
+      }
+      <div class={`flex flex-col sm:flex-row gap-4 ${centered ? 'justify-center' : ''}`}>
+        {
+          primaryButton && (
+            <a href={primaryButton.href} class="btn-blue text-lg shadow-lg shadow-blue-600/30">
+              {primaryButton.text}
+            </a>
+          )
+        }
+        {
+          secondaryButton && (
+            <a href={secondaryButton.href} class="btn-secondary text-lg">
+              {secondaryButton.text}
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>
