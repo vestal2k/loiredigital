@@ -3,8 +3,13 @@
  * Teste les APIs de contact et devis, la validation, le rate limiting
  */
 
-const fs = require('fs')
-const path = require('path')
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+// Pour obtenir __dirname en ES modules
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 // Configuration
 const BASE_URL = process.env.TEST_URL || 'http://localhost:4321'
@@ -124,8 +129,8 @@ async function testContactAPIValid() {
     email: 'test@example.com',
     phone: '0612345678',
     project: 'creation',
-    message: 'Ceci est un message de test automatique',
-    rgpdConsent: true,
+    message: 'Ceci est un message de test automatique pour valider le système',
+    gdprConsent: true,
   }
 
   const result = await fetchAPI('/api/contact', {
@@ -178,8 +183,8 @@ async function testContactAPIInvalid() {
     name: 'A',
     email: 'test@example.com',
     project: 'creation',
-    message: 'Test',
-    rgpdConsent: true,
+    message: 'Test message court',
+    gdprConsent: true,
   }
 
   result = await fetchAPI('/api/contact', {
@@ -312,14 +317,22 @@ async function testQuoteAPIInvalid() {
 async function testRateLimiting() {
   log.section('Test 6: Rate Limiting')
 
+  // Attendre 65 secondes pour que le rate limiter des tests précédents soit réinitialisé
+  log.info('Attente de 65 secondes pour réinitialiser le rate limiter...')
+  for (let i = 65; i > 0; i--) {
+    process.stdout.write(`\r${colors.gray}  Temps restant: ${i}s ${colors.reset}`)
+    await sleep(1000)
+  }
+  console.log() // Nouvelle ligne
+
   log.info('Envoi de 6 requêtes consécutives...')
 
   const testData = {
     name: 'Rate Limit Test',
     email: 'ratelimit@example.com',
     project: 'creation',
-    message: 'Test rate limiting',
-    rgpdConsent: true,
+    message: 'Test rate limiting automatique du système CRM',
+    gdprConsent: true,
   }
 
   const results = []
@@ -332,7 +345,7 @@ async function testRateLimiting() {
     })
     results.push(result.status)
     log.info(`  Requête ${i + 1}/6: Status ${result.status}`)
-    await sleep(100) // Petit délai entre les requêtes
+    await sleep(50) // Petit délai entre les requêtes
   }
 
   // Vérifier que les 5 premières passent
@@ -515,13 +528,17 @@ async function runAllTests() {
       log.success('Serveur accessible !')
 
       await testContactAPIValid()
+      await sleep(2000) // Attendre 2s pour éviter le rate limiting
       await testContactAPIInvalid()
+      await sleep(2000)
       await testQuoteAPIValid()
+      await sleep(2000)
       await testQuoteAPIInvalid()
+      await sleep(2000)
 
       // Demander confirmation pour le test de rate limiting (long)
       console.log(
-        `\n${colors.yellow}⚠️  Le test de rate limiting prend ~61 secondes${colors.reset}`,
+        `\n${colors.yellow}⚠️  Le test de rate limiting prend ~2 minutes (délais d'attente)${colors.reset}`,
       )
       console.log(`${colors.gray}Voulez-vous le lancer ? (Sinon, Ctrl+C)${colors.reset}`)
       console.log(`${colors.gray}Lancement dans 3 secondes...${colors.reset}`)
