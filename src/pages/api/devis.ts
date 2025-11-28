@@ -68,7 +68,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     try {
       const resend = new Resend(import.meta.env.RESEND_API_KEY)
       const emailResult = await resend.emails.send({
-        from: 'Loire Digital <onboarding@resend.dev>', // Replace with your verified domain
+        from: 'Loire Digital <contact@loiredigital.fr>',
         to: 'contact@loiredigital.fr',
         replyTo: validData.email,
         subject: `Nouveau devis de ${validData.name}`,
