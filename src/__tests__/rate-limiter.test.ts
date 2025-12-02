@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
-import { checkRateLimit, cleanupExpiredRecords } from '../lib/rate-limiter'
+import { checkRateLimit, cleanupExpiredRecords } from '@/lib/utils/rate-limiter'
 
 describe('Rate Limiter', () => {
   beforeEach(() => {
