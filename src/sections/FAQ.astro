@@ -11,6 +11,20 @@ interface Props {
 }
 
 const { title = 'Questions fréquentes', items, sectionId = 'faq' } = Astro.props
+
+// Generate Schema.org FAQPage structured data
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+}
 ---
 
 <section id={sectionId} class="py-16 md:py-24 section-pale">
@@ -68,6 +82,9 @@ const { title = 'Questions fréquentes', items, sectionId = 'faq' } = Astro.prop
       </div>
     </div>
   </div>
+
+  <!-- Schema.org FAQPage structured data for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </section>
 
 <script>
