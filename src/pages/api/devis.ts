@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro'
 import { Resend } from 'resend'
 import { quoteSchema } from '../../schemas/quote.schema'
 import { sanityWriteClient } from '../../lib/sanity'
-import { checkRateLimit } from '../../lib/rate-limiter'
+import { checkRateLimit } from '../../lib/utils/rate-limiter'
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {

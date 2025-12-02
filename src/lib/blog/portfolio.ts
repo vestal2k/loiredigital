@@ -1,5 +1,5 @@
-import { getProjects, type SanityProject } from './sanity'
-import { urlForImage } from './sanity'
+import { getProjects, type SanityProject } from '../sanity'
+import { urlForImage } from '../sanity'
 
 // Type unifié pour les projets (statique + Sanity)
 export interface UnifiedProject {

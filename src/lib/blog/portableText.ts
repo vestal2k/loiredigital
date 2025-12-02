@@ -1,6 +1,6 @@
 import { toHTML } from '@portabletext/to-html'
 import type { PortableTextBlock } from '@portabletext/types'
-import { urlForImage } from './sanity'
+import { urlForImage } from '../sanity'
 
 // Configuration pour convertir le Portable Text de Sanity en HTML
 export function portableTextToHtml(blocks: PortableTextBlock[]): string {

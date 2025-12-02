@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content'
-import { getBlogPosts, type SanityBlogPost } from './sanity'
+import { getBlogPosts, type SanityBlogPost } from '../sanity'
 import { portableTextToHtml } from './portableText'
-import { urlForImage } from './sanity'
+import { urlForImage } from '../sanity'
 
 // Type unifié pour les posts (Astro + Sanity)
 export interface UnifiedBlogPost {

@@ -1,6 +1,5 @@
 import type { QuoteOptions } from '@/types/quote'
 import { calculateQuotePrice, getPackDetails, getMaintenancePlanDetails, getOptionDetails } from './calculatePrice'
-import { PRICING_OPTIONS } from '@/config/pricing'
 
 export async function generateQuotePDF(options: QuoteOptions): Promise<void> {
   // Chargement dynamique de jsPDF uniquement quand nécessaire

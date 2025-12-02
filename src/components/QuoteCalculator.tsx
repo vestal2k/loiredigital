@@ -1,4 +1,4 @@
-import { PRICING_PACKS, PRICING_OPTIONS, MAINTENANCE_PLANS } from '../config/pricing'
+import { PRICING_PACKS, PRICING_OPTIONS, MAINTENANCE_PLANS, PRICE_PER_EXTRA_PAGE } from '../config/pricing'
 import { useQuoteState, useQuoteCalculation } from '@/features/quote/hooks'
 import { generateQuotePDF } from '@/features/quote'
 
@@ -175,8 +175,6 @@ const QuoteCalculator = () => {
 
   // Get current selections for summary
   const currentPack = PRICING_PACKS.find((p) => p.id === options.packId)
-  const currentPrice = calculatePrice()
-  const currentMaintenance = getMaintenancePrice()
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -589,11 +587,11 @@ const QuoteCalculator = () => {
                 )}
 
                 {/* Maintenance */}
-                {currentMaintenance > 0 && (
+                {calculation.maintenancePrice > 0 && (
                   <div className="pb-4 border-b border-gray-200">
                     <div className="flex justify-between items-start">
                       <span className="text-sm text-gray-700">Maintenance</span>
-                      <span className="text-sm text-gray-700">{currentMaintenance}€/mois</span>
+                      <span className="text-sm text-gray-700">{calculation.maintenancePrice}€/mois</span>
                     </div>
                   </div>
                 )}
@@ -603,12 +601,12 @@ const QuoteCalculator = () => {
                   <div className="flex justify-between items-center">
                     <span className="text-lg font-display font-bold text-black">Total</span>
                     <span className="text-2xl font-display font-bold text-blue-600">
-                      {currentPrice.toLocaleString('fr-FR')}€
+                      {calculation.totalPrice.toLocaleString('fr-FR')}€
                     </span>
                   </div>
-                  {currentMaintenance > 0 && (
+                  {calculation.maintenancePrice > 0 && (
                     <p className="text-xs text-gray-500 mt-1 text-right">
-                      + {currentMaintenance}€/mois
+                      + {calculation.maintenancePrice}€/mois
                     </p>
                   )}
                 </div>
