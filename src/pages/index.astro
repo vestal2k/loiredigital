@@ -11,50 +11,50 @@ const processSteps = [
   {
     number: '01',
     title: 'Vous nous contactez',
-    description: 'Formulaire ou calculateur. Devis détaillé + plan d\'action sous 24h max.',
+    description: 'Formulaire ou calculateur. Devis détaillé + plan d\'action sous 24 h maximum.',
   },
   {
     number: '02',
-    title: 'On maquette',
-    description: 'Design sur-mesure pour VOTRE activité. Vous validez avant qu\'on code quoi que ce soit.',
+    title: 'Nous créons la maquette',
+    description: 'Design sur mesure pour votre activité. Vous validez avant que nous ne commencions le développement.',
   },
   {
     number: '03',
-    title: 'On développe',
-    description: 'Code propre, rapide, testé. Vous suivez l\'avancement en temps réel par email.',
+    title: 'Nous développons',
+    description: 'Code propre, rapide et testé. Vous suivez l\'avancement en temps réel par e-mail.',
   },
   {
     number: '04',
-    title: 'On lance',
-    description: 'Mise en ligne + formation express. Vous êtes autonome, on reste dispo si besoin.',
+    title: 'Nous lançons',
+    description: 'Mise en ligne + formation. Vous êtes autonome, nous restons disponibles si besoin.',
   },
 ]
 
 // FAQ data
 const faqItems = [
   {
-    question: 'Pourquoi vos prix sont bas ?',
-    answer: 'Process rodé = moins de temps perdu = prix juste. Pas de bureaux luxueux, pas de commerciaux, pas de réunions à rallonge. On fait du code, pas du PowerPoint.',
+    question: 'Pourquoi vos tarifs sont-ils compétitifs ?',
+    answer: 'Processus optimisé = efficacité maximale = tarifs justes. Nous privilégions le développement de qualité plutôt que les frais de structure élevés. Nos prix reflètent le travail réel nécessaire.',
   },
   {
-    question: 'C\'est vraiment sans appel ?',
-    answer: 'Oui. Tout se fait par email. Maquettes, validations, questions. C\'est plus clair, plus rapide, et vous gardez une trace de tout.',
+    question: 'Travaillez-vous vraiment par e-mail uniquement ?',
+    answer: 'Oui. Tout se fait par e-mail : maquettes, validations, questions. C\'est plus clair, plus efficace, et vous conservez une trace de tous les échanges.',
   },
   {
-    question: 'Combien de temps ça prend ?',
-    answer: 'Site vitrine classique : 2-3 semaines. Site plus complexe (e-commerce, fonctionnalités custom) : 4-6 semaines. Délais fixes, pas de "ça dépend".',
+    question: 'Quels sont les délais de réalisation ?',
+    answer: 'Site vitrine classique : 2-3 semaines. Site plus complexe (e-commerce, fonctionnalités avancées) : 4-6 semaines. Délais fixes et respectés.',
   },
   {
-    question: 'Je peux modifier mon site après ?',
-    answer: 'Oui. On vous forme sur les modifs basiques (textes, images). Pour les gros changements, maintenance à 29€/mois ou intervention ponctuelle.',
+    question: 'Puis-je modifier mon site après sa livraison ?',
+    answer: 'Oui. Nous vous formons sur les modifications basiques (textes, images). Pour les modifications importantes, nous proposons une maintenance à 29 €/mois ou des interventions ponctuelles.',
   },
   {
-    question: 'Vous faites du e-commerce ?',
-    answer: 'Oui, mais uniquement pour des catalogues simples (- de 50 produits). Au-delà, on vous oriente vers une solution adaptée.',
+    question: 'Créez-vous des sites e-commerce ?',
+    answer: 'Oui, pour des catalogues simples (jusqu\'à 50 produits). Pour des besoins plus complexes, nous vous orientons vers une solution adaptée à votre activité.',
   },
   {
-    question: 'Comment ça marche pour le paiement ?',
-    answer: '50% au démarrage (validation devis + maquette), 50% à la livraison. Virement ou chèque. Simple et carré.',
+    question: 'Comment se passe le paiement ?',
+    answer: '50 % au démarrage (validation du devis + maquette), 50 % à la livraison. Paiement par virement ou chèque. Simple et transparent.',
   },
 ]
 ---
@@ -65,9 +65,18 @@ const faqItems = [
 >
   <!-- Hero Section -->
   <Hero
-    title="Un site web qui fait vendre,"
-    subtitle="pas juste beau."
-    description="Sites rapides, design pro, prix honnêtes. Pour artisans et commerçants de Saint-Étienne qui veulent des résultats."
+    title="Sites web sur mesure"
+    subtitle="pour commerçants de Saint-Étienne et de la Loire"
+    description="Attirez plus de clients avec un site rapide, sécurisé et visible localement. À partir de 400 €."
+    primaryCTA={{
+      text: 'Demander un devis gratuit',
+      href: '/devis',
+    }}
+    secondaryCTA={{
+      text: 'Voir des exemples de sites',
+      href: '/portfolio',
+    }}
+    features={['Réponse garantie sous 24 h', 'Prix clairs, sans frais cachés', 'Livré en 2-3 semaines']}
   />
 
   <!-- Sticky Chapter Navigation -->
@@ -165,8 +174,7 @@ const faqItems = [
             </div>
             <h3 class="text-2xl font-bold text-black mb-3">Réactivité garantie</h3>
             <p class="text-sm text-gray-text leading-relaxed">
-              Devis détaillé sous 24h. Pas de "je vous rappelle", on répond direct avec un vrai plan
-              d'action.
+              Devis détaillé sous 24 h. Réponse garantie avec un vrai plan d'action, sans attente.
             </p>
           </div>
 
@@ -191,7 +199,7 @@ const faqItems = [
             </div>
             <h3 class="text-lg font-bold text-black mb-2">HTTPS automatique</h3>
             <p class="text-sm text-gray-text">
-              Cadenas vert dès le jour 1. Vos clients ont confiance, Google vous classe mieux.
+              Cadenas vert dès le jour 1. Vos clients ont confiance, Google vous positionne mieux.
             </p>
           </div>
 
@@ -214,10 +222,9 @@ const faqItems = [
                 ></path>
               </svg>
             </div>
-            <h3 class="text-lg font-bold text-black mb-2">Prix cash</h3>
+            <h3 class="text-lg font-bold text-black mb-2">Prix clairs et définitifs</h3>
             <p class="text-sm text-gray-text">
-              Le prix du devis = le prix final. Pas de frais cachés, pas de "ah mais ça c'est en
-              plus".
+              Le prix du devis = le prix final. Pas de frais cachés, pas de mauvaises surprises.
             </p>
           </div>
 
@@ -235,10 +242,10 @@ const faqItems = [
                 ></path>
               </svg>
             </div>
-            <h3 class="text-lg font-bold mb-2">100% sur-mesure</h3>
+            <h3 class="text-lg font-bold mb-2">100% sur mesure</h3>
             <p class="text-sm text-blue-100">
-              Votre site ressemble à VOTRE business, pas au template WordPress de votre concurrent.
-              Design unique garanti.
+              Votre site ressemble à votre activité, pas à un template générique.
+              Design unique et personnalisé garanti.
             </p>
           </div>
 
@@ -286,9 +293,144 @@ const faqItems = [
             </div>
             <h3 class="text-lg font-bold text-black mb-3">Tout par écrit</h3>
             <p class="text-sm text-gray-text leading-relaxed">
-              Zéro call. Tout par email. Vous avez une trace de chaque échange, chaque validation.
+              Tout se fait par e-mail, simplement. Vous conservez une trace de chaque échange, chaque validation.
               Rien ne se perd, tout est clair.
             </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pourquoi nous faire confiance -->
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2
+            class="text-4xl md:text-5xl font-black text-black mb-4"
+            style="letter-spacing: -0.02em;"
+          >
+            Pourquoi nous faire confiance ?
+          </h2>
+          <p class="text-lg text-gray-text max-w-2xl mx-auto">
+            Transparence, professionnalisme et expertise au service de votre activité.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="card-minimal p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-black mb-2">Entreprise déclarée</h3>
+                <p class="text-sm text-gray-text leading-relaxed mb-2">
+                  Freelance officiellement enregistré avec SIRET visible.
+                </p>
+                <p class="text-xs text-gray-600 font-mono">
+                  SIRET : [À compléter]
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-minimal p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-black mb-2">Basé à Saint-Étienne</h3>
+                <p class="text-sm text-gray-text leading-relaxed">
+                  Proximité locale, connaissance du tissu économique de la Loire.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-minimal p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-black mb-2">Process clair</h3>
+                <p class="text-sm text-gray-text leading-relaxed">
+                  Étapes définies, sans frais cachés. Vous savez exactement ce que vous payez.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-minimal p-6">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-black mb-2">Délais respectés</h3>
+                <p class="text-sm text-gray-text leading-relaxed">
+                  Engagement sur les délais annoncés. Transparence totale sur l'avancement.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-minimal p-6 md:col-span-2">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  ></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-black mb-2">Support par e-mail</h3>
+                <p class="text-sm text-gray-text leading-relaxed">
+                  Accompagnement complet par e-mail. Réponse sous 24 h pour toutes vos questions.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -767,9 +909,8 @@ const faqItems = [
           <p
             class="text-sm text-gray-600 max-w-3xl mx-auto bg-white rounded-lg p-4 border border-gray-100"
           >
-            <strong class="text-gray-800">Honnêtement ?</strong> Le marché tourne autour de 1 500-4 000€
-            pour un site vitrine complet. Nos tarifs sont justes et transparents. Pas de miracle, juste un
-            process bien rodé et une expertise solide.
+            <strong class="text-gray-800">Notre engagement :</strong> Le marché des sites vitrines se situe généralement entre 1 500 et 4 000 €.
+            Nos tarifs sont justes et transparents, basés sur un processus optimisé et une expertise solide.
           </p>
         </div>
 
@@ -973,17 +1114,17 @@ const faqItems = [
             class="text-3xl md:text-4xl font-black text-black mb-6"
             style="letter-spacing: -0.02em;"
           >
-            Zéro appel, zéro réunion
+            Tout se fait par e-mail, simplement
           </h3>
 
           <p class="text-xl text-gray-text leading-relaxed mb-8 max-w-2xl mx-auto">
-            Vous remplissez le formulaire. On vous envoie devis + maquette sous 24h. Vous validez.
-            On code. Vous lancez.
-            <span class="font-bold text-black">Fini les meetings à rallonge.</span>
+            Vous remplissez le formulaire. Nous vous envoyons devis + maquette sous 24 h. Vous validez.
+            Nous créons votre site. Vous le lancez.
+            <span class="font-bold text-black">Efficace et sans réunions interminables.</span>
           </p>
 
           <a href="/devis" class="btn-blue text-lg shadow-lg shadow-blue-600/30">
-            Devis gratuit – Réponse sous 24h
+            Devis gratuit – Réponse sous 24 h
           </a>
         </div>
       </div>

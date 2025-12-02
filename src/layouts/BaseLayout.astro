@@ -452,16 +452,16 @@ const jsonLdSchema = {
       // Configure Crisp after it loads
       window.$crisp.push(['on', 'chat:opened', function() {
         // Send welcome message when chat is opened
-        window.$crisp.push(['do', 'message:show', ['text', '👋 Bonjour ! Comment puis-je vous aider avec votre projet web ?']])
+        window.$crisp.push(['do', 'message:show', ['text', 'Bonjour ! Besoin d\'aide pour choisir votre formule ? Nous vous répondons sous 24 h.']])
       }])
 
-      // Auto-show message after user has been on site for 15 seconds
+      // Auto-show message after user has been on site for 45 seconds (less aggressive)
       setTimeout(function() {
         if (!sessionStorage.getItem('crisp_welcome_shown')) {
-          window.$crisp.push(['do', 'message:show', ['text', '💬 Une question sur nos services ? Je suis là pour vous aider !']])
+          window.$crisp.push(['do', 'message:show', ['text', 'Une question sur nos tarifs ou services ? N\'hésitez pas à nous contacter.']])
           sessionStorage.setItem('crisp_welcome_shown', 'true')
         }
-      }, 15000)
+      }, 45000)
 
       // Set company info
       window.$crisp.push(['set', 'session:data', [[
