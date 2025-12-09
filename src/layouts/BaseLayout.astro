@@ -76,7 +76,7 @@ const jsonLdSchema = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
 
@@ -107,36 +107,36 @@ const jsonLdSchema = {
 
     <title>{title}</title>
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-screen flex flex-col bg-creme">
     <header
-      class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm"
+      class="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gris-doux"
     >
-      <nav class="container mx-auto px-4 py-4">
+      <nav class="container mx-auto px-6 py-5">
         <div class="flex items-center justify-between">
           <a href="/" class="flex items-center space-x-3 group">
             <img
               src="/logo.svg"
               alt="Logo Loire Digital - Retour à l'accueil"
-              class="w-9 h-9 group-hover:scale-110 transition-transform"
-              width="36"
-              height="36"
+              class="w-10 h-10 group-hover:scale-105 transition-transform duration-300"
+              width="40"
+              height="40"
             />
-            <span class="text-xl font-display font-bold text-black">Loire Digital</span>
+            <span class="text-xl font-serif font-semibold text-noir tracking-tight">Loire Digital</span>
           </a>
 
-          <ul class="hidden md:flex items-center space-x-1">
+          <ul class="hidden md:flex items-center space-x-2">
             <li><a href="/#avantages" class="nav-link">Avantages</a></li>
             <li><a href="/#process" class="nav-link">Process</a></li>
             <li><a href="/#realisations" class="nav-link">Réalisations</a></li>
             <li><a href="/#tarifs" class="nav-link">Tarifs</a></li>
             <li><a href="/blog" class="nav-link">Blog</a></li>
-            <li><a href="/#contact" class="btn-blue ml-4">Contact</a></li>
+            <li><a href="/#contact" class="btn-gold ml-6">Contact</a></li>
           </ul>
 
           <!-- Mobile menu button -->
           <button
             id="mobile-menu-button"
-            class="md:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600"
+            class="md:hidden p-2 text-charbon hover:bg-creme-dark rounded-elegant transition-colors focus:outline-none focus:ring-2 focus:ring-or"
             aria-label="Ouvrir le menu de navigation"
             aria-expanded="false"
             aria-controls="mobile-menu"
@@ -151,7 +151,7 @@ const jsonLdSchema = {
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="2"
+                stroke-width="1.5"
                 d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
             <svg
@@ -164,7 +164,7 @@ const jsonLdSchema = {
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="2"
+                stroke-width="1.5"
                 d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
@@ -174,49 +174,49 @@ const jsonLdSchema = {
         <div
           id="mobile-menu"
           class="hidden md:hidden fixed inset-0 bg-white z-40 flex flex-col"
-          style="top: 73px;"
+          style="top: 81px;"
         >
-          <nav class="flex-1 overflow-y-auto px-4 py-8">
-            <ul class="flex flex-col space-y-1">
+          <nav class="flex-1 overflow-y-auto px-6 py-8">
+            <ul class="flex flex-col space-y-2">
               <li>
                 <a
                   href="/#avantages"
-                  class="mobile-menu-link block px-6 py-4 text-lg text-gray-700 hover:bg-gray-50 rounded-xl transition-all font-medium"
+                  class="mobile-menu-link block px-6 py-4 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium"
                   >Avantages</a
                 >
               </li>
               <li>
                 <a
                   href="/#process"
-                  class="mobile-menu-link block px-6 py-4 text-lg text-gray-700 hover:bg-gray-50 rounded-xl transition-all font-medium"
+                  class="mobile-menu-link block px-6 py-4 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium"
                   >Process</a
                 >
               </li>
               <li>
                 <a
                   href="/#realisations"
-                  class="mobile-menu-link block px-6 py-4 text-lg text-gray-700 hover:bg-gray-50 rounded-xl transition-all font-medium"
+                  class="mobile-menu-link block px-6 py-4 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium"
                   >Réalisations</a
                 >
               </li>
               <li>
                 <a
                   href="/#tarifs"
-                  class="mobile-menu-link block px-6 py-4 text-lg text-gray-700 hover:bg-gray-50 rounded-xl transition-all font-medium"
+                  class="mobile-menu-link block px-6 py-4 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium"
                   >Tarifs</a
                 >
               </li>
               <li>
                 <a
                   href="/blog"
-                  class="mobile-menu-link block px-6 py-4 text-lg text-gray-700 hover:bg-gray-50 rounded-xl transition-all font-medium"
+                  class="mobile-menu-link block px-6 py-4 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium"
                   >Blog</a
                 >
               </li>
-              <li class="pt-4">
+              <li class="pt-6">
                 <a
                   href="/#contact"
-                  class="mobile-menu-link block px-6 py-4 text-lg text-white bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition-all text-center"
+                  class="mobile-menu-link btn-gold block text-center"
                   >Contact</a
                 >
               </li>
@@ -230,121 +230,114 @@ const jsonLdSchema = {
       <slot />
     </main>
 
-    <footer class="bg-gray-50 border-t border-gray-200 text-gray-600 py-16">
-      <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <footer class="bg-noir text-white py-20">
+      <div class="container mx-auto px-6">
+        <!-- Séparateur doré -->
+        <div class="separator-gold-center mb-16"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16">
           <div>
-            <div class="flex items-center space-x-3 mb-4">
+            <div class="flex items-center space-x-3 mb-6">
               <img src="/logo.svg" alt="Logo Loire Digital - Studio digital à Saint-Étienne" class="w-10 h-10" loading="lazy" width="40" height="40" />
-              <span class="text-xl font-display font-bold text-black">Loire Digital</span>
+              <span class="text-xl font-serif font-semibold text-white">Loire Digital</span>
             </div>
-            <p class="text-sm text-gray-600">Studio digital premium basé à Saint-Étienne.</p>
+            <p class="text-gris-moyen text-sm leading-relaxed">Studio digital premium basé à Saint-Étienne. Nous créons des sites web élégants pour les commerces locaux.</p>
           </div>
 
           <div>
-            <p class="text-black font-display font-semibold mb-4">Navigation</p>
+            <p class="text-elegant-caps text-or mb-6">Navigation</p>
             <ul class="space-y-3 text-sm">
               <li>
-                <a href="/#avantages" class="hover:text-blue-600 transition-colors">Avantages</a>
+                <a href="/#avantages" class="text-gris-moyen hover:text-or transition-colors duration-300">Avantages</a>
               </li>
               <li>
-                <a href="/#process" class="hover:text-blue-600 transition-colors">Process</a>
+                <a href="/#process" class="text-gris-moyen hover:text-or transition-colors duration-300">Process</a>
               </li>
               <li>
-                <a href="/#realisations" class="hover:text-blue-600 transition-colors">Réalisations</a>
+                <a href="/#realisations" class="text-gris-moyen hover:text-or transition-colors duration-300">Réalisations</a>
               </li>
               <li>
-                <a href="/#tarifs" class="hover:text-blue-600 transition-colors">Tarifs</a>
+                <a href="/#tarifs" class="text-gris-moyen hover:text-or transition-colors duration-300">Tarifs</a>
               </li>
-              <li><a href="/blog" class="hover:text-blue-600 transition-colors">Blog</a></li>
+              <li><a href="/blog" class="text-gris-moyen hover:text-or transition-colors duration-300">Blog</a></li>
             </ul>
           </div>
 
           <div>
-            <p class="text-black font-display font-semibold mb-4">Liens utiles</p>
+            <p class="text-elegant-caps text-or mb-6">Liens utiles</p>
             <ul class="space-y-3 text-sm">
               <li>
-                <a href="/devis" class="hover:text-blue-600 transition-colors"
-                  >Demander un devis</a
-                >
+                <a href="/devis" class="text-gris-moyen hover:text-or transition-colors duration-300">Demander un devis</a>
               </li>
               <li>
-                <a href="/#contact" class="hover:text-blue-600 transition-colors"
-                  >Contact</a
-                >
+                <a href="/#contact" class="text-gris-moyen hover:text-or transition-colors duration-300">Contact</a>
               </li>
               <li>
-                <a href="/espace-client" class="hover:text-blue-600 transition-colors">Espace client</a>
+                <a href="/espace-client" class="text-gris-moyen hover:text-or transition-colors duration-300">Espace client</a>
               </li>
               <li>
-                <a href="/paiement" class="hover:text-blue-600 transition-colors"
-                  >Paiement en ligne</a
-                >
+                <a href="/paiement" class="text-gris-moyen hover:text-or transition-colors duration-300">Paiement en ligne</a>
               </li>
             </ul>
           </div>
 
           <div>
-            <p class="text-black font-display font-semibold mb-4">Contact</p>
-            <ul class="space-y-3 text-sm">
-              <li class="flex items-center space-x-2">
+            <p class="text-elegant-caps text-or mb-6">Contact</p>
+            <ul class="space-y-4 text-sm">
+              <li class="flex items-center space-x-3">
                 <svg
-                  class="w-5 h-5 text-blue-600"
+                  class="w-5 h-5 text-or"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  stroke-width="1.5"
                 >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
                   ></path>
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                 </svg>
-                <span>Saint-Étienne, Loire</span>
+                <span class="text-gris-moyen">Saint-Étienne, Loire</span>
               </li>
-              <li class="flex items-center space-x-2">
+              <li class="flex items-center space-x-3">
                 <svg
-                  class="w-5 h-5 text-blue-600"
+                  class="w-5 h-5 text-or"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
+                  stroke-width="1.5"
                 >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   ></path>
                 </svg>
                 <a
                   href="mailto:contact@loiredigital.fr"
-                  class="hover:text-blue-600 transition-colors">contact@loiredigital.fr</a
+                  class="text-gris-moyen hover:text-or transition-colors duration-300">contact@loiredigital.fr</a
                 >
               </li>
             </ul>
           </div>
         </div>
 
-        <div class="border-t border-gray-200 mt-12 pt-8 text-center">
-          <div class="flex flex-wrap justify-center gap-6 mb-4 text-sm">
-            <a href="/mentions-legales" class="text-gray-600 hover:text-blue-600 transition-colors"
-              >Mentions légales</a
-            >
-            <a href="/cgv" class="text-gray-600 hover:text-blue-600 transition-colors">CGV</a>
-            <a
-              href="/politique-confidentialite"
-              class="text-gray-600 hover:text-blue-600 transition-colors"
-              >Politique de confidentialité</a
-            >
+        <div class="border-t border-noir-light mt-16 pt-8">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="flex flex-wrap justify-center md:justify-start gap-6 text-sm">
+              <a href="/mentions-legales" class="text-gris-moyen hover:text-or transition-colors duration-300">Mentions légales</a>
+              <a href="/cgv" class="text-gris-moyen hover:text-or transition-colors duration-300">CGV</a>
+              <a href="/politique-confidentialite" class="text-gris-moyen hover:text-or transition-colors duration-300">Politique de confidentialité</a>
+            </div>
+            <div class="text-center md:text-right">
+              <p class="text-sm text-gris-moyen">&copy; {currentYear} Loire Digital. Tous droits réservés.</p>
+            </div>
           </div>
-          <p class="text-sm text-gray-600 mb-2">&copy; {currentYear} Loire Digital. Tous droits réservés.</p>
-          <p class="text-xs text-gray-500">SIRET : [À compléter] • Micro-entreprise basée à Saint-Étienne</p>
         </div>
       </div>
     </footer>
