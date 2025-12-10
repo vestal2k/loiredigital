@@ -110,7 +110,7 @@ const staticProjects: UnifiedProject[] = [
     challenge:
       'Lancer une boutique en ligne performante sans les coûts prohibitifs d\'une grosse plateforme e-commerce.',
     solution:
-      'Site e-commerce léger et rapide avec catalogue photo soigné, panier simplifié, paiement sécurisé Stripe, et optimisation mobile-first pour capter les achats sur smartphone.',
+      'Site e-commerce léger et rapide avec catalogue photo soigné, panier simplifié, paiement sécurisé, et optimisation mobile-first pour capter les achats sur smartphone.',
     results: [
       '€12,000 de CA en ligne le premier mois',
       '65% des ventes sur mobile',

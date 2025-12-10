@@ -436,7 +436,6 @@ async function checkEnvironmentVariables() {
       'PUBLIC_SANITY_DATASET',
       'SANITY_API_TOKEN',
       'RESEND_API_KEY',
-      'STRIPE_SECRET_KEY',
     ]
 
     vars.forEach((varName) => {

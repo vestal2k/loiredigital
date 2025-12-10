@@ -86,12 +86,6 @@ export default defineType({
       },
     }),
     defineField({
-      name: 'stripeSessionId',
-      title: 'Stripe Session ID',
-      type: 'string',
-      hidden: true,
-    }),
-    defineField({
       name: 'startDate',
       title: 'Date de début',
       type: 'datetime',

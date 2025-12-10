@@ -35,7 +35,6 @@ export interface SanityClientProject {
   totalAmount: number
   paidAmount: number
   paymentType?: 'full' | 'deposit'
-  stripeSessionId?: string
   startDate?: string
   estimatedDelivery?: string
   deliveryDate?: string
@@ -142,7 +141,6 @@ export async function createClientProject(
     totalAmount: number
     paidAmount?: number
     paymentType?: 'full' | 'deposit'
-    stripeSessionId?: string
   },
 ): Promise<SanityClientProject> {
   const doc = {

@@ -181,15 +181,13 @@ export const MAINTENANCE_PLANS = [
  * Payment options info
  */
 export const PAYMENT_INFO = {
-  installments3x: {
-    name: 'Paiement en 3 fois',
-    description: 'Sans frais via Stripe',
-    minAmount: 600,
+  deposit: {
+    name: 'Acompte 50%',
+    description: '50% au lancement, 50% à la livraison',
   },
-  installments6x: {
-    name: 'Paiement en 6 fois',
-    description: 'Sans frais via Stripe',
-    minAmount: 1200,
+  methods: {
+    name: 'Moyens de paiement',
+    description: 'Virement bancaire ou chèque',
   },
 }
 
