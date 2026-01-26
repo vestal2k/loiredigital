@@ -7,6 +7,21 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {
     const data = await request.json()
 
+    // Honeypot anti-spam check
+    if (data._gotcha) {
+      console.log('Spam detected via honeypot')
+      return new Response(
+        JSON.stringify({
+          success: true,
+          message: 'Votre message a ete envoye avec succes.',
+        }),
+        {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      )
+    }
+
     // Validate with Zod first (before rate limiting)
     const validationResult = contactSchema.safeParse(data)
 

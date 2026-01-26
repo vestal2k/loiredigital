@@ -1477,6 +1477,11 @@ const faqItems = [
 
         <div class="card-elegant-highlight p-8 md:p-12 corner-decoration">
           <form action="/api/contact" method="POST" class="form-elegant">
+            <!-- Honeypot anti-spam (invisible pour les humains) -->
+            <div style="position: absolute; left: -9999px;" aria-hidden="true">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label for="name">

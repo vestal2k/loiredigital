@@ -474,14 +474,14 @@ const jsonLdSchema = {
       // Configure Crisp before loading
       window.$crisp.push(['safe', true]) // Enable safe mode for GDPR compliance
 
-      // Load Crisp widget
-      ;(function () {
+      // Lazy load Crisp after 3 seconds for better initial page performance
+      setTimeout(function() {
         var d = document
         var s = d.createElement('script')
         s.src = 'https://client.crisp.chat/l.js'
         s.async = 1
         d.getElementsByTagName('head')[0].appendChild(s)
-      })()
+      }, 3000)
 
       // Configure Crisp after it loads
       window.$crisp.push(['on', 'chat:opened', function() {
