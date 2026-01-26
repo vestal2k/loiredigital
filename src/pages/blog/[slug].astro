@@ -2,23 +2,37 @@
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import Icon from '../../components/Icon.astro'
 import CTABlock from '../../components/CTABlock.astro'
+import { getCollection, getEntry } from 'astro:content'
 import { getAllBlogPosts } from '../../lib/blog'
 
 export async function getStaticPaths() {
-  const allPosts = await getAllBlogPosts()
-  return allPosts.map((post) => ({
-    params: { slug: post.slug },
-    props: { post },
-  }))
+  const posts = await getCollection('blog')
+  return posts
+    .filter((post) => !post.data.draft)
+    .map((post) => ({
+      params: { slug: post.slug },
+    }))
 }
 
-const { post } = Astro.props
+const { slug } = Astro.params
+const entry = await getEntry('blog', slug)
 
-// Si le post vient d'Astro Content Collections, on doit le rendre
-let AstroContent
-if (post._source === 'astro' && post._raw) {
-  const { Content } = await post._raw.render()
-  AstroContent = Content
+if (!entry) {
+  return Astro.redirect('/blog')
+}
+
+const { Content } = await entry.render()
+
+const post = {
+  slug: entry.slug,
+  title: entry.data.title,
+  description: entry.data.description,
+  pubDate: entry.data.pubDate,
+  author: entry.data.author,
+  tags: entry.data.tags,
+  image: entry.data.image,
+  ogImage: entry.data.ogImage,
+  keywords: entry.data.keywords,
 }
 
 const formatDate = (date: Date) => {
@@ -154,11 +168,7 @@ const ogImageUrl = post.ogImage || post.image || '/og-image.jpg'
           prose-blockquote:border-l-or prose-blockquote:border-l-4 prose-blockquote:text-charbon prose-blockquote:italic prose-blockquote:pl-6
           prose-hr:border-gris-doux"
         >
-          {post._source === 'astro' && AstroContent ? (
-            <AstroContent />
-          ) : (
-            <Fragment set:html={post.content} />
-          )}
+          <Content />
         </div>
 
         <!-- Share Buttons -->
