@@ -1,4 +1,3 @@
-// Type unifié pour les projets
 export interface UnifiedProject {
   slug: string
   title: string
@@ -16,7 +15,6 @@ export interface UnifiedProject {
   _source: 'static'
 }
 
-// Projets statiques
 const staticProjects: UnifiedProject[] = [
   {
     slug: 'boulangerie-artisanale',
@@ -140,7 +138,6 @@ const staticProjects: UnifiedProject[] = [
   },
 ]
 
-// Récupérer tous les projets
 export async function getAllProjects(): Promise<UnifiedProject[]> {
   return staticProjects.sort((a, b) => {
     const orderA = a.order ?? 999
@@ -149,7 +146,6 @@ export async function getAllProjects(): Promise<UnifiedProject[]> {
   })
 }
 
-// Récupérer un projet spécifique par slug
 export async function getProjectBySlug(slug: string): Promise<UnifiedProject | null> {
   return staticProjects.find((p) => p.slug === slug) || null
 }

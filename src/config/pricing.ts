@@ -1,8 +1,3 @@
-/**
- * Pricing configuration for Loire Digital services
- * Single source of truth for all pricing across the site
- */
-
 export interface PricingPack {
   id: string
   name: string
@@ -26,9 +21,6 @@ export interface PricingOption {
   description: string
 }
 
-/**
- * Main pricing packs
- */
 export const PRICING_PACKS: PricingPack[] = [
   {
     id: 'starter',
@@ -110,14 +102,8 @@ export const PRICING_PACKS: PricingPack[] = [
   },
 ]
 
-/**
- * Price per additional page beyond what's included in the pack
- */
 export const PRICE_PER_EXTRA_PAGE = 100
 
-/**
- * Optional features/addons with fixed prices
- */
 export const PRICING_OPTIONS: PricingOption[] = [
   {
     id: 'blog',
@@ -151,9 +137,6 @@ export const PRICING_OPTIONS: PricingOption[] = [
   },
 ]
 
-/**
- * Maintenance plans (monthly)
- */
 export const MAINTENANCE_PLANS = [
   {
     id: 'basic',
@@ -177,9 +160,6 @@ export const MAINTENANCE_PLANS = [
   },
 ]
 
-/**
- * Payment options info
- */
 export const PAYMENT_INFO = {
   deposit: {
     name: 'Acompte 50%',
@@ -191,9 +171,6 @@ export const PAYMENT_INFO = {
   },
 }
 
-/**
- * Comparison criteria for pricing table
- */
 export interface ComparisonCriterion {
   id: string
   label: string
@@ -254,9 +231,6 @@ export const COMPARISON_CRITERIA: ComparisonCriterion[] = [
   },
 ]
 
-/**
- * Helper function to calculate total price for a custom quote
- */
 export function calculateQuoteTotal(
   packId: string,
   extraPages: number,
@@ -268,21 +242,16 @@ export function calculateQuoteTotal(
 
   let total = pack.basePrice
 
-  // Add extra pages cost
   if (extraPages > 0) {
     total += extraPages * PRICE_PER_EXTRA_PAGE
   }
 
-  // Add options cost
   optionIds.forEach((optionId) => {
     const option = PRICING_OPTIONS.find((o) => o.id === optionId)
     if (option) {
       total += option.price
     }
   })
-
-  // Note: maintenance is not included in initial total
-  // as it's a recurring monthly cost
 
   return total
 }

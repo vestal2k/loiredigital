@@ -21,11 +21,9 @@ export function calculateQuotePrice(options: QuoteOptions): QuoteCalculation {
 
   const basePrice = pack.basePrice
 
-  // Calculate extra pages beyond what's included in the pack
   const extraPages = Math.max(0, options.pages - pack.pagesIncluded)
   const extraPagesPrice = extraPages * PRICE_PER_EXTRA_PAGE
 
-  // Add selected options
   let optionsPrice = 0
   options.optionIds.forEach((optionId) => {
     const option = PRICING_OPTIONS.find((o) => o.id === optionId)
@@ -36,7 +34,6 @@ export function calculateQuotePrice(options: QuoteOptions): QuoteCalculation {
 
   const totalPrice = basePrice + extraPagesPrice + optionsPrice
 
-  // Calculate maintenance price
   const maintenancePlan = MAINTENANCE_PLANS.find((p) => p.id === options.maintenance)
   const maintenancePrice = maintenancePlan ? maintenancePlan.pricePerMonth : 0
 

@@ -7,7 +7,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {
     const data = await request.json()
 
-    // Honeypot anti-spam check
     if (data._gotcha) {
       console.log('Spam detected via honeypot')
       return new Response(
@@ -22,7 +21,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       )
     }
 
-    // Validate with Zod first (before rate limiting)
     const validationResult = contactSchema.safeParse(data)
 
     if (!validationResult.success) {
@@ -41,7 +39,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
     const { name, email, phone, project, message } = validationResult.data
 
-    // Rate limiting: max 5 requests per minute per IP (after validation)
     const ip = clientAddress || 'unknown'
     if (!checkRateLimit(ip, 5, 60000)) {
       return new Response(
@@ -56,7 +53,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       )
     }
 
-    // Map project types to French labels
     const projectLabels: Record<string, string> = {
       creation: 'Création de site',
       refonte: 'Refonte',
@@ -65,7 +61,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       autre: 'Autre',
     }
 
-    // Check if Resend API key is configured
     if (!import.meta.env.RESEND_API_KEY) {
       console.warn('RESEND_API_KEY not configured. Email not sent.')
       console.log('Contact form submission:', { name, email, phone, project, message })
@@ -83,7 +78,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       )
     }
 
-    // Send email using Resend
     try {
       const resend = new Resend(import.meta.env.RESEND_API_KEY)
       const emailResult = await resend.emails.send({
@@ -120,7 +114,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       }
     )
   } catch (error) {
-    // Enhanced error logging
     console.error('Error processing contact form:', {
       error: error instanceof Error ? error.message : 'Unknown error',
       stack: error instanceof Error ? error.stack : undefined,
@@ -140,7 +133,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   }
 }
 
-// Generate email HTML
 function generateContactEmailHTML(data: {
   name: string
   email: string
@@ -217,7 +209,7 @@ function generateContactEmailHTML(data: {
       </head>
       <body>
         <div class="header">
-          <h1>📧 Nouveau message de contact</h1>
+          <h1>Nouveau message de contact</h1>
         </div>
         <div class="content">
           <div class="field">

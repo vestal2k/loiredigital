@@ -7,7 +7,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {
     const data = await request.json()
 
-    // Validate with Zod schema first (before rate limiting)
     const validationResult = quoteSchema.safeParse(data)
 
     if (!validationResult.success) {
@@ -26,7 +25,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
 
     const validData = validationResult.data
 
-    // Rate limiting: max 5 requests per minute per IP (after validation)
     const ip = clientAddress || 'unknown'
     if (!checkRateLimit(ip, 5, 60000)) {
       return new Response(
@@ -41,7 +39,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       )
     }
 
-    // Check if Resend API key is configured
     if (!import.meta.env.RESEND_API_KEY) {
       console.warn('RESEND_API_KEY not configured. Email not sent.')
       console.log('Quote request received:', {
@@ -62,7 +59,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       )
     }
 
-    // Send email using Resend
     try {
       const resend = new Resend(import.meta.env.RESEND_API_KEY)
       const emailResult = await resend.emails.send({
@@ -93,7 +89,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       }
     )
   } catch (error) {
-    // Enhanced error logging
     console.error('Error processing quote request:', {
       error: error instanceof Error ? error.message : 'Unknown error',
       stack: error instanceof Error ? error.stack : undefined,
@@ -113,7 +108,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
   }
 }
 
-// Helper function to generate email HTML
 function generateQuoteEmailHTML(data: {
   name: string
   email: string
@@ -125,14 +119,12 @@ function generateQuoteEmailHTML(data: {
   totalPrice: number
   message?: string
 }): string {
-  // Map pack IDs to French labels
   const packLabels: Record<string, string> = {
     vitrine: 'Vitrine',
     business: 'Business',
     premium: 'Premium',
   }
 
-  // Map maintenance types to French labels
   const maintenanceLabels: Record<string, string> = {
     none: 'Aucune',
     essential: 'Essentielle',
@@ -220,7 +212,7 @@ function generateQuoteEmailHTML(data: {
       </head>
       <body>
         <div class="header">
-          <h1>💼 Nouvelle demande de devis</h1>
+          <h1>Nouvelle demande de devis</h1>
         </div>
         <div class="content">
           <div class="field">

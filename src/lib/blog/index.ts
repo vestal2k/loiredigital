@@ -1,6 +1,5 @@
 import { getCollection } from 'astro:content'
 
-// Type unifié pour les posts
 export interface UnifiedBlogPost {
   slug: string
   title: string
@@ -16,7 +15,6 @@ export interface UnifiedBlogPost {
   _raw?: any
 }
 
-// Récupérer tous les posts depuis Astro Content Collections
 export async function getAllBlogPosts(): Promise<UnifiedBlogPost[]> {
   try {
     const astroPosts = await getCollection('blog')
@@ -42,7 +40,6 @@ export async function getAllBlogPosts(): Promise<UnifiedBlogPost[]> {
   }
 }
 
-// Récupérer un post spécifique par slug
 export async function getBlogPostBySlug(slug: string): Promise<UnifiedBlogPost | null> {
   try {
     const astroPosts = await getCollection('blog')
