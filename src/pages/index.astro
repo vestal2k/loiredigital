@@ -808,19 +808,81 @@ const faqItems = [
         </div>
 
         <!-- Maintenance -->
-        <div class="mt-12 text-center bg-white rounded-xl p-6 border border-gray-100 max-w-2xl mx-auto">
-          <div class="flex items-center justify-center gap-6 flex-wrap">
-            <div>
-              <h4 class="text-lg font-bold text-black">{MAINTENANCE_PLANS[0].name}</h4>
-              <p class="text-sm text-gray-600">
-                {MAINTENANCE_PLANS[0].features.join(' • ')}
-              </p>
-            </div>
-            <div>
-              <div class="text-4xl font-black text-blue-600">
-                {MAINTENANCE_PLANS[0].pricePerMonth}€/mois
+        <div class="mt-16 max-w-3xl mx-auto">
+          <div class="text-center mb-8">
+            <span class="text-elegant-caps text-or tracking-widest mb-4 block">Optionnel</span>
+            <h3 class="text-2xl md:text-3xl font-serif font-bold text-noir">Maintenance mensuelle</h3>
+          </div>
+
+          <div class="card-elegant p-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+              <div>
+                <h4 class="text-xl font-serif font-bold text-noir mb-2">{MAINTENANCE_PLANS[0].name}</h4>
+                <p class="text-charbon">Gardez votre site a jour et securise</p>
               </div>
-              <p class="text-xs text-gray-600">{MAINTENANCE_PLANS[0].description}</p>
+              <div class="text-center">
+                <div class="text-4xl font-serif font-bold text-or">{MAINTENANCE_PLANS[0].pricePerMonth}EUR</div>
+                <p class="text-sm text-charbon">par mois, sans engagement</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <p class="text-sm font-bold text-noir mb-3 flex items-center gap-2">
+                  <svg class="w-4 h-4 text-logo-vert" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Inclus
+                </p>
+                <ul class="space-y-2 text-sm text-charbon">
+                  <li class="flex items-start gap-2">
+                    <span class="text-or">•</span>
+                    <span>1h de modifications par mois (textes, images)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-or">•</span>
+                    <span>Mises a jour techniques mensuelles</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-or">•</span>
+                    <span>Sauvegardes hebdomadaires</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-or">•</span>
+                    <span>Support email (reponse sous 48h)</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-or">•</span>
+                    <span>Certificat SSL renouvele</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="text-sm font-bold text-noir mb-3 flex items-center gap-2">
+                  <svg class="w-4 h-4 text-gris-moyen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  Non inclus
+                </p>
+                <ul class="space-y-2 text-sm text-gris-moyen">
+                  <li class="flex items-start gap-2">
+                    <span>•</span>
+                    <span>Ajout de nouvelles pages</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span>•</span>
+                    <span>Refonte graphique</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span>•</span>
+                    <span>Developpement de fonctionnalites</span>
+                  </li>
+                </ul>
+                <p class="text-xs text-charbon mt-4 italic">
+                  Ces services sont disponibles sur devis
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -1463,7 +1525,7 @@ const faqItems = [
                 type="text"
                 id="company"
                 name="company"
-                placeholder="Boulangerie Dupont, Salon Marie, etc."
+                placeholder="Ex: Boulangerie, Salon de coiffure, Plombier..."
               />
             </div>
 
@@ -1496,9 +1558,12 @@ const faqItems = [
 
             <button
               type="submit"
-              class="btn-gold w-full justify-center text-lg py-4 shadow-lg animate-pulse-gold"
+              class="btn-gold w-full justify-center text-lg py-4 shadow-lg hover:shadow-or/40 hover:scale-[1.02] transition-all duration-300"
             >
-              Envoyer ma demande
+              Obtenir mon devis gratuit
+              <svg class="w-5 h-5 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </button>
 
             <p class="text-xs text-center text-charbon">

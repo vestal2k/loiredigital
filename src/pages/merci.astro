@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="Merci pour votre demande | Loire Digital"
+  description="Votre demande a bien ete envoyee. Nous vous repondons sous 24h."
+>
+  <section class="min-h-[80vh] flex items-center justify-center section-creme">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto text-center">
+        <div class="w-20 h-20 mx-auto mb-8 rounded-full bg-logo-vert/10 flex items-center justify-center">
+          <svg class="w-10 h-10 text-logo-vert" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl font-serif font-bold text-noir mb-6">
+          Merci pour votre demande
+        </h1>
+
+        <div class="separator-gold-center mb-8"></div>
+
+        <p class="text-xl text-charbon mb-8 leading-relaxed">
+          Votre message a bien ete envoye. Je vous reponds sous <strong class="text-noir">24 heures</strong> avec un devis detaille.
+        </p>
+
+        <div class="card-elegant p-6 mb-8">
+          <h2 class="font-serif text-lg font-bold text-noir mb-4">En attendant...</h2>
+          <ul class="space-y-3 text-left">
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-or flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-charbon">Preparez vos textes et photos si vous en avez</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-or flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-charbon">Notez les sites web qui vous inspirent</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-or flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-charbon">Listez les fonctionnalites importantes pour vous</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="btn-gold">
+            Retour a l'accueil
+          </a>
+          <a href="/blog" class="btn-secondary">
+            Lire le blog
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
