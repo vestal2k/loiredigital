@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ============================================
-   LOIRE ÉLÉGANCE - Design System
-   ============================================ */
-
-/* Base Typography */
 body {
   @apply font-sans text-charbon antialiased;
   background-color: #faf9f7;
@@ -17,10 +12,6 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-/* ============================================
-   SECTION STYLES
-   ============================================ */
-
 .section-creme {
   background-color: #faf9f7;
 }
@@ -29,7 +20,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #ffffff;
 }
 
-/* Section Title - Elegant Serif */
 .section-title {
   @apply text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-noir mb-4;
   letter-spacing: -0.02em;
@@ -39,10 +29,6 @@ h1, h2, h3, h4, h5, h6 {
   @apply text-lg md:text-xl text-charbon max-w-2xl;
   line-height: 1.7;
 }
-
-/* ============================================
-   CARDS - Elegant Style
-   ============================================ */
 
 .card-elegant {
   @apply bg-white rounded-elegant p-8 border border-gris-doux transition-all duration-300;
@@ -66,7 +52,6 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(-4px);
 }
 
-/* Card with subtle background */
 .card-subtle {
   @apply bg-creme-dark rounded-elegant p-8 border border-gris-doux transition-all duration-300;
 }
@@ -76,11 +61,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* ============================================
-   BUTTONS - Elegant Style
-   ============================================ */
-
-/* Primary Button - Noir with Gold hover */
 .btn-primary {
   @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-elegant transition-all duration-300;
   background-color: #1a1a1a;
@@ -101,7 +81,6 @@ h1, h2, h3, h4, h5, h6 {
   @apply outline-none ring-2 ring-or ring-offset-2;
 }
 
-/* Secondary Button - Outline elegant */
 .btn-secondary {
   @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold rounded-elegant transition-all duration-300;
   color: #1a1a1a;
@@ -125,7 +104,6 @@ h1, h2, h3, h4, h5, h6 {
   @apply outline-none ring-2 ring-noir ring-offset-2;
 }
 
-/* Gold Button - Premium CTA */
 .btn-gold {
   @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-elegant transition-all duration-300;
   background-color: #b8860b;
@@ -146,7 +124,6 @@ h1, h2, h3, h4, h5, h6 {
   @apply outline-none ring-2 ring-or-light ring-offset-2;
 }
 
-/* Ghost Button - Minimal */
 .btn-ghost {
   @apply inline-flex items-center justify-center px-6 py-3 text-base font-medium text-noir rounded-elegant transition-all duration-300;
   background-color: transparent;
@@ -160,10 +137,6 @@ h1, h2, h3, h4, h5, h6 {
 .btn-ghost:focus-visible {
   @apply outline-none ring-2 ring-or ring-offset-2;
 }
-
-/* ============================================
-   NAVIGATION
-   ============================================ */
 
 .nav-link {
   @apply px-4 py-2 text-charbon font-medium rounded-elegant transition-all duration-200;
@@ -184,11 +157,6 @@ h1, h2, h3, h4, h5, h6 {
   background-color: rgba(184, 134, 11, 0.1);
 }
 
-/* ============================================
-   DECORATIVE ELEMENTS
-   ============================================ */
-
-/* Gold line separator */
 .separator-gold {
   width: 60px;
   height: 3px;
@@ -205,14 +173,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: auto;
 }
 
-/* Elegant divider */
 .divider-elegant {
   @apply border-t border-gris-doux;
 }
-
-/* ============================================
-   FORM INPUTS
-   ============================================ */
 
 input[type="text"],
 input[type="email"],
@@ -240,7 +203,6 @@ select:hover:not(:focus) {
   @apply border-charbon;
 }
 
-/* Form error state */
 input.error,
 textarea.error {
   @apply border-red-500;
@@ -251,7 +213,6 @@ textarea.error:focus {
   @apply ring-red-500;
 }
 
-/* Form success state */
 input.success,
 textarea.success {
   @apply border-logo-vert;
@@ -262,41 +223,28 @@ textarea.success:focus {
   @apply ring-logo-vert;
 }
 
-/* ============================================
-   GLOBAL UTILITIES
-   ============================================ */
-
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Global focus styles for accessibility */
 button:focus-visible,
 a:focus-visible {
   @apply outline-none ring-2 ring-or ring-offset-2 rounded-elegant;
 }
 
-/* Smooth section transitions */
 section {
   @apply transition-all duration-300 ease-in-out;
 }
 
-/* Ensure content is clean */
 main,
 header,
 footer {
   position: relative;
 }
 
-/* Scroll margin for anchor links (accounts for sticky header) */
 section[id] {
   scroll-margin-top: 80px;
 }
-
-/* ============================================
-   ANIMATIONS
-   ============================================ */
 
 @keyframes fadeInUp {
   from {
@@ -348,10 +296,6 @@ section[id] {
   animation: fadeIn 0.6s ease-out forwards;
 }
 
-/* ============================================
-   SECTION SPACING
-   ============================================ */
-
 .section-padding {
   @apply py-24 md:py-32 lg:py-40;
 }
@@ -360,11 +304,6 @@ section[id] {
   @apply py-16 md:py-20 lg:py-24;
 }
 
-/* ============================================
-   MOBILE SPECIFIC
-   ============================================ */
-
-/* Prevent Crisp chat overlap with footer and CTAs on mobile */
 @media (max-width: 768px) {
   section:has(.btn-gold),
   section:has(.btn-primary),
@@ -385,7 +324,6 @@ section[id] {
   }
 }
 
-/* Mobile CTA enhancements */
 @media (max-width: 640px) {
   .btn-gold,
   .btn-primary,
@@ -393,10 +331,6 @@ section[id] {
     @apply w-full text-center;
   }
 }
-
-/* ============================================
-   TYPOGRAPHY UTILITIES
-   ============================================ */
 
 .text-elegant {
   @apply font-serif;
@@ -409,14 +343,9 @@ section[id] {
   font-size: 0.75rem;
 }
 
-/* Gold text accent */
 .text-gold {
   color: #b8860b;
 }
-
-/* ============================================
-   ELEGANT ICON CONTAINERS
-   ============================================ */
 
 .icon-container {
   @apply flex items-center justify-center rounded-elegant transition-all duration-300;
@@ -440,7 +369,6 @@ section[id] {
   transform: scale(1.05);
 }
 
-/* Icon color utilities */
 .icon-gold {
   color: #b8860b;
 }
@@ -449,11 +377,6 @@ section[id] {
   color: #1a1a1a;
 }
 
-/* ============================================
-   ELEGANT HOVER STATES
-   ============================================ */
-
-/* Link with gold hover */
 .link-elegant {
   @apply text-charbon transition-all duration-200;
   position: relative;
@@ -478,7 +401,6 @@ section[id] {
   width: 100%;
 }
 
-/* Card hover with gold accent */
 .hover-gold-border {
   @apply transition-all duration-300;
   border: 1px solid transparent;
@@ -488,14 +410,9 @@ section[id] {
   border-color: #d4a84b;
 }
 
-/* Text hover gold */
 .hover-text-gold:hover {
   color: #b8860b;
 }
-
-/* ============================================
-   ADVANCED ANIMATIONS
-   ============================================ */
 
 @keyframes shimmer {
   0% {
@@ -596,7 +513,6 @@ section[id] {
   animation: draw-line 0.8s ease-out forwards;
 }
 
-/* Staggered animations for lists */
 .stagger-item {
   opacity: 0;
   animation: fadeInUp 0.6s ease-out forwards;
@@ -609,18 +525,12 @@ section[id] {
 .stagger-item:nth-child(5) { animation-delay: 0.5s; }
 .stagger-item:nth-child(6) { animation-delay: 0.6s; }
 
-/* ============================================
-   DECORATIVE LINES & SEPARATORS
-   ============================================ */
-
-/* Gold line with fade effect */
 .separator-gold-fade {
   width: 100%;
   height: 1px;
   background: linear-gradient(90deg, transparent, #b8860b, transparent);
 }
 
-/* Double line separator */
 .separator-double {
   display: flex;
   flex-direction: column;
@@ -640,7 +550,6 @@ section[id] {
   width: 40px;
 }
 
-/* Corner decorative element */
 .corner-decoration {
   position: relative;
 }
@@ -669,14 +578,12 @@ section[id] {
   border-bottom-right-radius: 8px;
 }
 
-/* Vertical separator */
 .separator-vertical {
   width: 2px;
   height: 40px;
   background: linear-gradient(180deg, transparent, #b8860b, transparent);
 }
 
-/* Diamond separator */
 .separator-diamond {
   display: flex;
   align-items: center;
@@ -698,10 +605,6 @@ section[id] {
   background-color: #b8860b;
   transform: rotate(45deg);
 }
-
-/* ============================================
-   ELEGANT FORM STYLES
-   ============================================ */
 
 .form-elegant {
   @apply space-y-6;
@@ -735,7 +638,6 @@ section[id] {
   @apply text-gris-moyen;
 }
 
-/* Elegant checkbox */
 .checkbox-elegant {
   @apply w-5 h-5 rounded border-gris-doux text-or transition-all duration-200;
 }
@@ -748,10 +650,6 @@ section[id] {
 .checkbox-elegant:focus {
   @apply ring-2 ring-or ring-offset-2;
 }
-
-/* ============================================
-   STAT CARDS
-   ============================================ */
 
 .stat-card {
   @apply card-elegant text-center;
@@ -770,11 +668,6 @@ section[id] {
   @apply text-xs text-charbon;
 }
 
-/* ============================================
-   ACCESSIBILITY IMPROVEMENTS
-   ============================================ */
-
-/* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -786,7 +679,6 @@ section[id] {
   }
 }
 
-/* Screen reader only class */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -799,7 +691,6 @@ section[id] {
   border: 0;
 }
 
-/* Make sr-only visible on focus for skip links */
 .sr-only:focus,
 .focus\:not-sr-only:focus {
   position: absolute;
@@ -812,13 +703,11 @@ section[id] {
   white-space: normal;
 }
 
-/* Improved focus ring for better visibility */
 :focus-visible {
   outline: 2px solid #b8860b;
   outline-offset: 2px;
 }
 
-/* High contrast mode support */
 @media (prefers-contrast: high) {
   .btn-gold,
   .btn-primary {
@@ -830,11 +719,6 @@ section[id] {
   }
 }
 
-/* ============================================
-   LEGACY SUPPORT (for gradual migration)
-   ============================================ */
-
-/* Keep btn-blue temporarily for components not yet migrated */
 .btn-blue {
   @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-elegant transition-all duration-300;
   background-color: #b8860b;
@@ -854,7 +738,6 @@ section[id] {
   @apply outline-none ring-2 ring-or ring-offset-2;
 }
 
-/* Keep card-minimal temporarily */
 .card-minimal {
   @apply bg-white rounded-elegant p-8 border border-gris-doux transition-all duration-300;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
