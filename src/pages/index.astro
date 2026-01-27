@@ -4,7 +4,6 @@ import Hero from '../sections/Hero.astro'
 import Process from '../sections/Process.astro'
 import FAQ from '../sections/FAQ.astro'
 import CTA from '../sections/CTA.astro'
-import Footer from '../sections/Footer.astro'
 import { PRICING_PACKS, COMPARISON_CRITERIA, MAINTENANCE_PLANS } from '../config/pricing'
 
 // Get the 3 main packs (excluding e-commerce)
@@ -148,7 +147,7 @@ const faqItems = [
     highlight="un site qui travaille pour vous"
     description="Sites web professionnels pour commerçants et artisans de Saint-Étienne. Rapides, visibles sur Google, livrés en 2-3 semaines."
     primaryCTA={{
-      text: 'Calculer mon devis',
+      text: 'Calculer mon budget',
       href: '/devis',
     }}
     secondaryCTA={{
@@ -282,153 +281,83 @@ const faqItems = [
           </p>
         </div>
 
-        <!-- Bento Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-6 gap-5 auto-rows-fr">
-          <!-- Grande boîte - Délai -->
-          <div
-            class="card-elegant-highlight md:col-span-2 md:row-span-2 flex flex-col items-center justify-center text-center p-8 md:p-12"
-          >
-            <div class="w-20 h-20 rounded-elegant bg-or/10 flex items-center justify-center mb-6">
-              <svg
-                class="w-10 h-10 text-or"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <h3 class="font-serif text-2xl font-bold text-noir mb-3">Réactivité garantie</h3>
-            <p class="text-charbon leading-relaxed">
-              <strong class="text-noir">Réponse sous 24 h</strong> avec un devis détaillé et un vrai plan d'action.
-              Pas de semaines d'attente, vous savez rapidement où vous allez.
-            </p>
-          </div>
-
-          <!-- Sécurité -->
-          <div
-            class="card-elegant md:col-span-2 flex flex-col items-center justify-center text-center p-8"
-          >
-            <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-4">
-              <svg
-                class="w-8 h-8 text-or"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="font-serif text-lg font-bold text-noir mb-2">Sécurité renforcée</h3>
-            <p class="text-sm text-charbon">
-              <strong class="text-noir">Cadenas vert dès le jour 1.</strong> Vos clients ont confiance en votre site
-              et Google vous positionne mieux dans les résultats de recherche.
-            </p>
-          </div>
-
-          <!-- Tarifs transparents -->
-          <div
-            class="card-elegant md:col-span-2 p-8 flex flex-col items-center justify-center text-center"
-          >
-            <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-4">
-              <svg
-                class="w-8 h-8 text-or"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="font-serif text-lg font-bold text-noir mb-2">Prix clairs et définitifs</h3>
-            <p class="text-sm text-charbon">
-              <strong class="text-noir">Le prix du devis = le prix final.</strong> Zéro frais caché,
-              zéro mauvaise surprise. Vous budgétez sereinement.
-            </p>
-          </div>
-
-          <!-- Design sur-mesure -->
-          <div
-            class="md:col-span-2 bg-noir text-white p-8 flex flex-col items-center justify-center text-center rounded-elegant transition-all duration-300 hover:shadow-elegant-lg"
-          >
-            <div class="w-16 h-16 rounded-elegant bg-or/20 flex items-center justify-center mb-4">
+        <!-- Grille 3x2 uniformisee -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Reactivite garantie -->
+          <div class="card-elegant-highlight p-8 flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-5">
               <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
-                ></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
-            <h3 class="font-serif text-lg font-bold mb-2">100% sur mesure</h3>
-            <p class="text-sm text-white/80">
-              <strong class="text-or">Zéro template générique.</strong> Votre site reflète votre identité,
-              votre métier et se démarque de la concurrence.
-            </p>
-          </div>
-
-          <!-- Performances -->
-          <div
-            class="md:col-span-2 bg-or text-white flex flex-col items-center justify-center text-center p-8 rounded-elegant transition-all duration-300 hover:shadow-or hover:scale-[1.02]"
-          >
-            <div class="w-16 h-16 rounded-elegant bg-white/20 flex items-center justify-center mb-4">
-              <svg
-                class="w-8 h-8 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-              </svg>
-            </div>
-            <h3 class="font-serif text-lg font-bold mb-2">Vitesse éclair</h3>
-            <p class="text-sm text-white/90">
-              <strong class="text-white">Chargement instantané sur mobile.</strong> Les visiteurs impatients restent
-              et Google booste votre référencement. Chaque seconde compte.
-            </p>
-          </div>
-
-          <!-- Process clair - Grande carte -->
-          <div class="card-elegant md:col-span-2 p-8">
-            <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-4">
-              <svg
-                class="w-8 h-8 text-or"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="font-serif text-lg font-bold text-noir mb-3">Processus 100% en ligne</h3>
+            <h3 class="font-serif text-xl font-bold text-noir mb-3">Reactivite garantie</h3>
             <p class="text-sm text-charbon leading-relaxed">
-              <strong class="text-noir">Tout se fait par e-mail.</strong>
-              Vous gagnez du temps, gérez à votre rythme et conservez une trace de chaque échange.
-              Simplicité et transparence totales.
+              <strong class="text-noir">Reponse sous 24 h</strong> avec un devis detaille et un vrai plan d'action.
+            </p>
+          </div>
+
+          <!-- Securite renforcee -->
+          <div class="card-elegant p-8 flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-5">
+              <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-noir mb-3">Securite renforcee</h3>
+            <p class="text-sm text-charbon leading-relaxed">
+              <strong class="text-noir">Cadenas vert des le jour 1.</strong> Vos clients ont confiance et Google vous positionne mieux.
+            </p>
+          </div>
+
+          <!-- Prix clairs -->
+          <div class="card-elegant p-8 flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-5">
+              <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-noir mb-3">Prix clairs et definitifs</h3>
+            <p class="text-sm text-charbon leading-relaxed">
+              <strong class="text-noir">Le prix du devis = le prix final.</strong> Zero frais cache, zero mauvaise surprise.
+            </p>
+          </div>
+
+          <!-- 100% sur mesure -->
+          <div class="card-elegant p-8 flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-5">
+              <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-noir mb-3">100% sur mesure</h3>
+            <p class="text-sm text-charbon leading-relaxed">
+              <strong class="text-noir">Zero template generique.</strong> Votre site reflete votre identite et votre metier.
+            </p>
+          </div>
+
+          <!-- Vitesse eclair -->
+          <div class="card-elegant p-8 flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-5">
+              <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-noir mb-3">Vitesse eclair</h3>
+            <p class="text-sm text-charbon leading-relaxed">
+              <strong class="text-noir">Chargement instantane.</strong> Les visiteurs restent et Google booste votre referencement.
+            </p>
+          </div>
+
+          <!-- Processus en ligne -->
+          <div class="card-elegant p-8 flex flex-col items-center text-center">
+            <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-5">
+              <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <h3 class="font-serif text-xl font-bold text-noir mb-3">Processus 100% en ligne</h3>
+            <p class="text-sm text-charbon leading-relaxed">
+              <strong class="text-noir">Tout se fait par e-mail.</strong> Simplicite et transparence totales.
             </p>
           </div>
         </div>
@@ -1467,11 +1396,11 @@ const faqItems = [
         <div class="text-center mb-12">
           <span class="text-elegant-caps text-or tracking-widest mb-4 block">Contact</span>
           <h2 class="section-title">
-            Prêt à vous lancer ?
+            Discutons de votre projet
           </h2>
           <div class="separator-gold-center mt-6 mb-6"></div>
           <p class="section-subtitle mx-auto">
-            Demandez votre devis gratuit et détaillé. Réponse garantie sous 24 h.
+            Une question ? Un projet en tete ? Ecrivez-nous, reponse garantie sous 24 h.
           </p>
         </div>
 
@@ -1582,12 +1511,9 @@ const faqItems = [
 
   <!-- CTA Final -->
   <CTA
-    title="Prêt à vous lancer ?"
-    description="Réponse garantie sous 24h. Sans engagement."
-    primaryButton={{ text: 'Demander un devis gratuit', href: '#contact' }}
-    secondaryButton={{ text: 'Nous contacter', href: '#contact' }}
+    title="Pret a vous lancer ?"
+    description="Calculez votre budget en ligne ou ecrivez-nous directement."
+    primaryButton={{ text: 'Calculer mon budget', href: '/devis' }}
+    secondaryButton={{ text: 'Discuter du projet', href: '#contact' }}
   />
-
-  <!-- Footer -->
-  <Footer />
 </BaseLayout>
