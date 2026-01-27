@@ -134,6 +134,9 @@ const jsonLdSchema = {
       Aller au contenu principal
     </a>
 
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-or z-[60] transition-all duration-100" style="width: 0%"></div>
+
     <header
       class="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gris-doux"
       role="banner"
@@ -444,6 +447,37 @@ const jsonLdSchema = {
         ) {
           link.classList.add('active')
         }
+      })
+
+      // Scroll Progress Indicator
+      const scrollProgress = document.getElementById('scroll-progress')
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight
+        const progress = (scrollTop / docHeight) * 100
+        if (scrollProgress) {
+          scrollProgress.style.width = `${progress}%`
+        }
+      })
+
+      // Scroll Animations with Intersection Observer
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      }, observerOptions)
+
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.add('animate-on-scroll')
+        observer.observe(section)
       })
     </script>
 
