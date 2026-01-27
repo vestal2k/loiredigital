@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-title {
-  @apply text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-noir mb-4;
+  @apply text-3xl md:text-4xl lg:text-[42px] font-serif font-bold text-noir mb-4;
   letter-spacing: -0.02em;
 }
 

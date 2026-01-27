@@ -17,8 +17,8 @@ export default {
         'gris-moyen': '#9a9a9a',
       },
       fontFamily: {
-        serif: ['Playfair Display', 'Georgia', 'serif'],
-        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        serif: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'elegant': '0 4px 20px rgba(0, 0, 0, 0.08)',
