@@ -15,7 +15,6 @@ export type EventName =
   | 'maintenance_selected'
   | 'payment_initiated'
   | 'section_viewed'
-  | 'crisp_opened'
   | 'pdf_downloaded'
 
 interface EventProperties {
@@ -98,12 +97,6 @@ export function trackSectionView(sectionId: string, sectionName: string) {
   trackEvent('section_viewed', {
     section_id: sectionId,
     section_name: sectionName,
-  })
-}
-
-export function trackCrispOpened() {
-  trackEvent('crisp_opened', {
-    timestamp: Date.now(),
   })
 }
 
