@@ -97,7 +97,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
                   <li>Type de navigateur et système d'exploitation</li>
                   <li>Pages visitées et temps passé sur le site</li>
                   <li>Source de référencement (comment vous êtes arrivé sur notre site)</li>
-                  <li>Données analytiques via Vercel Analytics (anonymisées)</li>
+                  <li>Données analytiques via PostHog (hébergé en EU, conforme RGPD)</li>
                 </ul>
               </div>
 
@@ -125,8 +125,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
               <li>Gérer la relation client et le suivi de projet</li>
               <li>Améliorer nos services et l'expérience utilisateur</li>
               <li>
-                Analyser le trafic du site web de manière anonymisée (Vercel Analytics, Speed
-                Insights)
+                Analyser le trafic et le comportement utilisateur (PostHog, hébergé en EU)
               </li>
               <li>Vous fournir une assistance via le chat en ligne (Crisp)</li>
               <li>Respecter nos obligations légales et réglementaires</li>
@@ -181,7 +180,8 @@ import BaseLayout from '../layouts/BaseLayout.astro'
               <li>
                 <strong class="text-noir">Nos sous-traitants :</strong>
                 <ul class="list-circle pl-6 mt-2 space-y-1">
-                  <li>Vercel Inc. (hébergement du site et analytics)</li>
+                  <li>Vercel Inc. (hébergement du site)</li>
+                  <li>PostHog Inc. (analytics et enregistrement de sessions, hébergé en EU)</li>
                   <li>Crisp (plateforme de chat en ligne)</li>
                   <li>Fournisseurs de services de paiement (si applicable)</li>
                 </ul>
@@ -345,8 +345,8 @@ import BaseLayout from '../layouts/BaseLayout.astro'
               <div>
                 <h3 class="text-xl font-serif font-bold text-noir mb-2">Cookies analytiques</h3>
                 <p>
-                  Utilisés via Vercel Analytics et Speed Insights pour comprendre comment vous
-                  utilisez le site. Ces données sont anonymisées et agrégées.
+                  Utilisés via PostHog pour comprendre comment vous utilisez le site, incluant
+                  l'analyse du trafic et l'enregistrement de sessions. Données hébergées en EU.
                 </p>
               </div>
 
@@ -435,7 +435,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         <!-- Date de mise a jour -->
         <div class="pt-8 border-t border-gris-doux">
           <p class="text-sm text-charbon">
-            <strong class="text-noir">Dernière mise à jour :</strong> 27 novembre 2025
+            <strong class="text-noir">Dernière mise à jour :</strong> 27 janvier 2026
           </p>
         </div>
       </div>

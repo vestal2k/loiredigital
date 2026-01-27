@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css'
-import Analytics from '@vercel/analytics/astro'
 import SpeedInsights from '@vercel/speed-insights/astro'
 
 interface Props {
@@ -109,31 +108,17 @@ const jsonLdSchema = {
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdSchema)} />
 
-    <!-- Google Analytics 4 - Remplacer GA_MEASUREMENT_ID par votre ID -->
-    <!-- Pour obtenir votre ID: https://analytics.google.com > Admin > Data Streams > Web -->
-    <script is:inline define:vars={{ gaId: import.meta.env.PUBLIC_GA_ID || '' }}>
-      if (gaId && typeof window !== 'undefined') {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', gaId);
-
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
-        document.head.appendChild(script);
-      }
-    </script>
-
-    <!-- Microsoft Clarity - Remplacer CLARITY_PROJECT_ID par votre ID -->
-    <!-- Pour obtenir votre ID: https://clarity.microsoft.com > Settings > Overview -->
-    <script is:inline define:vars={{ clarityId: import.meta.env.PUBLIC_CLARITY_ID || '' }}>
-      if (clarityId && typeof window !== 'undefined') {
-        (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", clarityId);
+    <!-- PostHog Analytics -->
+    <script is:inline define:vars={{ posthogKey: import.meta.env.PUBLIC_POSTHOG_KEY || '' }}>
+      if (posthogKey && typeof window !== 'undefined') {
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init(posthogKey, {
+          api_host: 'https://eu.i.posthog.com',
+          person_profiles: 'identified_only',
+          capture_pageview: true,
+          capture_pageleave: true,
+          autocapture: true
+        });
       }
     </script>
 
@@ -551,8 +536,7 @@ const jsonLdSchema = {
       })();
     </script>
 
-    <!-- Vercel Analytics and Speed Insights -->
-    <Analytics />
+    <!-- Vercel Speed Insights (Core Web Vitals) -->
     <SpeedInsights />
   </body>
 </html>

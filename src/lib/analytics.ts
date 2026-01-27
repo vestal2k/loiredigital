@@ -1,9 +1,10 @@
-/**
- * Analytics utilities for tracking user events
- * Uses Vercel Analytics for tracking
- */
-
-import { track } from '@vercel/analytics'
+declare global {
+  interface Window {
+    posthog?: {
+      capture: (event: string, properties?: Record<string, unknown>) => void
+    }
+  }
+}
 
 export type EventName =
   | 'cta_click'
@@ -21,24 +22,16 @@ interface EventProperties {
   [key: string]: string | number | boolean
 }
 
-/**
- * Track a custom event
- * @param eventName - The name of the event
- * @param properties - Optional properties to attach to the event
- */
 export function trackEvent(eventName: EventName, properties?: EventProperties) {
   try {
-    if (typeof window !== 'undefined') {
-      track(eventName, properties)
+    if (typeof window !== 'undefined' && window.posthog) {
+      window.posthog.capture(eventName, properties)
     }
   } catch (error) {
     console.error('Error tracking event:', error)
   }
 }
 
-/**
- * Track CTA clicks
- */
 export function trackCTAClick(ctaLabel: string, location: string) {
   trackEvent('cta_click', {
     label: ctaLabel,
@@ -46,9 +39,6 @@ export function trackCTAClick(ctaLabel: string, location: string) {
   })
 }
 
-/**
- * Track quote requests
- */
 export function trackQuoteRequest(
   packId: string,
   totalPrice: number,
@@ -62,18 +52,12 @@ export function trackQuoteRequest(
   })
 }
 
-/**
- * Track contact form submissions
- */
 export function trackContactFormSubmit(formType: 'contact' | 'quote') {
   trackEvent('contact_form_submitted', {
     form_type: formType,
   })
 }
 
-/**
- * Track pack selection in calculator
- */
 export function trackPackSelection(packId: string, packName: string) {
   trackEvent('pack_selected', {
     pack_id: packId,
@@ -81,9 +65,6 @@ export function trackPackSelection(packId: string, packName: string) {
   })
 }
 
-/**
- * Track option selection in calculator
- */
 export function trackOptionSelection(
   optionId: string,
   optionName: string,
@@ -96,9 +77,6 @@ export function trackOptionSelection(
   })
 }
 
-/**
- * Track maintenance plan selection
- */
 export function trackMaintenanceSelection(
   maintenanceId: string,
   maintenanceName: string
@@ -109,9 +87,6 @@ export function trackMaintenanceSelection(
   })
 }
 
-/**
- * Track payment initiation
- */
 export function trackPaymentInitiated(amount: number, projectId: string) {
   trackEvent('payment_initiated', {
     amount: amount,
@@ -119,9 +94,6 @@ export function trackPaymentInitiated(amount: number, projectId: string) {
   })
 }
 
-/**
- * Track section views (for scroll depth tracking)
- */
 export function trackSectionView(sectionId: string, sectionName: string) {
   trackEvent('section_viewed', {
     section_id: sectionId,
@@ -129,18 +101,12 @@ export function trackSectionView(sectionId: string, sectionName: string) {
   })
 }
 
-/**
- * Track Crisp chat opening
- */
 export function trackCrispOpened() {
   trackEvent('crisp_opened', {
     timestamp: Date.now(),
   })
 }
 
-/**
- * Track PDF downloads
- */
 export function trackPDFDownload(documentType: 'quote' | 'invoice') {
   trackEvent('pdf_downloaded', {
     document_type: documentType,
