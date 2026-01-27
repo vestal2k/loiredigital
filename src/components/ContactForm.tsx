@@ -76,7 +76,7 @@ export default function ContactForm() {
             type="text"
             id="name"
             {...register('name')}
-            className={`w-full px-4 py-3 bg-white border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-black ${
+            className={`w-full px-4 py-3 bg-white border rounded-lg focus:ring-2 focus:ring-or focus:border-transparent outline-none transition-all text-black ${
               errors.name ? 'border-red-500' : 'border-gray-200'
             }`}
             placeholder="Jean Dupont"
@@ -96,7 +96,7 @@ export default function ContactForm() {
             type="email"
             id="email"
             {...register('email')}
-            className={`w-full px-4 py-3 bg-white border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-black ${
+            className={`w-full px-4 py-3 bg-white border rounded-lg focus:ring-2 focus:ring-or focus:border-transparent outline-none transition-all text-black ${
               errors.email ? 'border-red-500' : 'border-gray-200'
             }`}
             placeholder="jean.dupont@exemple.fr"
@@ -116,7 +116,7 @@ export default function ContactForm() {
             type="tel"
             id="phone"
             {...register('phone')}
-            className={`w-full px-4 py-3 bg-white border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-black ${
+            className={`w-full px-4 py-3 bg-white border rounded-lg focus:ring-2 focus:ring-or focus:border-transparent outline-none transition-all text-black ${
               errors.phone ? 'border-red-500' : 'border-gray-200'
             }`}
             placeholder="0612345678"
@@ -135,7 +135,7 @@ export default function ContactForm() {
           <select
             id="project"
             {...register('project')}
-            className={`w-full px-4 py-3 bg-white border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-black ${
+            className={`w-full px-4 py-3 bg-white border rounded-lg focus:ring-2 focus:ring-or focus:border-transparent outline-none transition-all text-black ${
               errors.project ? 'border-red-500' : 'border-gray-200'
             }`}
             disabled={isSubmitting}
@@ -161,7 +161,7 @@ export default function ContactForm() {
             id="message"
             {...register('message')}
             rows={6}
-            className={`w-full px-4 py-3 bg-white border rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all resize-none text-black ${
+            className={`w-full px-4 py-3 bg-white border rounded-lg focus:ring-2 focus:ring-or focus:border-transparent outline-none transition-all resize-none text-black ${
               errors.message ? 'border-red-500' : 'border-gray-200'
             }`}
             placeholder="Décrivez votre projet en quelques lignes..."
@@ -173,13 +173,13 @@ export default function ContactForm() {
         </div>
 
         {/* GDPR Consent */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <div className="bg-or/5 border border-or/20 rounded-lg p-4">
           <div className="flex items-start space-x-3">
             <input
               type="checkbox"
               id="gdprConsent"
               {...register('gdprConsent')}
-              className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-2 focus:ring-blue-600 cursor-pointer"
+              className="mt-1 w-5 h-5 text-or border-gray-300 rounded focus:ring-2 focus:ring-or cursor-pointer"
               disabled={isSubmitting}
             />
             <label htmlFor="gdprConsent" className="text-sm text-black cursor-pointer flex-1">
@@ -189,7 +189,7 @@ export default function ContactForm() {
                 href="/politique-confidentialite"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-700 underline font-medium"
+                className="text-or hover:text-or-light underline font-medium"
               >
                 politique de confidentialité
               </a>
@@ -217,7 +217,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full btn-blue py-4 text-base font-semibold disabled:opacity-50 disabled:cursor-not-allowed relative"
+          className="w-full btn-gold py-4 text-base font-semibold disabled:opacity-50 disabled:cursor-not-allowed relative"
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center">
@@ -255,11 +255,11 @@ export default function ContactForm() {
       {submitStatus === 'success' && (
         <div
           id="success-message"
-          className="mt-6 p-6 bg-green-50 border-2 border-green-600 rounded-lg animate-fade-in"
+          className="mt-6 p-6 bg-or/5 border-2 border-or rounded-lg animate-fade-in"
         >
           <div className="flex items-start space-x-3">
             <svg
-              className="w-6 h-6 text-green-600 flex-shrink-0"
+              className="w-6 h-6 text-or flex-shrink-0"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -276,7 +276,7 @@ export default function ContactForm() {
               <p className="text-sm text-gray-text mb-2">
                 Merci pour votre confiance. Nous avons bien reçu votre demande.
               </p>
-              <p className="text-sm font-semibold text-green-700">
+              <p className="text-sm font-semibold text-or-dark">
                 Vous recevrez une réponse détaillée sous 24h par email.
               </p>
             </div>

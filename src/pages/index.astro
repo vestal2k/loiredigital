@@ -694,7 +694,7 @@ const faqItems = [
                 {
                   mainPacks.map((pack) => (
                     <th
-                      class={`p-4 text-center text-sm font-bold border-b border-gray-200 ${pack.popular ? 'bg-blue-50 text-blue-600' : 'text-gray-700'}`}
+                      class={`p-4 text-center text-sm font-bold border-b border-gray-200 ${pack.popular ? 'bg-or/10 text-or' : 'text-gray-700'}`}
                     >
                       <div class="flex flex-col gap-1">
                         <span>{pack.name}</span>
@@ -719,7 +719,7 @@ const faqItems = [
                           {typeof value === 'boolean' ? (
                             value ? (
                               <svg
-                                class="w-5 h-5 text-green-600 mx-auto"
+                                class="w-5 h-5 text-or mx-auto"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -762,7 +762,7 @@ const faqItems = [
                     <td class="p-4 text-center">
                       <a
                         href="/devis"
-                        class={`inline-block px-6 py-2 rounded-lg font-semibold text-sm ${pack.popular ? 'btn-blue' : 'btn-secondary'}`}
+                        class={`inline-block px-6 py-2 rounded-lg font-semibold text-sm ${pack.popular ? 'btn-gold' : 'btn-secondary'}`}
                       >
                         Choisir
                       </a>
@@ -777,7 +777,7 @@ const faqItems = [
         <!-- E-commerce Section -->
         {
           ecommercePack && (
-            <div class="mt-8 bg-gradient-to-r from-blue-50 via-green-50 to-blue-50 rounded-2xl p-8 border border-blue-100">
+            <div class="mt-8 bg-gradient-to-r from-or/5 via-creme to-or/5 rounded-2xl p-8 border border-or/20">
               <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex-1">
                   <h3 class="text-2xl font-bold text-black mb-2">{ecommercePack.name}</h3>
@@ -785,10 +785,10 @@ const faqItems = [
                   <p class="text-sm text-gray-600">Délai : {ecommercePack.deliveryTime}</p>
                 </div>
                 <div class="text-center md:text-right">
-                  <div class="text-4xl md:text-5xl font-black text-blue-600 mb-2">
+                  <div class="text-4xl md:text-5xl font-black text-or mb-2">
                     À partir de {ecommercePack.basePrice.toLocaleString('fr-FR')} €
                   </div>
-                  <a href="/devis" class="btn-blue inline-block">
+                  <a href="/devis" class="btn-gold inline-block">
                     Obtenir un devis
                   </a>
                 </div>
@@ -829,7 +829,7 @@ const faqItems = [
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <p class="text-sm font-bold text-noir mb-3 flex items-center gap-2">
-                  <svg class="w-4 h-4 text-logo-vert" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-4 h-4 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                   </svg>
                   Inclus
@@ -913,7 +913,7 @@ const faqItems = [
               <div class="flex items-center gap-1.5 mb-2">
                 <div class="w-2.5 h-2.5 rounded-full bg-noir/30"></div>
                 <div class="w-2.5 h-2.5 rounded-full bg-or"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-logo-vert"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-or-light"></div>
               </div>
             </div>
             <div
@@ -969,7 +969,7 @@ const faqItems = [
               <div class="flex items-center gap-1.5 mb-2">
                 <div class="w-2.5 h-2.5 rounded-full bg-noir/30"></div>
                 <div class="w-2.5 h-2.5 rounded-full bg-or"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-logo-vert"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-or-light"></div>
               </div>
             </div>
             <div
@@ -1025,7 +1025,7 @@ const faqItems = [
               <div class="flex items-center gap-1.5 mb-2">
                 <div class="w-2.5 h-2.5 rounded-full bg-noir/30"></div>
                 <div class="w-2.5 h-2.5 rounded-full bg-or"></div>
-                <div class="w-2.5 h-2.5 rounded-full bg-logo-vert"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-or-light"></div>
               </div>
             </div>
             <div
@@ -1307,7 +1307,7 @@ const faqItems = [
                 <span>Publicité Facebook pendant 6 mois : 1 200 € (résultats non garantis)</span>
               </li>
               <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-logo-vert rounded-full mt-2 flex-shrink-0"></div>
+                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
                 <span><strong class="text-noir">Loire Digital :</strong> 400 à 1 500 €, site professionnel qui travaille pour vous 24/7</span>
               </li>
             </ul>

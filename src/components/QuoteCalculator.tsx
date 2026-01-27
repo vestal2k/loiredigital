@@ -27,9 +27,9 @@ const QuoteCalculator = () => {
     return (
       <div className="bg-white border border-gray-200 rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+          <div className="w-20 h-20 bg-or/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
             <svg
-              className="w-10 h-10 text-blue-600"
+              className="w-10 h-10 text-or"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -46,9 +46,9 @@ const QuoteCalculator = () => {
           <p className="text-gray-600">Estimation basée sur vos choix</p>
         </div>
 
-        <div className="bg-gray-50 border border-blue-100 rounded-xl p-8 mb-8">
+        <div className="bg-gray-50 border border-or/20 rounded-xl p-8 mb-8">
           <div className="text-center mb-6">
-            <div className="text-5xl font-display font-bold text-blue-600 mb-2">
+            <div className="text-5xl font-display font-bold text-or mb-2">
               {calculation.totalPrice.toLocaleString('fr-FR')} €
             </div>
             <p className="text-gray-600">Prix de création (paiement unique)</p>
@@ -56,7 +56,7 @@ const QuoteCalculator = () => {
 
           {calculation.maintenancePrice > 0 && (
             <div className="text-center pt-6 border-t border-gray-200">
-              <div className="text-3xl font-display font-bold text-blue-600 mb-2">
+              <div className="text-3xl font-display font-bold text-or mb-2">
                 + {calculation.maintenancePrice} €/mois
               </div>
               <p className="text-gray-600">Maintenance {maintenancePlan?.name || ''}</p>
@@ -72,7 +72,7 @@ const QuoteCalculator = () => {
             {pack && (
               <li className="flex items-center">
                 <svg
-                  className="w-5 h-5 text-blue-600 mr-2"
+                  className="w-5 h-5 text-or mr-2"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -89,7 +89,7 @@ const QuoteCalculator = () => {
             )}
             <li className="flex items-center">
               <svg
-                className="w-5 h-5 text-blue-600 mr-2"
+                className="w-5 h-5 text-or mr-2"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -106,7 +106,7 @@ const QuoteCalculator = () => {
             {options.optionIds.length > 0 && (
               <li className="flex items-start">
                 <svg
-                  className="w-5 h-5 text-blue-600 mr-2 mt-0.5"
+                  className="w-5 h-5 text-or mr-2 mt-0.5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -130,9 +130,9 @@ const QuoteCalculator = () => {
           </ul>
         </div>
 
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
+        <div className="bg-or/10 border border-or/30 rounded-lg p-4 mb-8">
           <p className="text-sm text-gray-700">
-            <strong className="text-blue-600">Note :</strong> Le calculateur donne une estimation
+            <strong className="text-or">Note :</strong> Le calculateur donne une estimation
             fiable. Le devis final peut bouger légèrement si le projet devient plus complexe.
           </p>
         </div>
@@ -147,7 +147,7 @@ const QuoteCalculator = () => {
             </button>
             <button
               onClick={handlePDFDownload}
-              className="flex-1 px-6 py-3 bg-white border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center gap-2"
+              className="flex-1 px-6 py-3 bg-white border-2 border-or text-or rounded-lg font-semibold hover:bg-or/10 transition-colors flex items-center justify-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
@@ -162,7 +162,7 @@ const QuoteCalculator = () => {
           </div>
           <a
             href="/#contact"
-            className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center"
+            className="w-full px-6 py-3 bg-or text-white rounded-lg font-semibold hover:bg-or-dark transition-colors text-center"
           >
             Demander un devis détaillé
           </a>
@@ -190,9 +190,9 @@ const QuoteCalculator = () => {
               <div
                 className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm mb-2 transition-all ${
                   stepNumber < step
-                    ? 'bg-blue-600 text-white'
+                    ? 'bg-or text-white'
                     : stepNumber === step
-                      ? 'bg-blue-600 text-white ring-4 ring-blue-100'
+                      ? 'bg-or text-white ring-4 ring-or/20'
                       : 'bg-gray-200 text-gray-400'
                 }`}
               >
@@ -210,13 +210,13 @@ const QuoteCalculator = () => {
                 )}
               </div>
               <span
-                className={`text-xs text-center hidden md:block ${stepNumber === step ? 'text-blue-600 font-semibold' : 'text-gray-600'}`}
+                className={`text-xs text-center hidden md:block ${stepNumber === step ? 'text-or font-semibold' : 'text-gray-600'}`}
               >
                 {stepTitles[stepNumber - 1]}
               </span>
               {stepNumber < 4 && (
                 <div
-                  className={`hidden md:block absolute h-0.5 w-full translate-x-1/2 top-5 ${stepNumber < step ? 'bg-blue-600' : 'bg-gray-200'}`}
+                  className={`hidden md:block absolute h-0.5 w-full translate-x-1/2 top-5 ${stepNumber < step ? 'bg-or' : 'bg-gray-200'}`}
                   style={{ left: `${(stepNumber - 1) * 25}%`, width: '25%' }}
                 />
               )}
@@ -225,7 +225,7 @@ const QuoteCalculator = () => {
         </div>
         <div className="flex items-center justify-between mb-2 md:hidden">
           <span className="text-sm font-semibold text-gray-600">Étape {step} sur 4</span>
-          <span className="text-sm font-semibold text-blue-600">{stepTitles[step - 1]}</span>
+          <span className="text-sm font-semibold text-or">{stepTitles[step - 1]}</span>
         </div>
       </div>
 
@@ -244,17 +244,17 @@ const QuoteCalculator = () => {
                 }
                 className={`p-6 rounded-xl border-2 transition-all text-left relative ${
                   options.packId === pack.id
-                    ? 'border-blue-600 bg-blue-50 shadow-md'
-                    : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
-                } ${pack.popular ? 'ring-2 ring-blue-200' : ''}`}
+                    ? 'border-or bg-or/10 shadow-md'
+                    : 'border-gray-200 hover:border-or/50 hover:bg-gray-50'
+                } ${pack.popular ? 'ring-2 ring-or/30' : ''}`}
               >
                 {pack.popular && (
-                  <div className="absolute -top-3 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                  <div className="absolute -top-3 left-4 bg-or text-white px-3 py-1 rounded-full text-xs font-semibold">
                     Populaire
                   </div>
                 )}
                 {options.packId === pack.id && (
-                  <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                  <div className="absolute top-4 right-4 w-6 h-6 bg-or rounded-full flex items-center justify-center">
                     <svg
                       className="w-4 h-4 text-white"
                       fill="none"
@@ -271,14 +271,14 @@ const QuoteCalculator = () => {
                   </div>
                 )}
                 <h3 className="font-display font-bold text-2xl text-black mb-2">{pack.name}</h3>
-                <div className="text-3xl font-display font-bold text-blue-600 mb-4">
+                <div className="text-3xl font-display font-bold text-or mb-4">
                   {pack.basePrice}€
                 </div>
                 <ul className="space-y-2 mb-4">
                   {pack.features.map((feature, index) => (
                     <li key={index} className="text-sm text-gray-700 flex items-start">
                       <svg
-                        className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0"
+                        className="w-4 h-4 text-or mr-2 mt-0.5 flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -308,7 +308,7 @@ const QuoteCalculator = () => {
 
           <div className="max-w-md mx-auto">
             <div className="flex items-center justify-center mb-6">
-              <span className="text-5xl font-display font-bold text-blue-600">{options.pages}</span>
+              <span className="text-5xl font-display font-bold text-or">{options.pages}</span>
               <span className="text-2xl text-gray-600 ml-2">
                 page{options.pages > 1 ? 's' : ''}
               </span>
@@ -331,7 +331,7 @@ const QuoteCalculator = () => {
               aria-valuenow={options.pages}
               className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               style={{
-                accentColor: '#2563eb',
+                accentColor: '#b8860b',
               }}
             />
 
@@ -341,7 +341,7 @@ const QuoteCalculator = () => {
             </div>
 
             {PRICING_PACKS.find((p) => p.id === options.packId) && (
-              <div className="mt-6 bg-blue-50 border border-blue-100 rounded-lg p-4">
+              <div className="mt-6 bg-or/10 border border-or/20 rounded-lg p-4">
                 <p className="text-sm text-gray-700">
                   <strong className="text-black">Votre pack inclut :</strong>{' '}
                   {PRICING_PACKS.find((p) => p.id === options.packId)?.pagesIncluded} pages
@@ -349,7 +349,7 @@ const QuoteCalculator = () => {
                     (PRICING_PACKS.find((p) => p.id === options.packId)?.pagesIncluded || 0) && (
                     <>
                       <br />
-                      <strong className="text-blue-600">Pages supplémentaires :</strong>{' '}
+                      <strong className="text-or">Pages supplémentaires :</strong>{' '}
                       {options.pages -
                         (PRICING_PACKS.find((p) => p.id === options.packId)?.pagesIncluded || 0)}{' '}
                       × {PRICE_PER_EXTRA_PAGE}€ ={' '}
@@ -386,12 +386,12 @@ const QuoteCalculator = () => {
                 onClick={() => toggleOption(option.id)}
                 className={`p-4 rounded-xl border-2 transition-all text-left relative ${
                   options.optionIds.includes(option.id)
-                    ? 'border-blue-600 bg-blue-50 shadow-md'
-                    : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                    ? 'border-or bg-or/10 shadow-md'
+                    : 'border-gray-200 hover:border-or/50 hover:bg-gray-50'
                 }`}
               >
                 {options.optionIds.includes(option.id) && (
-                  <div className="absolute top-3 right-3 w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center">
+                  <div className="absolute top-3 right-3 w-5 h-5 bg-or rounded-full flex items-center justify-center">
                     <svg
                       className="w-3 h-3 text-white"
                       fill="none"
@@ -412,7 +412,7 @@ const QuoteCalculator = () => {
                     <h3 className="font-display font-bold text-black mb-1">{option.name}</h3>
                     <p className="text-sm text-gray-600">{option.description}</p>
                   </div>
-                  <span className="font-semibold text-blue-600 ml-2">+{option.price}€</span>
+                  <span className="font-semibold text-or ml-2">+{option.price}€</span>
                 </div>
               </button>
             ))}
@@ -431,12 +431,12 @@ const QuoteCalculator = () => {
               onClick={() => updateOptions({ ...options, maintenance: 'none' })}
               className={`p-6 rounded-xl border-2 transition-all text-left relative ${
                 options.maintenance === 'none'
-                  ? 'border-blue-600 bg-blue-50 shadow-md'
-                  : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                  ? 'border-or bg-or/10 shadow-md'
+                  : 'border-gray-200 hover:border-or/50 hover:bg-gray-50'
               }`}
             >
               {options.maintenance === 'none' && (
-                <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                <div className="absolute top-4 right-4 w-6 h-6 bg-or rounded-full flex items-center justify-center">
                   <svg
                     className="w-4 h-4 text-white"
                     fill="none"
@@ -463,12 +463,12 @@ const QuoteCalculator = () => {
                 onClick={() => updateOptions({ ...options, maintenance: plan.id })}
                 className={`p-6 rounded-xl border-2 transition-all text-left relative ${
                   options.maintenance === plan.id
-                    ? 'border-blue-600 bg-blue-50 shadow-md'
-                    : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                    ? 'border-or bg-or/10 shadow-md'
+                    : 'border-gray-200 hover:border-or/50 hover:bg-gray-50'
                 }`}
               >
                 {options.maintenance === plan.id && (
-                  <div className="absolute top-4 right-4 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
+                  <div className="absolute top-4 right-4 w-6 h-6 bg-or rounded-full flex items-center justify-center">
                     <svg
                       className="w-4 h-4 text-white"
                       fill="none"
@@ -485,7 +485,7 @@ const QuoteCalculator = () => {
                   </div>
                 )}
                 {plan.id === 'premium' && (
-                  <div className="absolute -top-3 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                  <div className="absolute -top-3 left-4 bg-or text-white px-3 py-1 rounded-full text-xs font-semibold">
                     Populaire
                   </div>
                 )}
@@ -497,7 +497,7 @@ const QuoteCalculator = () => {
                     <li key={index}>✓ {feature}</li>
                   ))}
                 </ul>
-                <div className="text-2xl font-display font-bold text-blue-600">
+                <div className="text-2xl font-display font-bold text-or">
                   {plan.pricePerMonth}€/mois
                 </div>
               </button>
@@ -522,7 +522,7 @@ const QuoteCalculator = () => {
           className={`flex-1 px-6 py-3 rounded-lg font-semibold transition-all ${
             step === 1 && !options.packId
               ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-              : 'bg-blue-600 text-white hover:bg-blue-700 shadow-md hover:shadow-lg'
+              : 'bg-or text-white hover:bg-or-dark shadow-md hover:shadow-lg'
           }`}
         >
           {step === 4 ? 'Voir le devis 📊' : 'Suivant →'}
@@ -545,7 +545,7 @@ const QuoteCalculator = () => {
                   <div className="pb-4 border-b border-gray-200">
                     <div className="flex justify-between items-start mb-1">
                       <span className="text-sm font-semibold text-gray-700">Pack {currentPack.name}</span>
-                      <span className="text-sm font-bold text-blue-600">{currentPack.basePrice}€</span>
+                      <span className="text-sm font-bold text-or">{currentPack.basePrice}€</span>
                     </div>
                     <p className="text-xs text-gray-600">{currentPack.pagesIncluded} pages incluses</p>
                   </div>
@@ -600,7 +600,7 @@ const QuoteCalculator = () => {
                 <div className="pt-2">
                   <div className="flex justify-between items-center">
                     <span className="text-lg font-display font-bold text-black">Total</span>
-                    <span className="text-2xl font-display font-bold text-blue-600">
+                    <span className="text-2xl font-display font-bold text-or">
                       {calculation.totalPrice.toLocaleString('fr-FR')}€
                     </span>
                   </div>

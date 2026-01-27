@@ -15,10 +15,6 @@ export default {
         'charbon': '#4a4a4a',
         'gris-doux': '#e8e6e3',
         'gris-moyen': '#9a9a9a',
-        // Couleurs du logo (accents secondaires)
-        'logo-vert': '#22c55e',
-        'logo-bleu': '#3b82f6',
-        'logo-jaune': '#eab308',
       },
       fontFamily: {
         serif: ['Playfair Display', 'Georgia', 'serif'],

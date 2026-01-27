@@ -215,12 +215,12 @@ textarea.error:focus {
 
 input.success,
 textarea.success {
-  @apply border-logo-vert;
+  @apply border-or;
 }
 
 input.success:focus,
 textarea.success:focus {
-  @apply ring-logo-vert;
+  @apply ring-or;
 }
 
 html {
@@ -243,7 +243,7 @@ footer {
 }
 
 section[id] {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 100px;
 }
 
 @keyframes fadeInUp {
@@ -719,24 +719,6 @@ section[id] {
   }
 }
 
-.btn-blue {
-  @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-elegant transition-all duration-300;
-  background-color: #b8860b;
-}
-
-.btn-blue:hover {
-  background-color: #d4a84b;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(184, 134, 11, 0.4);
-}
-
-.btn-blue:active {
-  transform: translateY(0);
-}
-
-.btn-blue:focus-visible {
-  @apply outline-none ring-2 ring-or ring-offset-2;
-}
 
 .card-minimal {
   @apply bg-white rounded-elegant p-8 border border-gris-doux transition-all duration-300;
