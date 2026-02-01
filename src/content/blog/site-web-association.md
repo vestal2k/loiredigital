@@ -7,8 +7,6 @@ keywords: ['site web association', 'création site association loi 1901', 'site 
 ogImage: '/og-blog-association.jpg'
 ---
 
-# Site web pour association : Gagnez en visibilité et facilitez les adhésions
-
 Que vous soyez une association sportive, culturelle, caritative ou éducative, un **site web professionnel** est devenu indispensable pour faire connaître vos actions, recruter des bénévoles et faciliter les adhésions.
 
 ## Pourquoi votre association a besoin d'un site web ?

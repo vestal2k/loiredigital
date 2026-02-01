@@ -7,8 +7,6 @@ keywords: ['site web boulangerie', 'création site boulanger', 'site internet p�
 ogImage: '/og-blog-boulangerie.jpg'
 ---
 
-# Site web pour boulangerie : Attirez plus de clients avec une présence digitale
-
 Dans un secteur aussi concurrentiel que la boulangerie-pâtisserie, se démarquer est essentiel. Un **site web professionnel** n'est plus un luxe, c'est une nécessité pour toute boulangerie qui souhaite développer sa clientèle à l'ère digitale.
 
 ## Pourquoi votre boulangerie a besoin d'un site web ?

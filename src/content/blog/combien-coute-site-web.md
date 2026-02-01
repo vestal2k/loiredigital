@@ -7,8 +7,6 @@ keywords: ['prix site web', 'tarif création site internet', 'coût site vitrine
 ogImage: '/og-blog-tarifs.jpg'
 ---
 
-# Combien coûte un site web professionnel en 2025 ?
-
 C'est LA question que tout commerçant se pose avant de se lancer. Les prix varient énormément sur le marché, de quelques centaines à plusieurs milliers d'euros. Mais **qu'est-ce qui justifie ces différences** ? Et surtout, quel budget prévoir pour votre projet ?
 
 ## Les différentes fourchettes de prix

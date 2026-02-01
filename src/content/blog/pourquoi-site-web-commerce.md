@@ -7,8 +7,6 @@ keywords: ['site web commerce local', 'création site internet Saint-Étienne', 
 ogImage: '/og-blog-commerce-local.jpg'
 ---
 
-# Pourquoi votre commerce local a besoin d'un site web en 2025
-
 En 2025, avoir un site web n'est plus un luxe pour les commerces locaux de Saint-Étienne, c'est une **nécessité absolue**. Que vous soyez boulanger, coiffeur, restaurateur ou artisan, votre présence en ligne peut faire la différence entre prospérer et stagner.
 
 ## La realite du comportement des consommateurs

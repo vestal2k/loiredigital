@@ -7,8 +7,6 @@ keywords: ['site web TPE', 'création site petite entreprise', 'site internet pa
 ogImage: '/og-blog-tpe.jpg'
 ---
 
-# Site web pour TPE : Développez votre activité avec un budget maîtrisé
-
 En tant que **Très Petite Entreprise (TPE)**, vous pensez peut-être qu'un site web est un luxe réservé aux grandes sociétés. Détrompez-vous ! Un site web professionnel est aujourd'hui **accessible et indispensable** pour toute entreprise qui souhaite se développer.
 
 ## Pourquoi une TPE a besoin d'un site web ?

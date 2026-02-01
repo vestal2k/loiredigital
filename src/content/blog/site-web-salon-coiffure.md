@@ -7,8 +7,6 @@ keywords: ['site web salon coiffure', 'réservation en ligne coiffeur', 'site in
 ogImage: '/og-blog-coiffure.jpg'
 ---
 
-# Site web pour salon de coiffure : Boostez vos réservations en ligne
-
 Dans le secteur de la coiffure et de l'esthétique, la concurrence est féroce. Un **site web professionnel** est devenu indispensable pour se démarquer, attirer de nouveaux clients et fidéliser votre clientèle existante.
 
 ## Pourquoi votre salon de coiffure a besoin d'un site web ?

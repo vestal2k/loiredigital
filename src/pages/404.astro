@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="Page introuvable | Loire Digital"
+  description="La page que vous recherchez n'existe pas ou a été déplacée."
+>
+  <section class="min-h-[70vh] flex items-center justify-center section-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto text-center">
+        <div class="mb-8">
+          <span class="text-9xl font-serif font-bold text-or">404</span>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl font-serif font-bold text-noir mb-6">
+          Page introuvable
+        </h1>
+
+        <div class="separator-gold-center mb-8"></div>
+
+        <p class="text-lg text-charbon mb-12 leading-relaxed">
+          La page que vous recherchez n'existe pas ou a été déplacée.
+          Pas de panique, vous pouvez retourner à l'accueil ou explorer nos services.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="btn-gold">
+            Retour à l'accueil
+          </a>
+          <a href="/devis" class="btn-secondary">
+            Calculer mon devis
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
