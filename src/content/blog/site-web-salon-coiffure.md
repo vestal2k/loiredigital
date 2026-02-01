@@ -15,7 +15,7 @@ Dans le secteur de la coiffure et de l'esthétique, la concurrence est féroce. 
 
 ### La recherche en ligne, premier réflexe des clients
 
-Aujourd'hui, **82% des clients** recherchent un salon de coiffure sur Internet avant de prendre rendez-vous. Ils cherchent :
+Aujourd'hui, la majorite des clients recherchent un salon de coiffure sur Internet avant de prendre rendez-vous. Ils cherchent :
 
 - Vos prestations et tarifs
 - Des photos de vos réalisations (coupes, colorations, coiffures)
@@ -111,7 +111,7 @@ Les avis rassurent et influencent la décision :
 - Note moyenne visible
 - Possibilité de laisser un avis
 
-**93% des consommateurs** lisent les avis en ligne avant de choisir un service.
+La plupart des consommateurs lisent les avis en ligne avant de choisir un service.
 
 ### 6. Blog beauté et conseils
 
@@ -132,7 +132,7 @@ Les réservations en ligne se font sans intervention de votre part. Pendant que 
 
 ### 2. Réduisez les absences et no-shows
 
-Les rappels automatiques par email et SMS **réduisent de 60%** les rendez-vous manqués. Votre temps est précieux, ne le gaspillez plus.
+Les rappels automatiques par email et SMS reduisent significativement les rendez-vous manques. Votre temps est precieux, ne le gaspillez plus.
 
 ### 3. Attirez de nouveaux clients via Google
 
@@ -165,45 +165,48 @@ Une nouvelle source de revenus complémentaire.
 
 Chez **Loire Digital**, nous proposons des solutions adaptées aux salons de coiffure :
 
-### Pack Essentiel - 800 €
+### Pack Starter - 400 EUR
 
-Site vitrine professionnel :
+Pour demarrer rapidement :
 
-- Page d'accueil attractive
-- Présentation des prestations et tarifs
-- Portfolio photos
-- Présentation de l'équipe
-- Page Contact avec formulaire
-- Google Maps intégré
-- Responsive (mobile/tablette/ordinateur)
+- Landing page (1 page)
+- Design sobre et professionnel
+- Formulaire de contact
+- Optimisation mobile
 
-### Pack Premium - 1 500 €
+### Pack Essentiel - 800 EUR
 
-Pour une expérience complète :
+Site vitrine complet :
 
-- Tout le Pack Essentiel
-- Blog beauté et conseils
-- Galerie photos avancée
-- Optimisation SEO locale poussée
-- Section avis clients
-- Newsletter
+- Jusqu'a 4 pages
+- Presentation des prestations et tarifs
+- SEO de base
+- Google Maps
 
-### Option Réservation en ligne - +500 €
+### Pack Complet - 1 500 EUR
 
-Système de prise de rendez-vous :
+Pour une experience complete :
 
-- Calendrier en temps réel
-- Gestion multi-coiffeurs
+- Jusqu'a 8 pages
+- Blog integre
+- SEO avance
+- Formulaires avances
+
+### Option Reservation en ligne - +500 EUR
+
+Systeme de prise de rendez-vous :
+
+- Calendrier en temps reel
 - Rappels automatiques
 - Gestion des annulations
 - Interface d'administration
 
-### Option E-commerce - à partir de 2 500 €
+### Pack E-commerce - a partir de 2 500 EUR
 
 Boutique en ligne :
 
 - Vente de produits capillaires
-- Paiement sécurisé
+- Paiement securise
 - Gestion des stocks
 - Vente de cartes cadeaux
 
@@ -233,7 +236,7 @@ Votre site doit refléter le **style de votre salon** :
 
 ### 3. Optimisation mobile absolue
 
-**Plus de 70%** des recherches de salons se font sur smartphone. Votre site doit être :
+La majorite des recherches de salons se font sur smartphone. Votre site doit etre :
 
 - Parfaitement lisible sur mobile
 - Rapide à charger
@@ -283,12 +286,6 @@ Un blog améliore votre SEO et valorise votre expertise :
 ❌ **Informations obsolètes** : Horaires, prestations, tarifs doivent être à jour
 
 ❌ **Pas d'avis clients** : Les avis rassurent et influencent
-
-## Témoignage
-
-> *"Depuis que nous avons mis en place la réservation en ligne, nous avons gagné un temps fou. Plus besoin de décrocher toutes les 5 minutes, et notre agenda est mieux rempli. Les clientes adorent la simplicité et nous avons attiré une nouvelle clientèle plus jeune !"*
->
-> — Salon de coiffure à Saint-Étienne
 
 ## Loire Digital, spécialiste des sites pour salons de beauté
 

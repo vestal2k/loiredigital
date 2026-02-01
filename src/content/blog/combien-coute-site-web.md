@@ -142,42 +142,43 @@ Certains prestataires proposent des sites à 200-300€ mais :
 
 ## Notre grille tarifaire chez Loire Digital
 
-### Site Vitrine Essentiel : **800€**
+### Pack Starter : **400 EUR**
 
-Parfait pour commerces qui démarrent :
+Pour demarrer rapidement :
 
-- 3-5 pages
-- Design professionnel personnalisé
-- Responsive
+- Landing page (1 page)
+- Design sobre et professionnel
 - Formulaire de contact
+- Optimisation mobile
+
+### Pack Essentiel : **800 EUR**
+
+Pour les commercants et artisans :
+
+- Jusqu'a 4 pages
 - SEO de base
 - Google Maps
-- Formation incluse
-
-### Site Vitrine Premium : **1500€**
-
-Pour commerces établis :
-
-- 6-10 pages
-- Design sur-mesure
-- Blog/Actualités
 - Galerie photos
-- Pack SEO local
-- Google Analytics
-- Support 60 jours
 
-### Site E-commerce : **à partir de 2500€**
+### Pack Complet : **1 500 EUR**
+
+Pour les activites installees :
+
+- Jusqu'a 8 pages
+- Blog integre
+- SEO avance
+- Formulaires avances
+
+### Pack E-commerce : **a partir de 2 500 EUR**
 
 Pour vendre en ligne :
 
-- Catalogue produits
-- Panier et paiement sécurisé
-- Gestion des stocks
-- Comptes clients
-- Design professionnel
-- Formation complète
+- Boutique en ligne complete
+- Gestion des produits
+- Paiement en ligne securise
+- Gestion des commandes
 
-[Utilisez notre calculateur](/devis) pour obtenir un devis instantané personnalisé.
+[Utilisez notre calculateur](/devis) pour obtenir un devis instantane personnalise.
 
 ## Le vrai coût : le coût d'opportunité
 

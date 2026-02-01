@@ -195,52 +195,44 @@ Votre site devient la mémoire de votre association :
 
 Chez **Loire Digital**, nous proposons des **tarifs préférentiels pour les associations** :
 
-### Pack Association Starter - 400 €
+### Pack Starter - 400 EUR
 
 Site simple et efficace :
 
-- Page d'accueil
-- Présentation de l'association
-- Activités et événements
-- Page Contact
+- Landing page (1 page)
+- Design sobre et professionnel
 - Formulaire de contact
-- Responsive (mobile/tablette/ordinateur)
+- Optimisation mobile
 
-Idéal pour les petites associations qui démarrent.
+Ideal pour les petites associations qui demarrent.
 
-### Pack Association Essentiel - 650 €
+### Pack Essentiel - 800 EUR
 
 Site complet :
 
-- Tout le Pack Starter
-- Calendrier d'événements
+- Jusqu'a 4 pages
+- SEO de base
+- Google Maps
 - Galerie photos
-- Section actualités/blog
-- Formulaire d'adhésion
-- Page "Devenir bénévole"
 
 Le choix le plus populaire pour les associations actives.
 
-### Pack Association Premium - 1 200 €
+### Pack Complet - 1 500 EUR
 
 Pour les associations ambitieuses :
 
-- Tout le Pack Essentiel
-- Paiement en ligne (adhésions, dons)
-- Espace membre sécurisé
-- Newsletter
-- Optimisation SEO locale avancée
-- Multi-utilisateurs (plusieurs bénévoles peuvent gérer le site)
+- Jusqu'a 8 pages
+- Blog integre
+- SEO avance
+- Formulaires avances
 
-### Options supplémentaires
+### Options supplementaires
 
-- **Système de paiement en ligne** : +300 € (vs 500 € tarif normal)
-- **Boutique en ligne** (goodies, merchandising) : à partir de 1 800 €
-- **Shooting photo événementiel** : sur devis
-- **Formation de vos bénévoles** : incluse
-- **Maintenance mensuelle** : 30 €/mois (vs 50 € tarif normal)
-
-**Remise de 20% pour les associations loi 1901** sur tous nos packs.
+- **Systeme de reservation en ligne** : +500 EUR
+- **Boutique en ligne** : a partir de 2 500 EUR
+- **Shooting photo evenementiel** : sur devis
+- **Formation de vos benevoles** : incluse
+- **Maintenance mensuelle** : 29 EUR/mois
 
 [Demandez un devis personnalisé](/devis) pour votre association.
 
@@ -347,12 +339,6 @@ La transparence inspire confiance et encourage les dons.
 
 ❌ **Ignorer le mobile** : Plus de la moitié de vos visiteurs sont sur smartphone
 
-## Témoignage
-
-> *"Nous sommes une petite association de randonnée et nous hésitions à investir dans un site web. Quelle bonne décision ! En 6 mois, nous avons doublé le nombre d'adhérents. Les gens nous trouvent facilement sur Google et s'inscrivent directement en ligne. Un gain de temps énorme pour nos bénévoles !"*
->
-> — Association de randonnée de la Loire
-
 ## Loire Digital, partenaire des associations
 
 Nous sommes convaincus de l'**utilité sociale des associations** et nous voulons vous aider à avoir un impact encore plus grand. C'est pourquoi nous proposons :
@@ -391,12 +377,12 @@ En 2025, une association sans site web **passe à côté d'opportunités** :
 - Bénévoles motivés qui ne savent pas comment s'engager
 - Partenaires qui ne vous trouvent pas
 
-Avec un site web professionnel adapté à votre budget, vous pouvez :
+Avec un site web professionnel adapte a votre budget, vous pouvez :
 
-- **Doubler votre nombre d'adhérents**
-- **Augmenter vos dons de 40%** (statistique moyenne)
-- **Faciliter la vie de vos bénévoles**
-- **Amplifier votre impact**
+- Attirer de nouveaux adherents
+- Faciliter les dons en ligne
+- Faciliter la vie de vos benevoles
+- Amplifier votre impact
 
 Ne laissez plus le manque de visibilité freiner vos belles initiatives.
 

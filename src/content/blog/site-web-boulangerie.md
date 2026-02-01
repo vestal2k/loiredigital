@@ -13,9 +13,9 @@ Dans un secteur aussi concurrentiel que la boulangerie-pâtisserie, se démarque
 
 ## Pourquoi votre boulangerie a besoin d'un site web ?
 
-### Les habitudes de consommation ont changé
+### Les habitudes de consommation ont change
 
-Aujourd'hui, **76% des Français** recherchent des informations en ligne avant de se rendre dans un commerce local. Que ce soit pour :
+Aujourd'hui, la majorite des clients recherchent des informations en ligne avant de se rendre dans un commerce local. Que ce soit pour :
 
 - Vérifier vos horaires d'ouverture
 - Découvrir vos spécialités
@@ -120,37 +120,41 @@ Un site web professionnel donne une image sérieuse et moderne. Les clients ont 
 
 Chez **Loire Digital**, nous proposons des solutions adaptées aux boulangeries :
 
-### Pack Essentiel - 800 €
+### Pack Starter - 400 EUR
 
-Parfait pour démarrer avec un site vitrine professionnel :
+Pour demarrer rapidement :
 
-- Page d'accueil
-- Présentation de vos produits
-- Page À propos
-- Page Contact
-- Responsive (mobile/tablette/ordinateur)
+- Landing page (1 page)
+- Design sobre et professionnel
 - Formulaire de contact
-- Google Maps intégré
+- Optimisation mobile
 
-### Pack Premium - 1 500 €
+### Pack Essentiel - 800 EUR
+
+Pour un site vitrine complet :
+
+- Jusqu'a 4 pages
+- SEO de base
+- Google Maps
+- Galerie photos
+
+### Pack Complet - 1 500 EUR
 
 Pour aller plus loin :
 
-- Tout le Pack Essentiel
-- Galerie photos avancée
-- Blog pour partager vos actualités
-- Optimisation SEO locale poussée
-- Formulaires de précommande
+- Jusqu'a 8 pages
+- Blog integre
+- SEO avance
+- Formulaires avances
 
-### Option E-commerce - à partir de 2 500 €
+### Pack E-commerce - a partir de 2 500 EUR
 
 Pour vendre en ligne :
 
-- Boutique en ligne complète
-- Paiement sécurisé
+- Boutique en ligne complete
+- Paiement securise
 - Gestion des stocks
-- Click & collect
-- Comptes clients
+- Gestion des commandes
 
 [Demandez un devis gratuit](/devis) adapté à votre boulangerie.
 
@@ -168,7 +172,7 @@ Investissez dans de **belles photos** de vos produits. C'est ce qui donne envie 
 
 ### 3. Optimisation pour mobile
 
-**Plus de 60%** des recherches locales se font sur smartphone. Votre site doit être parfaitement lisible et rapide sur mobile.
+La majorite des recherches locales se font sur smartphone. Votre site doit etre parfaitement lisible et rapide sur mobile.
 
 ### 4. Collectez des avis clients
 
@@ -199,12 +203,6 @@ Un blog enrichit votre site et améliore votre SEO :
 ❌ **Pas d'optimisation SEO** : Vous restez invisible sur Google
 
 ❌ **Design trop complexe** : Les visiteurs doivent trouver rapidement ce qu'ils cherchent
-
-## Témoignage
-
-> *"Depuis que nous avons lancé notre site web, nous avons constaté une augmentation de 30% de notre clientèle. Les gens nous trouvent facilement sur Google et appellent pour commander des gâteaux personnalisés. Le retour sur investissement a été immédiat !"*
->
-> — Boulangerie artisanale à Saint-Étienne
 
 ## Loire Digital, votre partenaire digital
 

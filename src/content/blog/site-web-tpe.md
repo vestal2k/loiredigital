@@ -15,7 +15,7 @@ En tant que **Très Petite Entreprise (TPE)**, vous pensez peut-être qu'un site
 
 ### La crédibilité avant tout
 
-**84% des consommateurs** considèrent qu'une entreprise avec un site web est plus crédible qu'une entreprise qui n'en a pas. Sans site web en 2025, vous donnez l'impression :
+La plupart des consommateurs considerent qu'une entreprise avec un site web est plus credible qu'une entreprise qui n'en a pas. Sans site web en 2025, vous donnez l'impression :
 
 - De ne pas être sérieux
 - D'être dépassé par la technologie
@@ -97,7 +97,7 @@ Les avis rassurent et influencent :
 - Logos de clients (si vous travaillez en B2B)
 - Certifications ou labels
 
-**92% des consommateurs** lisent les avis en ligne avant de faire appel à une entreprise.
+La plupart des consommateurs lisent les avis en ligne avant de faire appel a une entreprise.
 
 ### 6. Blog ou actualités (optionnel mais recommandé)
 
@@ -144,51 +144,45 @@ Votre site répond aux questions fréquentes, présente vos services et tarifs. 
 
 Chez **Loire Digital**, nous proposons des solutions adaptées aux **budgets des TPE** :
 
-### Pack Starter - 500 €
+### Pack Starter - 400 EUR
 
-Site one-page pour démarrer :
+Pour demarrer rapidement :
 
-- Page unique avec toutes les informations essentielles
-- Présentation de votre activité
-- Vos services/produits
+- Landing page (1 page)
+- Design sobre et professionnel
 - Formulaire de contact
-- Responsive (mobile/tablette/ordinateur)
+- Optimisation mobile
 
-Parfait pour avoir une présence web rapidement et à moindre coût.
+Parfait pour avoir une presence web rapidement et a moindre cout.
 
-### Pack Essentiel - 800 €
+### Pack Essentiel - 800 EUR
 
-Site vitrine complet (4 pages environ) :
+Site vitrine complet :
 
-- Page d'accueil
-- Page Services/Produits
-- Page À propos
-- Page Contact
-- Formulaire de contact
-- Google Maps intégré
-- Optimisation SEO de base
+- Jusqu'a 4 pages
+- SEO de base
+- Google Maps
+- Galerie photos
 
-Le choix idéal pour la plupart des TPE.
+Le choix ideal pour la plupart des TPE.
 
-### Pack Premium - 1 500 €
+### Pack Complet - 1 500 EUR
 
-Pour aller plus loin (8 pages environ) :
+Pour aller plus loin :
 
-- Tout le Pack Essentiel
-- Blog intégré
-- Galerie photos/portfolio
-- Optimisation SEO locale avancée
-- Section témoignages
-- Newsletter
+- Jusqu'a 8 pages
+- Blog integre
+- SEO avance
+- Formulaires avances
 
-Recommandé si vous voulez vraiment vous démarquer.
+Recommande si vous voulez vraiment vous demarquer.
 
-### Options supplémentaires
+### Options supplementaires
 
-- **Système de prise de RDV en ligne** : +500 €
-- **Boutique e-commerce** : à partir de 2 500 €
+- **Systeme de prise de RDV en ligne** : +500 EUR
+- **Boutique e-commerce** : a partir de 2 500 EUR
 - **Shooting photo professionnel** : sur devis
-- **Maintenance mensuelle** : à partir de 50 €/mois
+- **Maintenance mensuelle** : a partir de 29 EUR/mois
 
 [Utilisez notre calculateur de devis](/devis) pour obtenir une estimation personnalisée.
 
@@ -206,7 +200,7 @@ Un site efficace a un **objectif clair** et chaque élément doit y contribuer.
 
 ### 2. Priorisez le mobile
 
-**Plus de 60%** des recherches se font sur smartphone. Votre site doit être :
+La majorite des recherches se font sur smartphone. Votre site doit etre :
 
 - Parfaitement lisible sur mobile
 - Rapide à charger (moins de 3 secondes)
@@ -290,12 +284,6 @@ Un site web est bénéfique pour **toutes les TPE**, mais particulièrement pour
 ❌ **Ignorer le SEO** : Un beau site invisible sur Google ne sert à rien
 
 ❌ **Abandonner après le lancement** : Un site demande un minimum d'entretien
-
-## Témoignage
-
-> *"En tant qu'artisan électricien, je pensais qu'un site web ne servait à rien. Quelle erreur ! Depuis que j'ai mon site, je reçois 3-4 demandes de devis par semaine via le formulaire de contact. Le site s'est rentabilisé en moins de 2 mois !"*
->
-> — Artisan électricien à Saint-Étienne
 
 ## Loire Digital, spécialiste des sites pour TPE
 
