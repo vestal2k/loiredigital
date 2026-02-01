@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets'
+import logoImage from '../assets/logo.png'
+
 interface Props {
   currentPage?: 'dashboard' | 'project'
 }
@@ -12,7 +15,7 @@ const { currentPage = 'dashboard' } = Astro.props
       <!-- Logo et navigation -->
       <div class="flex items-center gap-8">
         <a href="/" class="flex-shrink-0" aria-label="Retour à l'accueil">
-          <img src="/logo.png" alt="Loire Digital" class="h-8" width="120" height="32" />
+          <Image src={logoImage} alt="Loire Digital" class="h-8" width={120} height={32} />
         </a>
 
         <nav class="hidden md:flex items-center gap-6" aria-label="Navigation espace client">

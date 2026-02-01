@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css'
 import SpeedInsights from '@vercel/speed-insights/astro'
+import { Image } from 'astro:assets'
+import logoImage from '../assets/logo.png'
 
 interface Props {
   title?: string
@@ -145,13 +147,13 @@ const jsonLdSchema = {
       <nav class="container mx-auto px-6 py-5" aria-label="Navigation principale">
         <div class="flex items-center justify-between">
           <a href="/" class="flex items-center space-x-3 group">
-            <img
-              src="/logo.png"
+            <Image
+              src={logoImage}
               alt="Logo Loire Digital - Retour à l'accueil"
               class="w-10 h-10 group-hover:scale-105 transition-transform duration-300"
-              width="40"
-              height="40"
-              fetchpriority="high"
+              width={40}
+              height={40}
+              loading="eager"
             />
             <span class="text-xl font-serif font-semibold text-noir tracking-tight">Loire Digital</span>
           </a>
@@ -233,7 +235,7 @@ const jsonLdSchema = {
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16">
           <div>
             <div class="flex items-center space-x-3 mb-6">
-              <img src="/logo.png" alt="Logo Loire Digital - Studio digital à Saint-Étienne" class="w-10 h-10" loading="lazy" width="40" height="40" />
+              <Image src={logoImage} alt="Logo Loire Digital - Studio digital a Saint-Etienne" class="w-10 h-10" width={40} height={40} loading="lazy" />
               <span class="text-xl font-serif font-semibold text-white">Loire Digital</span>
             </div>
             <p class="text-gris-moyen text-sm leading-relaxed">Studio digital basé à Saint-Étienne. Nous créons des sites web élégants pour les commerces locaux.</p>
