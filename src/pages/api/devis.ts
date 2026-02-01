@@ -120,16 +120,16 @@ function generateQuoteEmailHTML(data: {
   message?: string
 }): string {
   const packLabels: Record<string, string> = {
-    vitrine: 'Vitrine',
-    business: 'Business',
-    premium: 'Premium',
+    starter: 'Starter',
+    essentiel: 'Essentiel',
+    complet: 'Complet',
+    ecommerce: 'E-commerce',
   }
 
   const maintenanceLabels: Record<string, string> = {
     none: 'Aucune',
-    essential: 'Essentielle',
-    pro: 'Pro',
-    premium: 'Premium',
+    basic: 'Maintenance',
+    premium: 'Maintenance premium',
   }
 
   return `

@@ -1,6 +1,7 @@
 import { PRICING_PACKS, PRICING_OPTIONS, MAINTENANCE_PLANS, PRICE_PER_EXTRA_PAGE } from '../config/pricing'
 import { useQuoteState, useQuoteCalculation } from '@/features/quote/hooks'
 import { generateQuotePDF } from '@/features/quote'
+import { saveQuoteData } from '@/lib/utils/quote-storage'
 
 const QuoteCalculator = () => {
   const {
@@ -18,6 +19,28 @@ const QuoteCalculator = () => {
 
   const handlePDFDownload = async () => {
     await generateQuotePDF(options)
+  }
+
+  const handleContactRequest = () => {
+    const pack = PRICING_PACKS.find((p) => p.id === options.packId)
+    const maintenancePlan = MAINTENANCE_PLANS.find((p) => p.id === options.maintenance)
+
+    saveQuoteData({
+      packId: options.packId,
+      packName: pack?.name || '',
+      pages: options.pages,
+      optionIds: options.optionIds,
+      optionNames: options.optionIds
+        .map((id) => PRICING_OPTIONS.find((o) => o.id === id)?.name)
+        .filter(Boolean) as string[],
+      maintenance: options.maintenance,
+      maintenanceName: maintenancePlan?.name || 'Aucune',
+      totalPrice: calculation.totalPrice,
+      maintenancePrice: calculation.maintenancePrice,
+      timestamp: Date.now(),
+    })
+
+    window.location.href = '/#contact'
   }
 
   if (showResult) {
@@ -160,12 +183,12 @@ const QuoteCalculator = () => {
               Télécharger PDF
             </button>
           </div>
-          <a
-            href="/#contact"
+          <button
+            onClick={handleContactRequest}
             className="w-full px-6 py-3 bg-or text-white rounded-lg font-semibold hover:bg-or-dark transition-colors text-center"
           >
             Demander un devis détaillé
-          </a>
+          </button>
         </div>
       </div>
     )

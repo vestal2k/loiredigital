@@ -1,24 +1,62 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { contactSchema, type ContactFormData } from '../schemas/contact.schema'
+import { getQuoteData, clearQuoteData, type StoredQuoteData } from '@/lib/utils/quote-storage'
 
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null)
+  const [quoteData, setQuoteData] = useState<StoredQuoteData | null>(null)
+
+  useEffect(() => {
+    const data = getQuoteData()
+    if (data) {
+      setQuoteData(data)
+    }
+  }, [])
 
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
+    defaultValues: {
+      project: quoteData ? 'creation' : undefined,
+    },
   })
+
+  useEffect(() => {
+    if (quoteData) {
+      setValue('project', 'creation')
+    }
+  }, [quoteData, setValue])
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true)
     setSubmitStatus(null)
+
+    let messageWithQuote = data.message
+    if (quoteData) {
+      const quoteDetails = [
+        `\n\n--- Détails du devis ---`,
+        `Pack : ${quoteData.packName}`,
+        `Nombre de pages : ${quoteData.pages}`,
+        quoteData.optionNames.length > 0 ? `Options : ${quoteData.optionNames.join(', ')}` : null,
+        `Maintenance : ${quoteData.maintenanceName}`,
+        `Budget estimé : ${quoteData.totalPrice.toLocaleString('fr-FR')} €`,
+        quoteData.maintenancePrice > 0
+          ? `Maintenance : ${quoteData.maintenancePrice} €/mois`
+          : null,
+      ]
+        .filter(Boolean)
+        .join('\n')
+
+      messageWithQuote = data.message + quoteDetails
+    }
 
     try {
       const response = await fetch('/api/contact', {
@@ -26,28 +64,24 @@ export default function ContactForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          message: messageWithQuote,
+        }),
       })
 
       if (!response.ok) {
         throw new Error('Failed to send message')
       }
 
-      setSubmitStatus('success')
+      clearQuoteData()
+      setQuoteData(null)
       reset()
-
-      // Scroll to success message
-      setTimeout(() => {
-        document.getElementById('success-message')?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-        })
-      }, 100)
+      window.location.href = '/confirmation'
     } catch (error) {
       console.error('Error submitting form:', error)
       setSubmitStatus('error')
 
-      // Scroll to error message
       setTimeout(() => {
         document.getElementById('error-message')?.scrollIntoView({
           behavior: 'smooth',
@@ -59,12 +93,87 @@ export default function ContactForm() {
     }
   }
 
+  const dismissQuoteData = () => {
+    clearQuoteData()
+    setQuoteData(null)
+  }
+
   return (
     <div className="bg-gray-pale rounded-xl p-8 md:p-10">
       <h3 className="text-2xl font-bold text-black mb-3">Envoyez-nous un message</h3>
       <p className="text-black font-medium mb-8 pb-6 border-b border-gray-200">
         Réponse garantie sous 24h par email. Pas de démarchage téléphonique.
       </p>
+
+      {quoteData && (
+        <div className="mb-8 bg-or/10 border border-or/30 rounded-xl p-6">
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-or/20 rounded-lg flex items-center justify-center">
+                <svg
+                  className="w-5 h-5 text-or"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4 className="font-bold text-black">Votre devis</h4>
+                <p className="text-sm text-gray-600">Les informations seront transmises avec votre message</p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={dismissQuoteData}
+              className="text-gray-400 hover:text-gray-600 transition-colors"
+              aria-label="Supprimer le devis"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between">
+              <span className="text-gray-600">Pack</span>
+              <span className="font-medium text-black">{quoteData.packName}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-600">Pages</span>
+              <span className="font-medium text-black">{quoteData.pages}</span>
+            </div>
+            {quoteData.optionNames.length > 0 && (
+              <div className="flex justify-between">
+                <span className="text-gray-600">Options</span>
+                <span className="font-medium text-black text-right">{quoteData.optionNames.join(', ')}</span>
+              </div>
+            )}
+            <div className="flex justify-between">
+              <span className="text-gray-600">Maintenance</span>
+              <span className="font-medium text-black">{quoteData.maintenanceName}</span>
+            </div>
+            <div className="pt-2 mt-2 border-t border-or/20">
+              <div className="flex justify-between items-center">
+                <span className="font-semibold text-black">Budget estimé</span>
+                <span className="text-xl font-bold text-or">{quoteData.totalPrice.toLocaleString('fr-FR')} €</span>
+              </div>
+              {quoteData.maintenancePrice > 0 && (
+                <div className="flex justify-between items-center mt-1">
+                  <span className="text-gray-600">+ Maintenance</span>
+                  <span className="text-sm font-medium text-or">{quoteData.maintenancePrice} €/mois</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         {/* Name Field */}
@@ -250,39 +359,6 @@ export default function ContactForm() {
 
         <p className="text-xs text-gray-600 text-center">* Champs obligatoires</p>
       </form>
-
-      {/* Success Message */}
-      {submitStatus === 'success' && (
-        <div
-          id="success-message"
-          className="mt-6 p-6 bg-or/5 border-2 border-or rounded-lg animate-fade-in"
-        >
-          <div className="flex items-start space-x-3">
-            <svg
-              className="w-6 h-6 text-or flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              ></path>
-            </svg>
-            <div>
-              <h4 className="font-bold text-black mb-2">Message envoyé avec succès !</h4>
-              <p className="text-sm text-gray-text mb-2">
-                Merci pour votre confiance. Nous avons bien reçu votre demande.
-              </p>
-              <p className="text-sm font-semibold text-or-dark">
-                Vous recevrez une réponse détaillée sous 24h par email.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Error Message */}
       {submitStatus === 'error' && (
