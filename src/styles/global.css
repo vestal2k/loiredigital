@@ -479,6 +479,36 @@ section[id] {
   box-shadow: 0 0 0 2px var(--color-or);
 }
 
+.mobile-nav-separator {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gris-doux), transparent);
+  margin: 8px 16px;
+}
+
+.mobile-nav-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--color-or);
+}
+
+.mobile-nav-page:hover,
+.mobile-nav-page:focus {
+  color: var(--color-or-dark);
+}
+
+.mobile-nav-arrow {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.mobile-nav-page:hover .mobile-nav-arrow {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
 @media (min-width: 768px) {
   .burger-btn,
   .mobile-nav-dropdown {
