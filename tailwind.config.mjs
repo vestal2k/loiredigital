@@ -4,7 +4,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Loire Élégance - Palette Premium
         'noir': '#1a1a1a',
         'noir-light': '#2d2d2d',
         'or': '#b8860b',
