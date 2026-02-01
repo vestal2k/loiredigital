@@ -235,7 +235,7 @@ const QuoteCalculator = () => {
           <h2 className="text-3xl font-display font-bold text-black mb-2">Choisissez votre pack</h2>
           <p className="text-gray-600 mb-6">Sélectionnez le pack qui correspond le mieux à vos besoins</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {PRICING_PACKS.map((pack) => (
               <button
                 key={pack.id}
