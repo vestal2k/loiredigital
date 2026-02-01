@@ -188,7 +188,7 @@ Le véritable coût à considérer, c'est ce que vous **perdez en n'ayant pas de
 - Image moins professionnelle
 - Difficultés à vous faire connaître
 
-Un site à 1000€ qui vous apporte 5 nouveaux clients par mois est **largement rentabilisé**.
+Un site a 1000€ peut se rentabiliser rapidement s'il vous apporte ne serait-ce que quelques nouveaux clients par mois.
 
 ## Conseils pour optimiser votre budget
 

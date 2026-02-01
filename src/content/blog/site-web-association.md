@@ -336,9 +336,9 @@ La transparence inspire confiance et encourage les dons.
 
 ❌ **Ignorer le mobile** : Plus de la moitié de vos visiteurs sont sur smartphone
 
-## Loire Digital, partenaire des associations
+## Loire Digital peut accompagner votre association
 
-Nous sommes convaincus de l'**utilité sociale des associations** et nous voulons vous aider à avoir un impact encore plus grand. C'est pourquoi nous proposons :
+Nous croyons en l'**utilite sociale des associations** et nous souhaitons vous aider a avoir un impact encore plus grand. C'est pourquoi nous proposons :
 
 ✅ **Tarifs préférentiels** de 20% pour les associations loi 1901
 ✅ **Solutions clés en main** sans tracas technique
@@ -347,12 +347,12 @@ Nous sommes convaincus de l'**utilité sociale des associations** et nous voulon
 ✅ **Conseils personnalisés** pour votre communication digitale
 ✅ **Paiement échelonné** possible
 
-### Notre engagement associatif :
+### Notre approche :
 
-- Nous comprenons vos contraintes budgétaires
-- Nous respectons vos valeurs
-- Nous simplifions au maximum la technique
-- Nous restons disponibles après le lancement
+- Tarifs adaptes aux budgets associatifs
+- Respect de vos valeurs
+- Technique simplifiee au maximum
+- Disponibilite apres le lancement
 
 ### Notre processus :
 
