@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { PRICING_PACKS, PRICING_OPTIONS, MAINTENANCE_PLANS, PRICE_PER_EXTRA_PAGE } from '../config/pricing'
 import { useQuoteState, useQuoteCalculation } from '@/features/quote/hooks'
 import { generateQuotePDF } from '@/features/quote'
@@ -17,8 +18,53 @@ const QuoteCalculator = () => {
 
   const calculation = useQuoteCalculation(options)
 
+  const [emailForQuote, setEmailForQuote] = useState('')
+  const [emailStatus, setEmailStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  const [emailError, setEmailError] = useState('')
+
   const handlePDFDownload = async () => {
     await generateQuotePDF(options)
+  }
+
+  const handleSendQuoteByEmail = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(emailForQuote)) {
+      setEmailError('Veuillez entrer une adresse email valide')
+      return
+    }
+
+    setEmailStatus('sending')
+    setEmailError('')
+
+    const pack = PRICING_PACKS.find((p) => p.id === options.packId)
+    const maintenancePlan = MAINTENANCE_PLANS.find((p) => p.id === options.maintenance)
+
+    try {
+      const response = await fetch('/api/send-quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: emailForQuote,
+          packName: pack?.name || '',
+          pages: options.pages,
+          optionNames: options.optionIds
+            .map((id) => PRICING_OPTIONS.find((o) => o.id === id)?.name)
+            .filter(Boolean),
+          maintenanceName: maintenancePlan?.name || 'Aucune',
+          totalPrice: calculation.totalPrice,
+          maintenancePrice: calculation.maintenancePrice,
+        }),
+      })
+
+      if (!response.ok) throw new Error('Erreur lors de l\'envoi')
+
+      setEmailStatus('sent')
+    } catch {
+      setEmailStatus('error')
+      setEmailError('Une erreur est survenue. Veuillez reessayer.')
+    }
   }
 
   const handleContactRequest = () => {
@@ -180,15 +226,75 @@ const QuoteCalculator = () => {
                   d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                 />
               </svg>
-              Télécharger PDF
+              Telecharger PDF
             </button>
           </div>
           <button
             onClick={handleContactRequest}
             className="w-full px-6 py-3 bg-or text-white rounded-lg font-semibold hover:bg-or-dark transition-colors text-center"
           >
-            Demander un devis détaillé
+            Demander un devis detaille
           </button>
+        </div>
+
+        <div className="mt-8 pt-8 border-t border-gray-200">
+          {emailStatus === 'sent' ? (
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3">
+              <svg className="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <p className="text-sm text-green-800">
+                Devis envoye a <strong>{emailForQuote}</strong>
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSendQuoteByEmail} className="space-y-3">
+              <label className="block text-sm font-medium text-gray-700">
+                Recevoir ce devis par email (optionnel)
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  value={emailForQuote}
+                  onChange={(e) => {
+                    setEmailForQuote(e.target.value)
+                    setEmailError('')
+                  }}
+                  placeholder="votre@email.fr"
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-or focus:border-transparent outline-none text-black"
+                  disabled={emailStatus === 'sending'}
+                />
+                <button
+                  type="submit"
+                  disabled={emailStatus === 'sending' || !emailForQuote}
+                  className="px-4 py-2 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                >
+                  {emailStatus === 'sending' ? (
+                    <>
+                      <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      Envoi...
+                    </>
+                  ) : (
+                    <>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                      Envoyer
+                    </>
+                  )}
+                </button>
+              </div>
+              {emailError && (
+                <p className="text-sm text-red-600">{emailError}</p>
+              )}
+              <p className="text-xs text-gray-500">
+                Votre email ne sera utilise que pour vous envoyer ce devis.
+              </p>
+            </form>
+          )}
         </div>
       </div>
     )
